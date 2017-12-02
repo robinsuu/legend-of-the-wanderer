@@ -2,8 +2,7 @@
 // Character.java
 //******************************************************************************
 
-public class Character implements java.io.Serializable
-{
+public class Character implements java.io.Serializable {
     private final int LEVEL_LIMIT = 20; // Sets the limit to how many times you can level up
     private final int ITEM_LIMIT = 22; // Sets the limit on how many items that exist. This must be equivalent to the number of item objects created below
 
