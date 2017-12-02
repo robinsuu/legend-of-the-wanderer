@@ -353,8 +353,7 @@ public class InfoPanel extends JPanel {
             else if (source == creditsButton)
                 JOptionPane.showMessageDialog(new JFrame(), "\nCode: Robin Fjärem"
                                 + "\nStory and maps: Robin Fjärem"
-                                + "\nhttp://robinsuu.com"
-                                + "\n\nMusic: http://rolemusic.sawsquarenoise.com/"
+                                + "\nhttp://lazycapybara.com"
                                 + "\nLicensed under http://creativecommons.org/licenses/by/4.0/"		
                                 + "\n\nTesters:"
                                 + "\nMarcus Folgert"
@@ -364,8 +363,7 @@ public class InfoPanel extends JPanel {
                                 + "\n\nOther:"
                                 + "\nhttp://crownlessking.com (GUI io console class and GUI coding advice)"
                                 + "\nSaad Benbouzid @ stackoverflow (Line-break code snippet)"
-                                + "\nhttp://lauzet.com/argon/ (Online mapping tool)"
-                                + "\nhttp://www.javazoom.net/jlgui/api.html (MP3 player)");
+                                + "\nhttp://lauzet.com/argon/ (Online mapping tool)");
         }
     }
 
