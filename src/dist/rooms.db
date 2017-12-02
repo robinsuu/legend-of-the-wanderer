@@ -1,0 +1,433 @@
+#0001 A small room with a bed, a small desk, and an oil lamp hanging from the ceiling. Though small, most of the things look like they are of very high quality. You see some empty bottles of liquor on the desk.
+#0002 A big room with several chairs and small tables. There is a small room to your south.
+#0003 A big room with several chairs and small tables. You can see a nice garden through the window to your west.
+#0004 A big room with several chairs and small tables. One of the tables here is set with the most delicious looking food. There is a locked door to your east.
+#0005 A big room with several chairs and small tables. There is a corridor to your north.
+#0006 A big room with several chairs and small tables. There is a locked door to your north. There is a door leading to the garden to your west.
+#0007 A quiet corner with a small library of books and a comfortable looking chair.
+#0008 A corridor with family portraits lined along the wall. The carpet on the floor looks like it might be worth a fortune.
+#0009 A corridor with family portraits lined along the wall. You'd better not touch anything with risk of breaking it. Most things in this house looks like it's worth more than you make in a year.
+#0010 A corridor with family portraits lined along the wall. There is a cabinet with what looks like priceless porcelain dishes here.
+#0011 A corridor with family portraits lined along the wall. The exit of the house is to your south.
+#0012 The entrance of the house. You see some fancy stuffed armchairs, but they look way too expensive to actually use.
+#0013 A big wardrobe for the guests clothes. It smells of perfume in here.
+#0014 A small room with a bunk bed and a closet standing next to the wall. Perhaps this is the servant's quarters?
+#0015 A beautiful house is to your north. It's no doubt a very luxurious house. To your south there is a path continuing into the forest.
+#0016 A path in the forest. The path has trees neatly lined up on the sides.
+#0017 A path in the forest. The path has trees neatly lined up on the sides.
+#0018 A forest meadow opens up before you.
+#0019 A forest meadow. There is a big oak looming over you.
+#0020 A forest meadow. You see a small path leading eastwards.
+#0021 A forest meadow. You hear some birds singing in the trees.
+#0022 A forest meadow. The sunshine feels really nice and warm.
+#0023 A forest meadow. You hear some birds singing in the trees.
+#0024 A path in the forest. It looks like it hasn't been used for years.
+#0025 A path in the forest. It looks like it hasn't been used for years.
+#0026 A path in the forest. It looks like it hasn't been used for years.
+#0027 A forest clearing. Some small animals scurry away as soon as you enter the area.
+#0028 A forest clearing. You see a single birch tree towering over you.
+#0029 A forest clearing. The soft grass looks really inviting. How about a nap?
+#0030 A forest clearing. You feel a small breeze in your hair.
+#0031 Standing in front of an old tower. The tower is pretty high and has vines climbing along its walls. The door seems to be open.
+#0032 A forest clearing. It's very peaceful here.
+#0033 The entrance of the tower. You see some junk on the floor. There is a spiral stair leading upwards.
+#0034 Climbing the stairs. Watch your step!
+#0035 Climbing the stairs. Watch your step!
+#0036 At the top of the tower. There is an old dirty carpet on the floor. Other than that there's nothing special in here. You get a pretty good view of the forest from here. You can see farming fields to the south.
+#0037 A forest meadow. You hear some birds singing in the trees.
+#0038 A forest meadow. You see a small opening in the rock to the east.
+#0039 A forest meadow. A rabbit family is observing you with interest and caution.
+#0040 A small cave. You see some old bones on the ground.
+#0041 A small cave. There is a fresh carcass here. It might be time to turn back.
+#0042 A path in the forest. This path seems quite well-traveled.
+#0043 A path in the forest. This path seems quite well-traveled. There is a small overgrown path leading west.
+#0044 A path in the forest. This path seems quite well-traveled.
+#0045 A small garden before a house.
+#0046 A small garden before a house. The door is wide open. How strange.
+#0047 The entrance of the house. It looks like nobody is home.
+#0048 There is a dining table with some chairs here. It looks like whoever lived here had to leave in a hurry judging from the dishes still left in place on the table.
+#0049 The window is wide open. How odd.
+#0050 There is nothing of interest here.
+#0051 There are stairs leading upwards.
+#0052 There is a small ladder leading downwards to the cellar.
+#0053 The second floor of the house. There are stairs leading downwards.
+#0054 You see a dusty family portrait on the wall. It looks like it's been ages since anyone lived here.
+#0055 There is a door leading to the balcony here.
+#0056 You see some useless junk on the floor.
+#0057 You see a broken clock standing next to the wall. There is also an untidy bed here.
+#0058 A bookshelf has been turned over here, but the books all look too damaged to read.
+#0059 An old balcony. You see nothing but trees outside. There is a small bird house hanging in a tree near the balcony.
+#0060 A small storage space. There is a lot of spider web and dust in here.
+#0061 A well-traveled road. You see some grassy fields to the southeast.
+#0062 A well-traveled road. You see some grassy fields to the southeast.
+#0063 A well-traveled road. You see some grassy fields to the southeast.
+#0064 A well-traveled road. There are some grassy fields to the east.
+#0065 A grassy field. This looks like the perfect place for a cow to live.
+#0066 A grassy field. You resist the urge to lie down in the soft grass.
+#0067 A grassy field. Wait, what's that? Oh.. You just stepped in a fresh pile of cow dung.
+#0068 A grassy field. There is a big flock of birds sitting right here. Why did they choose this particular spot? How peculiar.
+#0069 A grassy field. You get a good view from the top of a small hill. You can see what resembles a village to the south.
+#0070 A grassy field. You resist the urge to lie down in the soft grass.
+#0071 A grassy field. Wait, what's that? Oh.. You just stepped in a fresh pile of cow dung.
+#0072 A grassy field. Something is hissing at you from a nearby bush. Better get moving.
+#0073 A grassy field. This looks like the perfect place for a cow to live.
+#0074 A well-traveled road. There are some grassy fields to the east.
+#0075 A well-traveled road. There are some grassy fields to the east.
+#0076 A well-traveled road. You trip on a small rock sticking up from the middle of the road. Curses!
+#0077 A well-traveled road. You see a badger scurrying over the road.
+#0078 A well-traveled road. There is an arrow sign pointing south saying 'Halin Village'. There is also a small path leading west into a gloomy looking forest.
+#0079 There are thorny bushes and dead trees everywhere. You struggle as you make your way through a particularly troublesome bush.
+#0080 There are thorny bushes and dead trees everywhere.
+#0081 You stumble upon a small wooden sign which has been broken in half and left on the ground. It says 'Turn back! DANGER!'.
+#0082 It's awfully silent here.
+#0083 The silence lies heavily on your mind as you keep walking.
+#0084 You fend off some cobwebs with your hands.
+#0085 You hear a wailing noise from somewhere nearby. There's a big hollow tree to your east.
+#0086 Inside a hollow tree. You feel very nervous in here. It might not be a good idea to stay here for too long.
+#0087 You notice bones from a small humanoid creature on the ground.
+#0088 It's very eerie here. You feel a chill running down your spine.
+#0089 You hear howling in the distance.
+#0090 You have a bad feeling about this.
+#0091 You are standing before the entrance of a dark dungeon.
+#0092 The entrance of the dungeon. It's very dark in here.
+#0093 There is a lot of rubbish lying around.
+#0094 You hear some bugs. The sound is coming from the shadows.
+#0095 You trip over some junk on the ground. Why on earth would you come to a place like this?
+#0096 You notice an opening to your north as you stumble forth in the darkness.
+#0097 The ground is particularly uneven here. Watch your step.
+#0098 Deep inside the dungeon.
+#0099 Deep inside the dungeon.
+#0100 Deep inside the dungeon.
+#0101 A dark crevice.
+#0102 Deep inside the dungeon.
+#0103 Deep inside the dungeon. You see an opening delving even deeper to the west.
+#0104 Deep inside the dungeon.
+#0105 A dark winding path.
+#0106 A dark winding path.
+#0107 A dark winding path.
+#0108 A dark winding path.
+#0109 A dark winding path.
+#0110 A dead end. Or is it? You notice a trap door under your feet.
+#0111 Below the trap door. There is an open door to the east.
+#0112 A dark hall.
+#0113 A dark hall. There is a corridor leading east.
+#0114 A dark hall.
+#0115 A dark hall.
+#0116 A dark hall. There is a corridor leading north.
+#0117 A dark corridor.
+#0118 A dark corridor.
+#0119 Standing before the throne room. Dare you really go inside?
+#0120 The throne room. There is a filthy blood stained carpet leading further inside.
+#0121 The corner of the throne room.
+#0122 The corner of the throne room.
+#0123 The throne room. There is a filthy blood stained carpet leading further inside.
+#0124 The corner of the throne room. You spot what resembles a human skull on the floor.
+#0125 The corner of the throne room.
+#0126 You see a massive throne before you. Not the kind for noble kings adorned with gold and gemstones, but a very gruesome creation with rotting heads pierced by sticks and spears.
+#0127 A dark hall. There is a trap door beneath your feet.
+#0128 A gruesome prisoner cell. There are empty chains hanging from the wall.
+#0129 A dark hall. There is a hole in the stone floor right here. Perhaps you can climb down?
+#0130 A gruesome prisoner cell. There is a human skeleton still chained to the wall. Whoever deserved such a fate?
+#0131 A dark corridor.
+#0132 A dark corridor. You see some light coming from the east.
+#0133 The entrance of something that resembles a kitchen. It smells horrible in here.
+#0134 This seems to be the storage area of the kitchen. There are numerous pots and jars standing on the floor. You don't even want to know what they contain.
+#0135 There is a huge pot boiling here. It gives off a tremendously vile stench.
+#0136 There are hooks hanging from the ceiling and dried blood all over the floor. What in the world is this place?!
+#0137 A dark corridor. You hear a faint noise from down below. There is a door to the east.
+#0138 A gruesome prisoner cell. Whoever might live here should be put out of their misery.
+#0139 The entrance of what resembles a guard room.
+#0140 There is a rough stone bench here.
+#0141 You see some buckets on the floor. You'd better not check what kind of disgusting liquid they contain.
+#0142 There is a weapon stand with what looks like completely useless weapons here.
+#0143 A well-traveled road. You see a village to the south.
+#0144 A well-traveled road. You see a village to the south.
+#0145 A well-traveled road. You see a village to the south.
+#0146 A well-traveled road. Standing before the north gate of Halin Village.
+#0147 The north gate of Halin village.
+#0148 You see a sign to the east saying 'Harald's Bed & Breakfast'. You can see a pond to the west. There are ducks playing in it.
+#0149 You see a sign to the east saying 'General Store'. You can see a pond to the west.
+#0150 The northern part of the town square. You notice that there are hardly any kids out playing.
+#0151 The middle of the town square.
+#0152 The southern part of the town square.
+#0153 The main street of the village.
+#0154 The main street of the village. The south gate is to the south of you.
+#0155 The south gate of Halin village.
+#0156 Walking along the northern wall.
+#0157 A guard post next to the wall. You'd better not upset the guards.
+#0158 Walking along the eastern wall. This area seems a bit shady.
+#0159 Walking along the eastern wall. This area seems a bit shady.
+#0160 Walking along the eastern wall. There are vines running up the wall.
+#0161 Walking along the eastern wall.
+#0162 Walking along the eastern wall.
+#0163 Walking along the eastern wall. To the west you see a strange house with a sign saying "Magic and trinkets".
+#0164 Walking along the eastern wall.
+#0165 The southeastern corner of the village. There is a stone bench here.
+#0166 Inside the inn. There are many rooms with comfortable beds in here.
+#0167 Inside the general store. It seems a little empty. No doubt because of the war.
+#0168 Halin village. The northeastern part of the town square.
+#0169 Halin village. The eastern part of the town square.
+#0170 Halin village. The southeastern part of the town square.
+#0171 A very peculiar house with many different arcane symbols and trinkets.
+#0172 A common street in the village.
+#0173 The northwestern part of the town square. You can see a pond to the north.
+#0174 The western part of the town square.
+#0175 The southwestern part of the town square.
+#0176 A green area with benches and some exquisite marble statues. You can see a pond to the south.
+#0177 A green area with benches and some exquisite marble statues.
+#0178 A green area with benches and some exquisite marble statues. You can see a pond to the east.
+#0179 A green area with benches and some exquisite marble statues. You can see a pond to the east.
+#0180 A green area with benches and some exquisite marble statues.
+#0181 Walking along the western wall.
+#0182 Walking along the western wall. You see a couple of street dogs fighting over some scraps thrown out by a local restaurant.
+#0183 Walking along the western wall. To the east is a sign with an anvil and a hammer.
+#0184 Walking along the western wall.
+#0185 A guard post next to the wall. You'd better not upset the guards.
+#0186 There is a furnace burning with searing hot fire.
+#0187 A common street in the village.
+#0188 Walking along the southern wall. The south gate is to the east.
+#0189 Walking along the southern wall. The south gate is to the west.
+#0190 A dark corridor.
+#0191 The south road. You can see Halin village is to the north.
+#0192 The south road. There is a small guard tower to the east.
+#0193 Inside a small guard tower.
+#0194 The south road. You pass a couple of injured soldiers heading south. Why are they not returning to their home?
+#0195 The south road. The road keeps going south but there is an improved sign stuck in the ground saying 'To the battlefield'. You'd better not go that way. You can see an impressively high mountain to the east.
+#0196 The south road. The road is of worse quality here.
+#0197 The south road. The road is of worse quality here.
+#0198 The south road. There is a small trail leading southwards from here.
+#0199 You see a fire burning to the south. You can hear laughter and people talking.
+#0200 The entrance of a small camp.
+#0201 There are some horses hitched to a tree right here.
+#0202 You can see a woodpecker hacking away at a tree. Such a simple life.
+#0203 There is a cart loaded with stuff right here. It looks like someone brought their entire home with them.
+#0204 There is a fire burning right here in the middle of the camp.
+#0205 There is a small stream right here. The sound of the water is soothing.
+#0206 The south road. This looks like the perfect place for an ambush. Be careful.
+#0207 The south road. You are close to the mountain to the east.
+#0208 It's quite steep here. The path south leads to the mountain.
+#0209 The path to the mountain. 
+#0210 The path to the mountain.
+#0211 The path to the mountain.
+#0212 The entrance of the mountain. The path continues upwards from here. You surely aren't geared for this..
+#0213 Climbing the mountain. It's quite slippery here. Be careful.
+#0214 Climbing the mountain. You see a hawk swooping down and catching a little mountain hare.
+#0215 Climbing the mountain. The path continues upwards from here.
+#0216 Climbing the mountain. You wonder when you'll be getting a warm bath again as you push on. You can climb down from here.
+#0217 Climbing the mountain. There is a fresh mountain goat carcass on the ground here. Whatever ripped it apart, you don't feel like meeting it.
+#0218 Climbing the mountain. The path continues upwards from here.
+#0219 Climbing the mountain. You can climb down from here.
+#0220 Climbing the mountain. There is a small lonely pine tree standing here, defying the strong wind.
+#0221 Climbing the mountain. You traverse a particularly narrow part of the path.
+#0222 Climbing the mountain. You can see a small cave to the south. The path continues upwards from here.
+#0223 From the looks of it this cave has been used by many people traveling in the mountain.
+#0224 The mountain summit. You take a deep breath of the fresh air. You can climb down from here.
+#0225 The mountain summit. It's pretty cold up here. Maybe you should have brought warmer clothes?
+#0226 The mountain summit. There seems to be a good viewpoint to the west.
+#0227 The viewpoint. You can see Halin village to the west from here. When looking to your south you are reminded by the tragedy that has befallen this land. You see fires burning and carts of corpses moving slowly.
+#0228 The hermit's cave. There is a small campfire in the middle of the cave and a small bed in the corner.
+#0229 The mountain summit. There is a cave opening to the north.
+#0230 The mountain summit. You see a bird nest with light blue colored eggs inside it. You wonder when they might be hatching.
+#0231 The mountain summit. There is a strange contraption here consisting of what looks like a small house attached to rope. Whoever built it doesn't have the word 'safety' in their vocabulary.
+#0232 At the bottom of the mountain. There is a strange contraption here consisting of what looks like a small house attached to rope. Whoever built it doesn't have the word 'safety' in their vocabulary. You see a series of huts to your east.
+#0233 The entrance of the Zulah tribe settlement.
+#0234 The Zulah tribe settlement.
+#0235 The Zulah tribe settlement.
+#0236 The Zulah tribe settlement. There is a hut to your south.
+#0237 You are in the middle of the Zulah tribe settlement.
+#0238 The Zulah tribe settlement. There is a hut to your north.
+#0239 The shaman's hut. This place is full of all kinds of weird things ranging from eyes preserved in bottles of slimy liquid to brightly painted masks doing grotesque faces.
+#0240 The Zulah tribe settlement. You hear some hissing from the bushes.
+#0241 The Zulah tribe settlement. To the east there is a narrow bridge that looks old and not the least safe at all.
+#0242 The Zulah tribe settlement. There is a hut to your north.
+#0243 Inside a hut. You see various kinds of animal skins on the walls of the hut. It's not the common kind of skins though, these are reptile skins. You had no idea there were snakes that size.
+#0244 Inside a hut. There is a small pot bubbling over a fire. It doesn't look very tasty as you see a couple of bones swimming around in some kind of stew.
+#0245 A rickety bridge that feels like it's about to fall apart any moment.
+#0246 A rickety bridge that feels like it's about to fall apart any moment. The area to the east seems to thicken with mist.
+#0247 A rickety bridge that feels like it's about to fall apart any moment. The mist lies thick here. The bridge keeps creaking as you walk on it.
+#0248 A rickety bridge that feels like it's about to fall apart any moment. The mist lies thick here. You carefully step over a section missing planks.
+#0249 A rickety bridge that feels like it's about to fall apart any moment. The mist lies thick here. You notice something large moving in the water beneath the bridge. You could have sworn it was scaly.
+#0250 A rickety bridge that feels like it's about to fall apart any moment. The mist lies thick here. The end of the bridge is right to your east.
+#0251 Solid ground! However, your sense of security doesn't take a long time to go away. You are on a tiny island in the middle of a misty marsh. Better get moving before it gets dark.
+#0252 You are on a tiny island in the middle of a misty marsh.
+#0253 You are on a tiny island in the middle of a misty marsh.
+#0254 You are on a tiny island in the middle of a misty marsh. There is a path that looks somewhat solid (Actually just about walkable) to the east of you.
+#0255 You are on a tiny island in the middle of a misty marsh.
+#0256 You are on a tiny island in the middle of a misty marsh.
+#0257 You step ankle deep in the murky waters of the marsh. The area to the east is so thick with mist that you can barely see your own hand stretched out before you.
+#0258 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0259 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0260 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0261 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0262 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0263 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0264 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0265 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0266 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0267 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0268 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0269 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0270 You are completely lost in the thick mist, wading through the murky marsh waters. Wherever you turn everything looks the same.
+#0271 You step onto solid ground. This area looks like some kind of cemetery. What a place for a cemetery, huh?
+#0272 There are tombstones sticking up here and there. They look completely forgotten by whoever buried their dead here.
+#0273 There is a statue right here in the middle of the cemetery. It depicts a scary-looking armored knight with his eyes gazing south.
+#0274 There are tombstones sticking up here and there. You notice what looks like a freshly dug hole near one of the graves.
+#0275 There are tombstones sticking up here and there. There is a casket pried open on the ground. You see a ghastly corpse with arms crossed. There is a large crypt to the south of you.
+#0276 There is a small hill here. You climb up on it to survey the lands. You cannot see anything to the west due to the thick mist. You can barely see what might be crypts to your south. The sky is much more clear to the east, maybe you should head that way.
+#0277 There are tombstones sticking up here and there. You notice a small white flower next to one of the graves.
+#0278 The gate of the cemetery. There is an overgrown road to the east from here.
+#0279 This place looks like it's been plundered thoroughly. All the graves have been opened and many of the tombstones have been destroyed.
+#0280 You are standing at the entrance of the awe-inspiring crypts. There are two stone gargoyles watching the resting place of the dead. The door seems to be destroyed. There is a small hole leading downwards.
+#0281 Inside the dark crypts. There is a way upwards from here.
+#0282 Crawling through the dark crypts.
+#0283 Crawling through the dark crypts. You see some light coming from the west.
+#0284 Inside the crypts. The ceiling is so low you almost feel suffocated. Oddly enough, you can see pretty well in here. Where is the light coming from?
+#0285 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0286 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0287 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0288 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0289 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0290 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0291 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0292 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0293 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0294 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0295 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0296 Inside the crypts. The ceiling is so low you almost feel suffocated.
+#0297 You stand before a large stone door. You feel a chill running down your spine.
+#0298 The entrance of the tomb. You start to feel the panic welling up inside you.
+#0299 Inside the tomb. There are jars filled with some kind of liquid standing here.
+#0300 Inside the tomb. Your footsteps leave tracks in the untouched dust.
+#0301 Inside the tomb. Your footsteps leave tracks in the untouched dust.
+#0302 There is a big stone tomb with the lid thrown to the side right here.
+#0303 Inside the tomb. Your footsteps leave tracks in the untouched dust.
+#0304 Inside the tomb. Your footsteps leave tracks in the untouched dust.
+#0305 Inside the tomb. Your footsteps leave tracks in the untouched dust. There is a small space to the west of here.
+#0306 Inside the tomb. Your footsteps leave tracks in the untouched dust.
+#0307 A small crypt. Just enough space for you to crawl inside.
+#0308 A small crypt. Just enough space for you to crawl inside.
+#0309 A small crypt. Just enough space for you to crawl inside.
+#0310 A small crypt. Just enough space for you to crawl inside.
+#0311 A small crypt. Just enough space for you to crawl inside.
+#0312 A tiny room of what looks like offerings to the lord of the tomb.
+#0313 The entrance of a small oasis. There is a path to your west from here. You can see a big tent further to the east. There is a road overgrown with grass and weed leading to the cemetery to the west.
+#0314 There is a pool of fresh water here. You splash some water in your face. Refreshing!
+#0315 There are some camels hitched to a tree here.
+#0316 There is a colorful tent right to the east.
+#0317 You are inside a spacious tent with beautiful carpets covering the floor and a large amount of rolled up carpets in various sizes and colors. You can smell a delicious scent coming from a table stacked with incense giving off a thick smoke. There is also a shelf containing odd figurines in the shape of camels. They are all made of different kinds of material including among others: quartz, marble, jade, and crystal glass. What an odd collection.
+#0318 The desert stretches out to the south. It's already scorching hot here, it might not be a good idea to venture into the desert unprepared.
+#0319 The desert stretches out to the south. It's already scorching hot here, it might not be a good idea to venture into the desert unprepared.
+#0320 The southern end of the desert. As you look west you spot a grand battlefield with fires still burning.
+#0321 The southern end of the desert. You can hear terrible screams a bit from here.
+#0322 The southern end of the desert. There is a large tent to southeast.
+#0323 As you look west you spot a grand battlefield with fires still burning.
+#0324 There is a large bonfire with some embers still burning. You see corpses stacked on it, burned to charcoal. The smell is hideous.
+#0325 There is a big tent to your east. It looks like a field hospital for wounded.
+#0326 As you look west you spot a grand battlefield with fires still burning.
+#0327 There is a small path leading south from here.
+#0328 There is a pile of armor and weapons here, filled with dents and holes. It must have been used by soldiers who died in battle.
+#0329 In the entrance of the field hospital. As you look into the large tent you see blood everywhere on the floor. It's awfully quiet for a hospital. You see only two men inside to your east, one holding the other in his arms.
+#0330 There is blood everywhere in here. It smells terrible and you feel like throwing up.
+#0331 There are some bandages and other medical supplies here. It all looks worn and dirty.
+#0332 There is a big barrel filled with water here. You probably shouldn't drink it.
+#0333 There are some stretchers in a pile here.
+#0334 This seems to be the place where the surgeries were done. There are some surgical instruments on the ground and an uncomfortable looking cart with leather straps for tying down the patient.
+#0335 There is a corpse covered with a blanket here. Someone should put him to rest.
+#0336 Road to the hedge maze.
+#0337 Road to the hedge maze.
+#0338 Road to the hedge maze.
+#0339 The hedge maze is to the south.
+#0340 The entrance of the maze. The hedges are really high, you can't see past them.
+#0341 Inside the maze. There is a gargoyle stone statue standing here, staring at you with dead eyes.
+#0342 A dead end. The hedges are really high, you can't see over them.
+#0343 Inside the maze. The hedges are really high, you can't see over them.
+#0344 Inside the maze. The hedges are really high, you can't see over them.
+#0345 Inside the maze. The hedges are really high, you can't see over them.
+#0346 Inside the maze. The hedges are really high, you can't see over them.
+#0347 An open space in the maze. There is a large sundial to your east.
+#0348 An open space in the maze. There is a large sundial made of stone on the ground.
+#0349 An open space in the maze. There is a large sundial to your west.
+#0350 Inside the maze. There are some birds taking a bath in a bird bath made of stone. When you inspect it closer, you notice the birds are dead.
+#0351 Inside the maze. The hedges are really high, you can't see over them.
+#0352 Inside the maze. The hedges are really high, you can't see over them.
+#0353 Inside the maze. The hedges are really high, you can't see over them. A dead end.
+#0354 Inside the maze. The hedges are really high, you can't see over them.
+#0355 Inside the maze. The hedges are really high, you can't see over them.
+#0356 A dead end. The hedges are really high, you can't see over them.
+#0357 Inside the maze. The hedges are really high, you can't see over them.
+#0358 A dead end. The hedges are really high, you can't see over them.
+#0359 Inside the maze. There is a large sundial to your north.
+#0360 Inside the maze. The hedges are really high, you can't see over them.
+#0361 Inside the maze. The hedges are really high, you can't see over them.
+#0362 Inside the maze. The hedges are really high, you can't see over them.
+#0363 Inside the maze. The hedges are really high, you can't see over them.
+#0364 Inside the maze. The hedges are really high, you can't see over them. You see a small hole in the hedge to your south. Maybe you are able to squeeze through it?
+#0365 A hidden passage. There is a small hole in the hedge to your north.
+#0366 A hidden passage.
+#0367 A hidden passage.
+#0368 A hidden passage.
+#0369 A hidden passage. You can climb down to the castle moat to the east from here.
+#0370 You step into the mud of the castle moat. Almost drained from water. There are some cracks in the stone structure to the west from here. You might be able to climb up.
+#0371 Inside the moat. There is no way to climb up from here.
+#0372 Inside the moat. There is no way to climb up from here.
+#0373 Inside the moat. There is no way to climb up from here.
+#0374 Inside the moat. There is no way to climb up from here.
+#0375 Inside the moat. There is no way to climb up from here.
+#0376 Inside the moat. There is no way to climb up from here.
+#0377 Inside the moat. There is no way to climb up from here.
+#0378 Inside the moat. There is no way to climb up from here.
+#0379 Inside the moat. There is no way to climb up from here.
+#0380 Inside the moat. There is no way to climb up from here.
+#0381 Inside the moat. There is no way to climb up from here.
+#0382 Inside the moat. There is no way to climb up from here.
+#0383 Inside the moat. There is no way to climb up from here.
+#0384 Inside the moat. There is no way to climb up from here.
+#0385 Inside the moat. There is no way to climb up from here.
+#0386 Inside the moat. There is a hole in the wall right to the west.
+#0387 Inside the moat. There is no way to climb up from here.
+#0388 Inside the moat. There is no way to climb up from here.
+#0389 Inside the moat. There is no way to climb up from here.
+#0390 Inside the moat. There is no way to climb up from here.
+#0391 Inside the moat. There is no way to climb up from here.
+#0392 Inside the moat. There is no way to climb up from here.
+#0393 Inside the moat. There is no way to climb up from here.
+#0394 Inside the moat. There is no way to climb up from here.
+#0395 Inside the moat. There is no way to climb up from here.
+#0396 Inside the moat. There is no way to climb up from here.
+#0397 Inside the moat. There is no way to climb up from here.
+#0398 The bottom of the hidden passage. It's extremely smelly here, and you can see rats feasting on rotten food. It looks like you can climb up from here.
+#0399 Climbing in the hidden passage. It's very slippery so be careful.
+#0400 Climbing in the hidden passage. There is a trap door in the ceiling, you can probably climb up to it.
+#0401 You are inside what looks as the garbage disposal room for the castle. There is a trap door below you. You see a corridor lit up by torches to your east.
+#0402 A corridor lit up by torches. Be careful not to alert any guards.
+#0403 A corridor lit up by torches. You can hear guards approaching from around a corner. Turn back immediately!
+#0404 A corridor lit up by torches. You are almost caught as a guard patrols past a parallel corridor. You'd better pick a less patrolled way.
+#0405 The bottom of a rusty staircase. It's very dark in here so you light a torch and bring it with you.
+#0406 You twitch for every step you take as it sounds like the staircase will fall apart any moment.
+#0407 If only this staircase wasn't so incredibly noisy.
+#0408 One of the steps suddenly break and goes crashing down into the darkness with a loud noise! You barely hold on to the railing and have to stop and catch your breath for a moment before continuing. Whew!
+#0409 You start asking yourself why you'd have to bring food for a week as you continue your struggle in the almost unusable staircase.
+#0410 Oh well, at least you'll be losing some weight walking these cursed stairs.
+#0411 Whatever you do, don't look down.
+#0412 This section is missing the railing so you brace yourself and carefully traverse it.
+#0413 Why can't this staircase from hell end soon?
+#0414 This section is missing a few steps, so you take a leap, crashing into the other side making a loud noise. If the guards weren't alerted by your presence yet, they've surely been now.
+#0415 You see a door letting out some light further up.
+#0416 The top of a rusty staircase. There is a large circular room to your south.
+#0417 The entrance of a circular room unlike anything you have ever seen before. The black stone floor is polished to a mirrorlike finish and the ceiling consists of dark red crystals in all kinds of irregular shapes. As soon as you enter the room you get an almost suffocating feeling. Something is very wrong with this place.
+#0418 Inside the crystal room. You see a big pedestal to your south. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0419 Inside the crystal room. You see a big pedestal to your southeast. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0420 Inside the crystal room. You see a big pedestal to your southwest. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0421 Inside the crystal room. You see a big pedestal to your west. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0422 Inside the crystal room. There is a window here. As you look out, you see nothing but dead land. It looks almost sick.
+#0423 Inside the crystal room. You see a big pedestal to your northwest. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0424 Inside the crystal room. You see a big pedestal to your north. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0425 Inside the crystal room. There is a window here. As you look out, you see nothing but dead land. It looks almost sick.
+#0426 Inside the crystal room. You see a big pedestal to your northeast. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0427 Inside the crystal room. You see a big pedestal to your east. There seems to be a red crystal floating over it, glowing with a brighter red than the crystals in the ceiling.
+#0428 Inside the crystal room. There is a window here. As you look out, you see a vast battlefield with fires burning giving off plumes of smoke in the air.
+#0429 In the middle of the crystal room. There is a big pedestal here. Above it you can see a red crystal floating. As you gaze into the crystal it looks as if it's burning with its own fire inside.
+#0430 The entrance of a peaceful garden.
+#0431 It's very peaceful here. You notice a broken swing hanging from a tree.
+#0432 This spot looks like a small training ground for fencing. Why don't you try 'k' or 'kill'ing a practice doll? You could also 'cons' or 'consider'.
+#0433 Taking a stroll in the garden. The fountain is gushing out fresh and sparkling water. Why don't you try 'in' or 'interact'ing?

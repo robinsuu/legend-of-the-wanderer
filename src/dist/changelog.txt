@@ -1,0 +1,29 @@
+2.1
+- Refactored parts of the program, mainly cleaning up the code
+- The Character.sav file is no longer required to start the application
+- Removed the title music and the associated libraries
+
+2.0
+- Added graphical elements to the game displaying the following:
+  Name, level, attributes, gold, inventory and buttons for information and help.
+- Added ingame maps
+- Added intro music
+- Added exp to the hardworking man quest.
+- The game is now auto-saving which means it's not possible to exploit bosses
+  anymore by reloading the game if you die to get infinite tries.
+- Added a math quiz mini-game in town
+
+1.2
+- Added a prompt for avoiding overwriting save-files when making a new character.
+- Increased the quantity of monsters in the world.
+- Added more experience and gold to quests.
+- Changed some NPC conversations.
+- Added more hints to the fortune machine.
+- Made the death penalty scale with levels (Lose more at higher levels).
+- Made experience gained scale with monster power level.
+
+1.1
+- Added save feature.
+
+1.0
+- First release.
