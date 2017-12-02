@@ -17,19 +17,10 @@ import java.awt.Color;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javazoom.jlgui.basicplayer.BasicPlayer;
-import javazoom.jlgui.basicplayer.BasicPlayerException;
 
 public class Game implements java.io.Serializable 
 {
 	private String userInput = ""; // User input commands
-	
-	// Songs played in the game
-	String intro = "music/intro.mp3";
-	String ending = "music/ending.mp3";
-	
-	// Creates the music player which is used to play mp3-files
-	BasicPlayer music = new BasicPlayer();
 	
 	//Scanner scan = new Scanner (System.in); // Not needed. Replaced by the C.io method
 	Random rand = new Random();
@@ -694,10 +685,6 @@ public class Game implements java.io.Serializable
 	//--------------------------------------------------------------------------
 	public void runGame()
 	{
-		
-		// Play intro music
-		startPlayer(intro);
-
 		System.out.println("\n\n\n");
 		System.out.println(""
 		+ "\n _                               _"              
@@ -727,81 +714,75 @@ public class Game implements java.io.Serializable
 		System.out.println("\n\n");
 		// Displays welcome message (Add credit for the C class as well)
 		System.out.println("\nWelcome to Legend of the Wanderer"
-				+ "\n\nCode by: \tRobin Fj‰rem"
+				+ "\n\nCode by: \tRobin Fj√§rem"
 				+ "\nE-mail: \trobin.neko@gmail.com"
 				+ "\nWebsite: \thttp://www.robinsuu.com/"
 				+ "\n\nMusic by: http://rolemusic.sawsquarenoise.com/"
 				+ "\nLicensed under http://creativecommons.org/licenses/by/4.0/\n");
 		
-		// Starting menu
-		String startAnswer = "";
-		
-		System.out.println ("Would you like to start a new game or load a game?");
-		
-		System.out.println ("\n(new/load):");
-		startAnswer = C.io.nextLine();
-		
-		switch (startAnswer)
-		{
-			case ("new"):
-				String confirmAnswer = "";
-			
-				System.out.println ("Are you sure you want to start a new character? Any old data will be overwritten.");
-				System.out.println ("\n(yes/no)");
-				confirmAnswer = C.io.nextLine();
-				
-				switch (confirmAnswer)
-				{
-					case ("yes"):
-						createCharacter(); // Generates a new character
-						break;
-					case ("no"):
-						runGame();
-						break;
-					default:
-						System.out.println ("Invalid input.");
-						runGame();
-						break;
-				}
-				
-				// Stops the intro music
-				stopPlayer();
-
-				// Displays character info
-				System.out.println (player);
-				
-				// Displays the first message of the game
-				System.out.println ("You are " + player.getName() + " the wanderer, and your story begins here.\n");
-			
-				System.out.println ("You have been sent out by your lord from the lands of the north to find out what is happening in this area. "
-						+ "There has been rumors of war, of a shadow drawing in from the far south, of unspeakable horrors. "
-						+ "You must do everything in your power to find out what is behind all of this and report back to your lord.\n");
-			
-				System.out.println ("'What is this pain..' You think as you wake up in\n"
-						+ "a bed with all your clothes on and a splitting headache. Maybe you shouldn't have finished that last bottle.\n");
-				
-				System.out.println("Maybe you should go take some rest in the garden outside the west part of the house.\n");
-				break;
-			case ("load"):
-				
-				// Stops the intro music
-				stopPlayer();
-				System.out.println ("\n\n\n\n\n\n\n\n\n\n\n");
-			
-				loadGame();
-				displayRoom();
-				break;
-			default:
-				System.out.println ("Invalid input.");
-				runGame();
-				break;
-		}
-
-		// Starts the respawn timer
-		respawnTimer();
-		// Begins the game
-		navigate(); 
+                startPrompt();
 	}
+        
+        private void startPrompt() {
+            // Starting menu
+            String startAnswer = "";
+
+            System.out.println ("Would you like to start a new game or load a game?");
+
+            System.out.println ("\n(new/load):");
+            startAnswer = C.io.nextLine();
+
+            switch (startAnswer) {
+                case ("new"):
+                    String confirmAnswer = "";
+
+                    System.out.println ("Are you sure you want to start a new character? Any old data will be overwritten.");
+                    System.out.println ("\n(yes/no)");
+                    confirmAnswer = C.io.nextLine();
+
+                    switch (confirmAnswer) {
+                        case ("yes"):
+                            createCharacter(); // Generates a new character
+                        break;
+                        case ("no"):
+                            runGame();
+                        break;
+                        default:
+                            System.out.println ("Invalid input.");
+                            runGame();
+                        break;
+                    }
+
+                    // Displays character info
+                    System.out.println (player);
+
+                    // Displays the first message of the game
+                    System.out.println ("You are " + player.getName() + " the wanderer, and your story begins here.\n");
+
+                    System.out.println ("You have been sent out by your lord from the lands of the north to find out what is happening in this area. "
+                                    + "There has been rumors of war, of a shadow drawing in from the far south, of unspeakable horrors. "
+                                    + "You must do everything in your power to find out what is behind all of this and report back to your lord.\n");
+
+                    System.out.println ("'What is this pain..' You think as you wake up in\n"
+                                    + "a bed with all your clothes on and a splitting headache. Maybe you shouldn't have finished that last bottle.\n");
+
+                    System.out.println("Maybe you should go take some rest in the garden outside the west part of the house.\n");
+                break;
+                case ("load"):
+                    loadGame();
+                    displayRoom();
+                break;
+                default:
+                    System.out.println ("Invalid input.");
+                    runGame();
+                break;
+            }
+
+            // Starts the respawn timer
+            respawnTimer();
+            // Begins the game
+            navigate();
+        }
 	
 	//--------------------------------------------------------------------------
 	// Sets up the Array List of Room descriptions and adds all the room
@@ -2922,8 +2903,8 @@ public class Game implements java.io.Serializable
 		System.out.println ("*************");
 		System.out.println ("Game credit");
 		System.out.println ("*************");
-		System.out.println ("\nCode: Robin Fj‰rem");
-		System.out.println ("Story and maps: Robin Fj‰rem");
+		System.out.println ("\nCode: Robin Fj√§rem");
+		System.out.println ("Story and maps: Robin Fj√§rem");
 		System.out.println ("http://robinsuu.com");
 		System.out.println("Music by: http://rolemusic.sawsquarenoise.com/"
 				+ "\n(Licensed under http://creativecommons.org/licenses/by/4.0/)");
@@ -2932,7 +2913,7 @@ public class Game implements java.io.Serializable
 		System.out.println ("Marcus Folgert");
 		System.out.println ("Emil Ehrs");
 		System.out.println ("Francois Larouche (Special thanks for your coding advice!)");
-		System.out.println ("Emanuel Hˆgild");
+		System.out.println ("Emanuel H√∂gild");
 		
 		System.out.println("\nOther:");
 		System.out.println ("http://crownlessking.com (GUI io console console class and GUI coding advice)");
@@ -2949,15 +2930,18 @@ public class Game implements java.io.Serializable
 		saveNPC(); // Workaround
 		saveItem();
 		player.saveInventorySize(Character.getInventorySize()); // Workaround, see Character.java
-		try
+		
+                try
 		{
-			//Serialize data object to a file
-			ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream("Character.sav"));
-			out.writeObject(player);
-			out.close();
+                    //Serialize data object to a file
+                    ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream("Character.sav"));
+                    out.writeObject(player);
+                    out.close();
 		}
 		catch (IOException e)
 		{
+                    System.out.println("Failed to read save file");
+                    e.printStackTrace();
 		}
 	}
 	
@@ -2986,27 +2970,30 @@ public class Game implements java.io.Serializable
 	//--------------------------------------------------------------------------
 	private void loadGame()
 	{
-		try
-		{
-			FileInputStream fileIn = new FileInputStream ("Character.sav");
-			ObjectInputStream in = new ObjectInputStream (fileIn);
-			player = (Character) in.readObject();
-			in.close();
-			fileIn.close();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException c)
-		{
-			System.out.println ("Character class not found");
-			c.printStackTrace();
-			return;
-		}
-		loadNPC(); // Workaround
-		loadItem();
-		player.loadInventorySize(); // Workaround, see Character.java
+            try {
+                FileInputStream fileIn = new FileInputStream ("Character.sav");
+                ObjectInputStream in = new ObjectInputStream (fileIn);
+                player = (Character) in.readObject();
+                in.close();
+                fileIn.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            catch (ClassNotFoundException c) {
+                System.out.println ("Character class not found");
+                c.printStackTrace();
+                return;
+            }
+            if(player.getName().equals("Unknown Character")) {
+                System.out.println("Invalid save file, please create a new character.");
+                startPrompt();
+            }
+            else {
+                loadNPC(); // Workaround
+                loadItem();
+                player.loadInventorySize(); // Workaround, see Character.java
+            }
 	}
 	
 	//--------------------------------------------------------------------------
@@ -3256,38 +3243,6 @@ public class Game implements java.io.Serializable
 		else
 		{
 			System.out.println ("\n" + npcs[player.getCurrentNPC()] + " says: 'That's wrong! The right answer is: " + rightAnswer + ".'\n");
-		}
-	}
-	
-	private void stopPlayer()
-	{
-		try {
-		    music.stop();
-		} catch (BasicPlayerException e) {
-		    e.printStackTrace();
-		}
-		
-		System.out.println("\n\n");
-		System.out.println("\n\n");
-		System.out.println("\n\n");
-		System.out.println("\n\n");
-		System.out.println("\n\n");
-		System.out.println("\n\n");
-		System.out.println("\n\n");
-	}
-	
-	private void startPlayer (String inputFile)
-	{
-		String mp3File = "";
-		mp3File = inputFile;
-		
-		String pathToMp3 = System.getProperty("user.dir") +"/"+ mp3File;
-		
-		try {
-			music.open(new URL("file:///" + pathToMp3));
-		    music.play();
-		} catch (BasicPlayerException | MalformedURLException e) {
-		    e.printStackTrace();
 		}
 	}
 }

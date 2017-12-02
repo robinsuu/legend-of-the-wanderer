@@ -12,6 +12,8 @@ import java.io.ObjectInputStream;
 import javax.swing.*;
 
 import java.awt.event.*;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class InfoPanel extends JPanel
@@ -170,25 +172,32 @@ public class InfoPanel extends JPanel
 	//--------------------------------------------------------------------------
 	// Loads the character data
 	//--------------------------------------------------------------------------
-	private void loadData ()
-	{
-		try
-		{
-			FileInputStream fileIn = new FileInputStream ("Character.sav");
-			ObjectInputStream in = new ObjectInputStream (fileIn);
-			player = (Character) in.readObject();
-			in.close();
-			fileIn.close();
+	private void loadData () {
+                // Tries to read data
+		try {
+                    FileInputStream fileIn = new FileInputStream ("Character.sav");
+                    ObjectInputStream in = new ObjectInputStream (fileIn);
+                    player = (Character) in.readObject();
+                    in.close();
+                    fileIn.close();
+                    
 		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
+		catch (IOException e) {
+                    try {
+                        System.err.println("Creating new empty save file");
+                        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("Character.sav"));
+                        out.writeObject(player);
+                        out.close();
+                    } 
+                    catch (IOException x) {
+                        x.printStackTrace();
+                    }
 		}
-		catch (ClassNotFoundException c)
-		{
-			System.out.println ("Character class not found");
-			c.printStackTrace();
-			return;
+		catch (ClassNotFoundException e) {
+                    System.out.println ("Character class not found");
+                    e.printStackTrace();
+                    
+                    return;
 		}
 		//player.loadInventorySize(); // Workaround, see Character.java. Deactivated for now. This should not be allowed to alter the other classes
 	}
@@ -363,8 +372,8 @@ public class InfoPanel extends JPanel
 							JOptionPane.showMessageDialog(new JFrame(), "Type \"clear\" to clear the screen. This helps if the game starts to run slow.");			
 						else
 							if (source == creditsButton)
-								JOptionPane.showMessageDialog(new JFrame(), "\nCode: Robin Fjärem"
-										+ "\nStory and maps: Robin Fjärem"
+								JOptionPane.showMessageDialog(new JFrame(), "\nCode: Robin FjÃ¤rem"
+										+ "\nStory and maps: Robin FjÃ¤rem"
 										+ "\nhttp://robinsuu.com"
 										+ "\n\nMusic: http://rolemusic.sawsquarenoise.com/"
 										+ "\nLicensed under http://creativecommons.org/licenses/by/4.0/"		
@@ -372,7 +381,7 @@ public class InfoPanel extends JPanel
 										+ "\nMarcus Folgert"
 										+ "\nEmil Ehrs"
 										+ "\nFrancois Larouche (Special thanks for your coding advice!)"
-										+ "\nEmanuel Högild"
+										+ "\nEmanuel HÃ¶gild"
 										+ "\n\nOther:"
 										+ "\nhttp://crownlessking.com (GUI io console class and GUI coding advice)"
 										+ "\nSaad Benbouzid @ stackoverflow (Line-break code snippet)"

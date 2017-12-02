@@ -7,8 +7,6 @@
 // longDesc: The item's long description (Displayed description)
 // shortDesc: The item's short description (Supposed to be input by player)
 //***************************************************************************
-import java.io.*;
-
 public class Item implements java.io.Serializable
 {
 	private int itemID = 0;
