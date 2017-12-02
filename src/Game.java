@@ -2733,8 +2733,7 @@ public class Game implements java.io.Serializable {
             out.writeObject(player);
             out.close();
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -2742,8 +2741,7 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     // Loads the character data
     //--------------------------------------------------------------------------
-    private void loadGame()
-    {
+    private void loadGame() {
         try {
             FileInputStream fileIn = new FileInputStream ("Character.sav");
             ObjectInputStream in = new ObjectInputStream (fileIn);
@@ -2773,250 +2771,226 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     // Set permanently removed NPC data from Rooms to Character.java
     //--------------------------------------------------------------------------
-    private void saveNPC()
-    {
-            // Violet mushrooms
-            if (ROOMS[25].getNPC() == 0)
-                    player.setVioletMushroom1(1);
+    private void saveNPC() {
+        // Violet mushrooms
+        if (ROOMS[25].getNPC() == 0)
+            player.setVioletMushroom1(1);
 
-            if (ROOMS[88].getNPC() == 0)
-                    player.setVioletMushroom2(1);
+        if (ROOMS[88].getNPC() == 0)
+            player.setVioletMushroom2(1);
 
-            if (ROOMS[128].getNPC() == 0)
-                    player.setVioletMushroom3(1);
+        if (ROOMS[128].getNPC() == 0)
+            player.setVioletMushroom3(1);
 
-            if (ROOMS[178].getNPC() == 0)
-                    player.setVioletMushroom4(1);
+        if (ROOMS[178].getNPC() == 0)
+            player.setVioletMushroom4(1);
 
-            if (ROOMS[212].getNPC() == 0)
-                    player.setVioletMushroom5(1);
+        if (ROOMS[212].getNPC() == 0)
+            player.setVioletMushroom5(1);
 
-            if (ROOMS[260].getNPC() == 0)
-                    player.setVioletMushroom6(1);
+        if (ROOMS[260].getNPC() == 0)
+            player.setVioletMushroom6(1);
 
-            if (ROOMS[355].getNPC() == 0)
-                    player.setVioletMushroom7(1);
+        if (ROOMS[355].getNPC() == 0)
+            player.setVioletMushroom7(1);
 
-            if (ROOMS[388].getNPC() == 0)
-                    player.setVioletMushroom8(1);
+        if (ROOMS[388].getNPC() == 0)
+            player.setVioletMushroom8(1);
 
-            // Black cat
-            if (ROOMS[28].getNPC() == 0)
-                    player.setBlackCat(1);
+        // Black cat
+        if (ROOMS[28].getNPC() == 0)
+            player.setBlackCat(1);
 
-            // Hardworking man
-            if (ROOMS[73].getNPC() == 0)
-                    player.setHardworkingMan(1);
+        // Hardworking man
+        if (ROOMS[73].getNPC() == 0)
+            player.setHardworkingMan(1);
 
-            // Rotting corpse
-            if (ROOMS[101].getNPC() == 0)
-                    player.setRottingCorpse(1);
+        // Rotting corpse
+        if (ROOMS[101].getNPC() == 0)
+            player.setRottingCorpse(1);
 
-            // Frozen corpse
-            if (ROOMS[223].getNPC() == 0)
-                    player.setFrozenCorpse(1);
+        // Frozen corpse
+        if (ROOMS[223].getNPC() == 0)
+            player.setFrozenCorpse(1);
 
-            // Wooden chest
-            if (ROOMS[266].getNPC() == 0)
-                    player.setWoodenChest(1);
+        // Wooden chest
+        if (ROOMS[266].getNPC() == 0)
+            player.setWoodenChest(1);
 
-            // Ancient chest
-            if (ROOMS[312].getNPC() == 0)
-                    player.setAncientChest(1);
+        // Ancient chest
+        if (ROOMS[312].getNPC() == 0)
+            player.setAncientChest(1);
 
-            // Zeramus
-            if (ROOMS[429].getNPC() == 0)
-                    player.setZeramus(1);
+        // Zeramus
+        if (ROOMS[429].getNPC() == 0)
+            player.setZeramus(1);
     }
 
     //--------------------------------------------------------------------------
     // Set permanently removed NPCs in the Room objects after loading data
     //--------------------------------------------------------------------------
-    private void loadNPC()
-    {
-            if (player.getMushroom1() == 1)
-            {
-                    ROOMS[25].removeNPC();
-                    ROOMS[25].permanentRemoveNPC();
-            }
+    private void loadNPC() {
+        if (player.getMushroom1() == 1) {
+            ROOMS[25].removeNPC();
+            ROOMS[25].permanentRemoveNPC();
+        }
 
-            if (player.getMushroom2() == 1)
-            {
-                    ROOMS[88].removeNPC();
-                    ROOMS[88].permanentRemoveNPC();
-            }
+        if (player.getMushroom2() == 1) {
+            ROOMS[88].removeNPC();
+            ROOMS[88].permanentRemoveNPC();
+        }
 
-            if (player.getMushroom3() == 1)
-            {
-                    ROOMS[128].removeNPC();
-                    ROOMS[128].permanentRemoveNPC();
-            }
+        if (player.getMushroom3() == 1) {
+            ROOMS[128].removeNPC();
+            ROOMS[128].permanentRemoveNPC();
+        }
 
-            if (player.getMushroom4() == 1)
-            {
-                    ROOMS[178].removeNPC();
-                    ROOMS[178].permanentRemoveNPC();
-            }
+        if (player.getMushroom4() == 1) {
+            ROOMS[178].removeNPC();
+            ROOMS[178].permanentRemoveNPC();
+        }
 
-            if (player.getMushroom5() == 1)
-            {
-                    ROOMS[212].removeNPC();
-                    ROOMS[212].permanentRemoveNPC();
-            }
+        if (player.getMushroom5() == 1) {
+            ROOMS[212].removeNPC();
+            ROOMS[212].permanentRemoveNPC();
+        }
 
-            if (player.getMushroom6() == 1)
-            {
-                    ROOMS[260].removeNPC();
-                    ROOMS[260].permanentRemoveNPC();
-            }
+        if (player.getMushroom6() == 1) {
+            ROOMS[260].removeNPC();
+            ROOMS[260].permanentRemoveNPC();
+        }
 
-            if (player.getMushroom7() == 1)
-            {
-                    ROOMS[355].removeNPC();
-                    ROOMS[355].permanentRemoveNPC();
-            }
+        if (player.getMushroom7() == 1) {
+            ROOMS[355].removeNPC();
+            ROOMS[355].permanentRemoveNPC();
+        }
 
-            if (player.getMushroom8() == 1)
-            {
-                    ROOMS[388].removeNPC();
-                    ROOMS[388].permanentRemoveNPC();
-            }
+        if (player.getMushroom8() == 1) {
+            ROOMS[388].removeNPC();
+            ROOMS[388].permanentRemoveNPC();
+        }
 
-            if (player.getBlackCat() == 1)
-            {
-                    ROOMS[28].removeNPC();
-                    ROOMS[28].permanentRemoveNPC();
-            }
+        if (player.getBlackCat() == 1) {
+            ROOMS[28].removeNPC();
+            ROOMS[28].permanentRemoveNPC();
+        }
 
-            if (player.getHardworkingMan() == 1)
-            {
-                    ROOMS[73].removeNPC();
-                    ROOMS[73].permanentRemoveNPC();
-            }
+        if (player.getHardworkingMan() == 1) {
+            ROOMS[73].removeNPC();
+            ROOMS[73].permanentRemoveNPC();
+        }
 
-            if (player.getRottingCorpse() == 1)
-            {
-                    ROOMS[101].removeNPC();
-                    ROOMS[101].permanentRemoveNPC();
-            }
+        if (player.getRottingCorpse() == 1) {
+            ROOMS[101].removeNPC();
+            ROOMS[101].permanentRemoveNPC();
+        }
 
-            if (player.getFrozenCorpse() == 1)
-            {
-                    ROOMS[223].removeNPC();
-                    ROOMS[223].permanentRemoveNPC();
-            }
+        if (player.getFrozenCorpse() == 1) {
+            ROOMS[223].removeNPC();
+            ROOMS[223].permanentRemoveNPC();
+        }
 
-            if (player.getWoodenChest() == 1)
-            {
-                    ROOMS[266].removeNPC();
-                    ROOMS[266].permanentRemoveNPC();
-            }
+        if (player.getWoodenChest() == 1) {
+            ROOMS[266].removeNPC();
+            ROOMS[266].permanentRemoveNPC();
+        }
 
-            if (player.getAncientChest() == 1)
-            {
-                    ROOMS[312].removeNPC();
-                    ROOMS[312].permanentRemoveNPC();
-            }
+        if (player.getAncientChest() == 1) {
+            ROOMS[312].removeNPC();
+            ROOMS[312].permanentRemoveNPC();
+        }
 
-            if (player.getZeramus() == 1)
-            {
-                    ROOMS[429].removeNPC();
-                    ROOMS[429].permanentRemoveNPC();
-            }
+        if (player.getZeramus() == 1) {
+            ROOMS[429].removeNPC();
+            ROOMS[429].permanentRemoveNPC();
+        }
     }
 
     //--------------------------------------------------------------------------
     // Set permanently removed Item data from NPC to Character.java
     //--------------------------------------------------------------------------
-    private void saveItem()
-    {
-            // Goblin king
-            if (NPCS[116].getDroppedItem() == 0)
-                    player.setGoldenHilt(1);
+    private void saveItem() {
+        // Goblin king
+        if (NPCS[116].getDroppedItem() == 0)
+            player.setGoldenHilt(1);
 
-            // Otri the Undying
-            if (NPCS[126].getDroppedItem() == 0)
-                    player.setRuneEtchedBlade(1);
-
+        // Otri the Undying
+        if (NPCS[126].getDroppedItem() == 0)
+            player.setRuneEtchedBlade(1);
     }
 
     //--------------------------------------------------------------------------
     // Set permanently removed Items in the NPC objects after loading data
     //--------------------------------------------------------------------------
-    private void loadItem()
-    {
-            // Goblin king
-            if (player.getGoldenHilt() == 1)
-                    NPCS[116].setDroppedItem(0);
+    private void loadItem() {
+        // Goblin king
+        if (player.getGoldenHilt() == 1)
+            NPCS[116].setDroppedItem(0);
 
-            if (player.getRuneEtchedBlade() == 1)
-                    NPCS[126].setDroppedItem(0);
+        if (player.getRuneEtchedBlade() == 1)
+            NPCS[126].setDroppedItem(0);
     }
 
     //--------------------------------------------------------------------------
     // Math quiz (Designed for the philosopher in town but can be used anywhere)
     //--------------------------------------------------------------------------
-    private void mathQuiz()
-    {
-            int mathProblem = 0;
-            int a = 0;
-            int b = 0;
-            int c = 0;
+    private void mathQuiz() {
+        int mathProblem = 0;
+        int a = 0;
+        int b = 0;
+        int c = 0;
 
-            String rightAnswer = "";
-            String playerAnswer = "";
+        String rightAnswer = "";
+        String playerAnswer = "";
 
-            mathProblem = rand.nextInt(3) +1; // Randomizes the type of math problem asked
+        mathProblem = rand.nextInt(3) +1; // Randomizes the type of math problem asked
 
-            switch (mathProblem)
-            {
-                    case 1:
-                            a = rand.nextInt(20) +1;
-                            b = rand.nextInt(20) +1;
-                            c = a*b;
+        switch (mathProblem) {
+                case 1:
+                    a = rand.nextInt(20) +1;
+                    b = rand.nextInt(20) +1;
+                    c = a*b;
 
-                            rightAnswer = Integer.toString(c);
+                    rightAnswer = Integer.toString(c);
 
-                            System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'What is " + a + "*" + b + "?'");
-                            System.out.print("\nAnswer: ");
-                            playerAnswer = C.io.nextLine();
-                            break;
-                    case 2:
-                            a = rand.nextInt(1000) +1;
-                            b = rand.nextInt(1000) +1;
-                            c = a+b;
+                    System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'What is " + a + "*" + b + "?'");
+                    System.out.print("\nAnswer: ");
+                    playerAnswer = C.io.nextLine();
+                    break;
+                case 2:
+                    a = rand.nextInt(1000) +1;
+                    b = rand.nextInt(1000) +1;
+                    c = a+b;
 
-                            rightAnswer = Integer.toString(c);
+                    rightAnswer = Integer.toString(c);
 
-                            System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'What is " + a + "+" + b + "?'");
-                            System.out.print("\nAnswer: ");
-                            playerAnswer = C.io.nextLine();
-                            break;
-                    case 3:
-                            a = rand.nextInt(1000) +1;
-                            b = rand.nextInt(1000) +1;
-                            c = a-b;
+                    System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'What is " + a + "+" + b + "?'");
+                    System.out.print("\nAnswer: ");
+                    playerAnswer = C.io.nextLine();
+                    break;
+                case 3:
+                    a = rand.nextInt(1000) +1;
+                    b = rand.nextInt(1000) +1;
+                    c = a-b;
 
-                            rightAnswer = Integer.toString(c);
+                    rightAnswer = Integer.toString(c);
 
-                            System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'What is " + a + "-" + b + "?'");
-                            System.out.print("\nAnswer: ");
-                            playerAnswer = C.io.nextLine();
-                            break;
-                    default:
-                            System.out.println ("ERROR! Please report this bug to: robin.neko@gmail.com");
-                            break;
-            }
+                    System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'What is " + a + "-" + b + "?'");
+                    System.out.print("\nAnswer: ");
+                    playerAnswer = C.io.nextLine();
+                    break;
+                default:
+                    System.out.println ("ERROR! Please report this bug to: robin.neko@gmail.com");
+                    break;
+        }
 
-            if (playerAnswer.equals(rightAnswer))
-            {
-                    System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'You are correct!'");
-                    System.out.println ("\nYou received 3 experience.\n");
-                    player.addExperience(3);
-            }
-            else
-            {
-                    System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'That's wrong! The right answer is: " + rightAnswer + ".'\n");
-            }
+        if (playerAnswer.equals(rightAnswer)) {
+            System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'You are correct!'");
+            System.out.println ("\nYou received 3 experience.\n");
+            player.addExperience(3);
+        }
+        else {
+            System.out.println ("\n" + NPCS[player.getCurrentNPC()] + " says: 'That's wrong! The right answer is: " + rightAnswer + ".'\n");
+        }
     }
 }
