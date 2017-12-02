@@ -2425,120 +2425,96 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     // Method for attacking an NPC
     //--------------------------------------------------------------------------
-    private void attack()
-    {		
-                    if (ROOMS[player.getCurrentRoom()].getNPC() >= 1 && NPCS[player.getCurrentNPC()].getVulnerable() >= 1) // If an NPC exists and is vulnerable
-                            startCombat(); // Initiates a combat
-                    else
-                            if (ROOMS[player.getCurrentRoom()].getNPC() >= 1 && NPCS[player.getCurrentNPC()].getVulnerable() <= 0) // If an NPC exists but is invulnerable
-                                    System.out.println ("You can't attack that.");
-                            else
-                                    if (ROOMS[player.getCurrentRoom()].getNPC() <= 0) // If no NPC exists
-                                            System.out.println ("There is nothing to attack.");
+    private void attack() {		
+        if (ROOMS[player.getCurrentRoom()].getNPC() >= 1 && NPCS[player.getCurrentNPC()].getVulnerable() >= 1) // If an NPC exists and is vulnerable
+            startCombat(); // Initiates a combat
+        else if (ROOMS[player.getCurrentRoom()].getNPC() >= 1 && NPCS[player.getCurrentNPC()].getVulnerable() <= 0) // If an NPC exists but is invulnerable
+            System.out.println ("You can't attack that.");
+        else if (ROOMS[player.getCurrentRoom()].getNPC() <= 0) // If no NPC exists
+            System.out.println ("There is nothing to attack.");
+    }
+
+    private void quitGame() {
+        System.out.print ("Exit the game? (y/n)");
+        userInput = C.io.nextLine(); // MUST BE C.io.nextLine(); to work in the GUI. Original is scan.nextLine();
+
+        switch (userInput) {
+            case ("y"):
+                System.out.println ("Goodbye!");
+                saveGame();
+                System.exit(1);
+                break;
+            case ("n"):
+                navigate();
+                break;
+            default:
+                System.out.println ("Invalid input. Try again.");
+                quitGame();
+        }
+    }
+
+    private void gameOver() {
+        player.setHealth(1);
+
+        // Removing experience
+        if (player.getLevel() > 1 && player.getLevel() <= 3)
+            player.removeExperience(20);
+        else if (player.getLevel() > 3 && player.getLevel() <= 6)
+            player.removeExperience(50);
+        else if (player.getLevel() > 6)
+            player.removeExperience(100);
+
+        // Removing gold
+        if (player.getGold() > 0 && player.getGold() <= 100)
+            player.removeGold(player.getGold() / 2);
+        else if (player.getGold() > 100 && player.getGold() <= 200)
+            player.removeGold(player.getGold() / 3);
+        else if (player.getGold() > 200 && player.getGold() <= 300)
+            player.removeGold(player.getGold() / 4);
+        else if (player.getGold() > 300)
+            player.removeGold(player.getGold() / 5);
+
+        player.setCurrentRoom(player.getRespawnLocation());
+
+        System.out.println ("\nYou have died!\n");
+        System.out.println ("You lost some experience and gold.");
+        System.out.println ("Press enter to continue..");
+        C.io.nextLine();
+
+        displayRoom();
     }
 
     //--------------------------------------------------------------------------
-    // Method for quitting the game
+    // Checks how strong the monster is relative to yourself
     //--------------------------------------------------------------------------
-    private void quitGame()
-    {
-            System.out.print ("Exit the game? (y/n)");
-            userInput = C.io.nextLine(); // MUST BE C.io.nextLine(); to work in the GUI. Original is scan.nextLine();
-
-            switch (userInput)
-            {
-                    case ("y"):
-                            System.out.println ("Goodbye!");
-                            saveGame();
-                            System.exit(1);
-                            break;
-                    case ("n"):
-                            navigate();
-                            break;
-                    default:
-                            System.out.println ("Invalid input. Try again.");
-                            quitGame();
-            }
-    }
-
-    //--------------------------------------------------------------------------
-    // Method for game over
-    //--------------------------------------------------------------------------
-    private void gameOver()
-    {
-            player.setHealth(1);
-
-            // Removing experience
-            if (player.getLevel() > 1 && player.getLevel() <= 3)
-                    player.removeExperience(20);
-            else
-                    if (player.getLevel() > 3 && player.getLevel() <= 6)
-                            player.removeExperience(50);
-                    else
-                            if (player.getLevel() > 6)
-                                    player.removeExperience(100);
-
-            // Removing gold
-            if (player.getGold() > 0 && player.getGold() <= 100)
-                    player.removeGold(player.getGold() / 2);
-            else
-                    if (player.getGold() > 100 && player.getGold() <= 200)
-                            player.removeGold(player.getGold() / 3);
-                    else
-                            if (player.getGold() > 200 && player.getGold() <= 300)
-                                    player.removeGold(player.getGold() / 4);
-                            else
-                                    if (player.getGold() > 300)
-                                            player.removeGold(player.getGold() / 5);
-
-            player.setCurrentRoom(player.getRespawnLocation());
-
-            System.out.println ("\nYou have died!\n");
-            System.out.println ("You lost some experience and gold.");
-            System.out.println ("Press enter to continue..");
-            C.io.nextLine();
-
-            displayRoom();
-    }
-
-    //--------------------------------------------------------------------------
-    // Checks if how strong the monster is relative to yourself
-    //--------------------------------------------------------------------------
-    private void consider()
-    {
-            if (NPCS[player.getCurrentNPC()].getVulnerable() > 0)
-                    powerDifference();
-            else
-                    System.out.println ("You can't consider that.");
+    private void consider() {
+        if (NPCS[player.getCurrentNPC()].getVulnerable() > 0)
+            powerDifference();
+        else
+            System.out.println ("You can't consider that.");
     }
 
     //--------------------------------------------------------------------------
     // Power difference (Compare the monster's power to your own)
     // Could most likely be improved with better algorithms
     //--------------------------------------------------------------------------
-    private void powerDifference()
-    {
-            int powerDifference = 0;
+    private void powerDifference() {
+        int powerDifference = 0;
 
-            powerDifference = ( (player.getPowerLevel()) - (NPCS[player.getCurrentNPC()].getPowerLevel()) );
+        powerDifference = ( (player.getPowerLevel()) - (NPCS[player.getCurrentNPC()].getPowerLevel()) );
 
-            if (powerDifference < -20)
-                    System.out.println (NPCS[player.getCurrentNPC()] + " looks very powerful compared to you. Be careful.");
-            else
-                    if (powerDifference < -10)
-                            System.out.println (NPCS[player.getCurrentNPC()] + " looks much stronger than you.");
-                    else
-                            if (powerDifference < 0)
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " looks stronger than you.");
-                            else
-                                    if (powerDifference == 0)
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " looks about as strong as yourself.");
-                                    else
-                                            if (powerDifference >= 0 && powerDifference <= 10)
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " looks like an even match.");
-                                            else
-                                                    if (powerDifference >= 10)
-                                                            System.out.println (NPCS[player.getCurrentNPC()] + " looks weaker than you.");
+        if (powerDifference < -20)
+            System.out.println (NPCS[player.getCurrentNPC()] + " looks very powerful compared to you. Be careful.");
+        else if (powerDifference < -10)
+            System.out.println (NPCS[player.getCurrentNPC()] + " looks much stronger than you.");
+        else if (powerDifference < 0)
+            System.out.println (NPCS[player.getCurrentNPC()] + " looks stronger than you.");
+        else if (powerDifference == 0)
+            System.out.println (NPCS[player.getCurrentNPC()] + " looks about as strong as yourself.");
+        else if (powerDifference >= 0 && powerDifference <= 10)
+            System.out.println (NPCS[player.getCurrentNPC()] + " looks like an even match.");
+        else if (powerDifference >= 10)
+            System.out.println (NPCS[player.getCurrentNPC()] + " looks weaker than you.");
     }
     //--------------------------------------------------------------------------
     // Starts (And eventually ends) a combat with an NPC
