@@ -1180,788 +1180,731 @@ public class Game implements java.io.Serializable {
     // Future: Create line break for conversations too (Can use the static
     // method breakLines from Room.java)
     //--------------------------------------------------------------------------
-    private void conversation()
-    {
-            switch (player.getCurrentNPC())
-            {	
-                    //******************************
-                    // Unkillable NPCs
-                    //******************************
-                    case 1: // a butler
-                            if (player.getItem(19).getPlayerHas() == 0 && player.getBlackCatQuest() == 0)
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Have you seen a black cat around? If you find Mr. Whiskers, please bring him to me.'");
-                            else
-                                    if (player.getItem(19).getPlayerHas() == 1 && player.getBlackCatQuest() == 0)
-                                    {
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Mr. Whiskers! I've been so worried! Don't you ever run away again!'\n");
+    private void conversation() {
+        switch (player.getCurrentNPC()) {	
+                //******************************
+                // Unkillable NPCs
+                //******************************
+                case 1: // a butler
+                    if (player.getItem(19).getPlayerHas() == 0 && player.getBlackCatQuest() == 0)
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Have you seen a black cat around? If you find Mr. Whiskers, please bring him to me.'");
+                    else if (player.getItem(19).getPlayerHas() == 1 && player.getBlackCatQuest() == 0) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Mr. Whiskers! I've been so worried! Don't you ever run away again!'\n");
 
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'We cannot thank you enough. Please accept this as a token of my gratitude.'\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'We cannot thank you enough. Please accept this as a token of my gratitude.'\n");
 
-                                            player.getItem(19).removePlayerHas(1);
+                        player.getItem(19).removePlayerHas(1);
 
-                                            player.addExperience(20);
-                                            player.addGold(30);
-                                            player.getItem(1).addPlayerHas(1);
-                                            System.out.println ("You received 20 experience.");
-                                            System.out.println ("You received 30 gold.");
-                                            System.out.println ("You received a health potion.");
+                        player.addExperience(20);
+                        player.addGold(30);
+                        player.getItem(1).addPlayerHas(1);
+                        System.out.println ("You received 20 experience.");
+                        System.out.println ("You received 30 gold.");
+                        System.out.println ("You received a health potion.");
 
-                                            player.levelUp();
+                        player.levelUp();
 
-                                            ROOMS[1].addNPC(101);
+                        ROOMS[1].addNPC(101);
 
-                                            player.setBlackCatQuest(1);
-                                    }
-                            else
-                                    if (player.getBlackCatQuest() == 1)
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Oh my! Please don't step on the carpet with those filthy shoes!'");				
-                            break;	
-                    case 2: // a cheerful merchant
-                            String answerTwo = "";
+                        player.setBlackCatQuest(1);
+                    }
+                    else if (player.getBlackCatQuest() == 1)
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Oh my! Please don't step on the carpet with those filthy shoes!'");				
+                    break;	
+                case 2: // a cheerful merchant
+                    String answerTwo = "";
 
-                            //System.out.println (npcs[player.getCurrentNPC()] + " says: 'Welcome! Please have a look at my wares.'");
+                    //System.out.println (npcs[player.getCurrentNPC()] + " says: 'Welcome! Please have a look at my wares.'");
+                    System.out.println ("\n\tItems for sale:\n");
+                    System.out.println ("\t1: a health potion\t 15 (You have: " + player.getItem(1).getPlayerHas() + ")");
+                    System.out.println ("\t2: a longsword\t 120");
+                    System.out.println ("\t3: a chainmail armor\t 150");
+                    System.out.println ("\t4: a training manual\t 200");
 
-                            System.out.println ("\n\tItems for sale:\n");
-                            System.out.println ("\t1: a health potion\t 15 (You have: " + player.getItem(1).getPlayerHas() + ")");
-                            System.out.println ("\t2: a longsword\t 120");
-                            System.out.println ("\t3: a chainmail armor\t 150");
-                            System.out.println ("\t4: a training manual\t 200");
+                    System.out.println ("\nGold: " + player.getGold());
 
-                            System.out.println ("\nGold: " + player.getGold());
+                    System.out.println ("\nWhat would you like to buy?\n");
+                                    System.out.print("Choose: (0 for nothing) ");
+                    answerTwo = C.io.nextLine();
 
-                            System.out.println ("\nWhat would you like to buy?\n");
-                                            System.out.print("Choose: (0 for nothing) ");
-                            answerTwo = C.io.nextLine();
-
-                            switch (answerTwo)
-                            {
-                                    case ("0"):
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Come again.'");
-                                            break;
-                                    case ("1"): // a health potion
-                                            if (player.getGold() >= 15)
-                                            {
-                                                    player.removeGold(15);
-                                                    player.getItem(1).addPlayerHas(1);
-                                                    System.out.println("You pay 15 gold and get a health potion in return.");
-                                                    conversation();
-                                            }
-                                            else if (player.getGold() < 15)
-                                                    System.out.println ("You don't have enough gold.");
-                                            break;
-                                    case ("2"): // a longsword
-                                            if (player.getItem(11).getPlayerHas() == 0 && player.getGold() >= 120)
-                                            {
-                                                    player.removeGold(120);
-                                                    player.getItem(11).addPlayerHas(1);
-                                                    System.out.println ("You pay 120 gold and get a longsword in return.");
-                                                    System.out.println ("The longsword increases your damage in combat by 1 point.");
-                                                    player.addStrength(1);
-
-                                                    System.out.println ("You decide to sell your old sword to the merchant.");
-                                                    player.addGold(30);
-                                                    player.getItem(15).removePlayerHas(1);
-                                                    System.out.println ("You received 30 gold.");
-                                            }
-                                            else 
-                                                    if (player.getItem(11).getPlayerHas() == 1)
-                                                            System.out.println ("Why would you want another one?");
-                                                    else
-                                                            if (player.getGold() < 150)
-                                                                    System.out.println ("You don't have enough gold.");
-                                            break;
-                                    case ("3"): // a chainmail armor
-                                            if (player.getItem(16).getPlayerHas() == 0 && player.getGold() >= 150)
-                                            {
-                                                    player.removeGold(150);
-                                                    player.getItem(16).addPlayerHas(1);
-                                                    System.out.println ("You pay 150 gold and get a chainmail armor in return.");
-                                                    System.out.println ("The chainmail increases the amount of damage you can withstand by 10 points.");
-                                                    player.addMaxHealth(10);
-
-                                                    System.out.println ("You decide to sell your old armor to the merchant.");
-                                                    player.addGold(20);
-                                                    player.getItem(17).removePlayerHas(1);
-                                                    System.out.println ("You received 20 gold.");
-                                            }
-                                            else
-                                                    if (player.getGold() < 150)
-                                                            System.out.println ("You don't have enough gold.");
-                                            break;
-                                    case ("4"): // a training manual
-                                            if (player.getGold() >= 200)
-                                            {
-                                                    player.removeGold(200);
-                                                    player.getItem(14).addPlayerHas(1);
-                                                    System.out.println ("You pay 200 gold and get a training manual in return.");
-                                                    System.out.println ("The training manual increases your experience by some points when used.");
-                                            }
-                                            else if (player.getGold() < 200)
-                                                    System.out.println ("You don't have enough gold.");
-                                            break;
-                                    default:
-                                            System.out.println ("Invalid input.");
-                                            break;
+                    switch (answerTwo)
+                    {
+                        case ("0"):
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Come again.'");
+                            break;
+                        case ("1"): // a health potion
+                            if (player.getGold() >= 15) {
+                                player.removeGold(15);
+                                player.getItem(1).addPlayerHas(1);
+                                System.out.println("You pay 15 gold and get a health potion in return.");
+                                conversation();
                             }
+                            else if (player.getGold() < 15)
+                                System.out.println ("You don't have enough gold.");
                             break;
-                    case 3: // a pretty lady
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't you think I look lovely in this dress?'");
-                            break;
-                    case 4: // a wandering salesman
-                            String answerFour = "";
-                            // if the player doesn't have enough gold, and also doesn't have the gemstone or the Shadowdrinker
-                            if (player.getGold() < 500 && player.getItem(10).getPlayerHas() == 0 && player.getItem(7).getPlayerHas() == 0)
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I have a special item for sale, but it looks like you can't afford it.'");
-                            else
-                                    // if the player has enough gold, and also doesn't have the gemstone or the shadowdrinker
-                                    if (player.getGold() > 500 && player.getItem(10).getPlayerHas() == 0 && player.getItem(7).getPlayerHas() == 0)
-                                    {
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I stumbled upon this gemstone the other day. It's yours for only 500 gold pieces."
-                                                            + " How about it? (yes/no)'");
-                                            answerFour = C.io.nextLine();
+                        case ("2"): // a longsword
+                            if (player.getItem(11).getPlayerHas() == 0 && player.getGold() >= 120) {
+                                player.removeGold(120);
+                                player.getItem(11).addPlayerHas(1);
+                                System.out.println ("You pay 120 gold and get a longsword in return.");
+                                System.out.println ("The longsword increases your damage in combat by 1 point.");
+                                player.addStrength(1);
 
-                                        switch (answerFour)
-                                        {
-                                            case ("yes"):
-                                                    player.removeGold(500);
-                                                    System.out.println ("You give 500 gold pieces to the salesman.");
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " hands you " + player.getItem(10) + ".");
-                                                    player.getItem(10).addPlayerHas(1);
-                                                    break;
-                                            case ("no"):
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't think you can barter with me!'");
-                                                    break;
-                                            default:
-                                                    System.out.println ("Invalid input.");
-                                                    break;
-                                        }
-                                    }
-                                        else
-                                            // if the player has the gemstone or the Shadowdrinker
-                                            if (player.getItem(10).getPlayerHas() == 1 || player.getItem(7).getPlayerHas() == 1)
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I'm sorry to say everything is sold out for the moment.'");    		
+                                System.out.println ("You decide to sell your old sword to the merchant.");
+                                player.addGold(30);
+                                player.getItem(15).removePlayerHas(1);
+                                System.out.println ("You received 30 gold.");
+                            }
+                            else if (player.getItem(11).getPlayerHas() == 1)
+                                    System.out.println ("Why would you want another one?");
+                            else if (player.getGold() < 150)
+                                System.out.println ("You don't have enough gold.");
                             break;
-                    case 5: // a hardworking man
-                            String answerSeven = "";
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Why don't you give me hand instead of just standing there?' (yes/no)");
-                            answerSeven = C.io.nextLine();
+                        case ("3"): // a chainmail armor
+                            if (player.getItem(16).getPlayerHas() == 0 && player.getGold() >= 150) {
+                                player.removeGold(150);
+                                player.getItem(16).addPlayerHas(1);
+                                System.out.println ("You pay 150 gold and get a chainmail armor in return.");
+                                System.out.println ("The chainmail increases the amount of damage you can withstand by 10 points.");
+                                player.addMaxHealth(10);
 
-                        switch (answerSeven)
-                        {
+                                System.out.println ("You decide to sell your old armor to the merchant.");
+                                player.addGold(20);
+                                player.getItem(17).removePlayerHas(1);
+                                System.out.println ("You received 20 gold.");
+                            }
+                            else if (player.getGold() < 150)
+                                System.out.println ("You don't have enough gold.");
+                            break;
+                        case ("4"): // a training manual
+                            if (player.getGold() >= 200) {
+                                player.removeGold(200);
+                                player.getItem(14).addPlayerHas(1);
+                                System.out.println ("You pay 200 gold and get a training manual in return.");
+                                System.out.println ("The training manual increases your experience by some points when used.");
+                            }
+                            else if (player.getGold() < 200)
+                                System.out.println ("You don't have enough gold.");
+                            break;
+                        default:
+                            System.out.println ("Invalid input.");
+                            break;
+                    }
+                        break;
+                case 3: // a pretty lady
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't you think I look lovely in this dress?'");
+                    break;
+                case 4: // a wandering salesman
+                    String answerFour = "";
+                    // if the player doesn't have enough gold, and also doesn't have the gemstone or the Shadowdrinker
+                    if (player.getGold() < 500 && player.getItem(10).getPlayerHas() == 0 && player.getItem(7).getPlayerHas() == 0)
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I have a special item for sale, but it looks like you can't afford it.'");
+                    else if (player.getGold() > 500 && player.getItem(10).getPlayerHas() == 0 && player.getItem(7).getPlayerHas() == 0) { // if the player has enough gold, and also doesn't have the gemstone or the shadowdrinker
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I stumbled upon this gemstone the other day. It's yours for only 500 gold pieces."
+                                        + " How about it? (yes/no)'");
+                        answerFour = C.io.nextLine();
+
+                        switch (answerFour) {
                             case ("yes"):
-                                    System.out.println ("You help the man with his work. After all, you need to do something about that beer belly you acquired as of lately\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Well thank you! Here is a few gold coins!'");
-                                    System.out.println ("\nYou recieved 20 gold.\n");
-                                    System.out.println ("\nYou recieved 10 experience.\n");
-                                    player.addGold(20);
-                                    player.addExperience(10);
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Thanks to you I'll be home for dinner. See you next time!'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " leaves with a smile on his face. Perhaps he just escaped a scolding from his wife?");
-                                    ROOMS[player.getCurrentRoom()].removeNPC();
-                                    ROOMS[player.getCurrentRoom()].permanentRemoveNPC();
+                                player.removeGold(500);
+                                System.out.println ("You give 500 gold pieces to the salesman.");
+                                System.out.println (NPCS[player.getCurrentNPC()] + " hands you " + player.getItem(10) + ".");
+                                player.getItem(10).addPlayerHas(1);
+                                break;
+                            case ("no"):
+                                System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't think you can barter with me!'");
+                                break;
+                            default:
+                                System.out.println ("Invalid input.");
+                                break;
+                        }
+                    }
+                    else if (player.getItem(10).getPlayerHas() == 1 || player.getItem(7).getPlayerHas() == 1) // if the player has the gemstone or the Shadowdrinker
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I'm sorry to say everything is sold out for the moment.'");    		
+                    break;
+                case 5: // a hardworking man
+                    String answerSeven = "";
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Why don't you give me hand instead of just standing there?' (yes/no)");
+                    answerSeven = C.io.nextLine();
+
+                    switch (answerSeven) {
+                        case ("yes"):
+                            System.out.println ("You help the man with his work. After all, you need to do something about that beer belly you acquired as of lately\n");
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Well thank you! Here is a few gold coins!'");
+                            System.out.println ("\nYou recieved 20 gold.\n");
+                            System.out.println ("\nYou recieved 10 experience.\n");
+                            player.addGold(20);
+                            player.addExperience(10);
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Thanks to you I'll be home for dinner. See you next time!'\n");
+                            System.out.println (NPCS[player.getCurrentNPC()] + " leaves with a smile on his face. Perhaps he just escaped a scolding from his wife?");
+                            ROOMS[player.getCurrentRoom()].removeNPC();
+                            ROOMS[player.getCurrentRoom()].permanentRemoveNPC();
+                            break;
+                        case ("no"):
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Hmph.. You lazy cityfolk.'");
+                            break;
+                        default:
+                            System.out.println ("Invalid input.");
+                            break;
+                    }
+                        break;
+                case 6: // a villager
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'These days nobody dares to leave the village.'");
+                    break;
+                case 7: // Grunbald the magician
+                    if (player.getMushroomQuest() < 8 && player.getItem(20).getPlayerHas() == 0)
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you were to find any violet mushrooms, please take them to me.'");
+                    else if (player.getMushroomQuest() < 8 && player.getItem(20).getPlayerHas() >= 1) {
+                        System.out.println ("You give a violet mushroom to Grunbald.\n");
+
+                        player.getItem(20).removePlayerHas(1);
+                        player.addMushroomQuest(1);
+
+                        player.addExperience(25);
+                        player.addGold(40);
+                        System.out.println ("You received 25 experience.");
+                        System.out.println ("You received 40 gold.\n");
+
+                        player.levelUp();
+
+                        if (player.getMushroomQuest() <= 7)
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Thank you! Now I only need " + (8 - player.getMushroomQuest()) + " more mushrooms!'");
+                        else if (player.getMushroomQuest() == 8) {
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Fantastic work! That's the last one! Now I can finally finish my project.'");
+
+                            player.addExperience(200);
+                            System.out.println ("\nYou received 200 experience.\n");
+
+                            player.levelUp();
+                        }
+                    }
+                    else if (player.getMushroomQuest() == 8) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I don't need any more mushrooms.'");
+                    }
+                    break;
+                case 8: // Skeld the blacksmith
+                    if (player.getItem(8).getPlayerHas() <= 0 || player.getItem(9).getPlayerHas() <= 0 || player.getItem(10).getPlayerHas() <= 0)
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I'm so tired of repairing armor and making "
+                                            + "cheap swords for this stupid war. I wish I could go back to the time when I was the King's royal blacksmith.'");
+                    if (player.getItem(8).getPlayerHas() >= 1 && player.getItem(9).getPlayerHas() >= 1 && player.getItem(10).getPlayerHas() >= 1) {
+                        System.out.println ("You show the blade, hilt, and gemstone to Skeld.");
+                        System.out.println ("\nSkeld turns silent as he runs his fingers along the cold blade.\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " whispers: 'I have never seen the like of this blade before. It's stunningly beautiful and although"
+                                        + " I can tell it's an ancient relic, it's still sharp. These items hold terrific power. Where did you get your hands on them?'");
+                        System.out.println ("\nYou explain your situation to Skeld and you can see a small spark light up in his icy blue eyes.\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says with resolve in his voice: 'It would be an honor to complete this weapon for you."
+                                        + " Come back tomorrow when dawn breaks.'");
+
+                        player.getItem(8).removePlayerHas(1);
+                        player.getItem(9).removePlayerHas(1);
+                        player.getItem(10).removePlayerHas(1);
+
+                        System.out.println ("\nYou head over to the local inn and get a good night's sleep. (Press any key to continue)\n");
+                        C.io.nextLine();
+
+                        System.out.println ("You return to the blacksmith at dawn just to find him sitting on a chair next to the forge, snoring loudly."
+                                        + " 'He must have worked hard all night' you think for yourself.");
+                        System.out.println ("\nYou poke him lightly in the rib and he wakes up in a flash.");
+                        System.out.println ("\nHe smiles at you and stands up. He heads over to the anvil and brings an item wrapped in cloth.");
+                        System.out.println ("\nHe removes the cloth, revealing a sword in its sheath. The sheath looks like it's made in the finest leather"
+                                        + " and it has beautiful etchings on it, no doubt the signature of the blacksmith himself.");
+
+                        System.out.println ("\n'I present to you..' he says as he moves his hand to the hilt of the sword and pulls it out with a swift"
+                                        + " move, stretching it straight towards the sky with his strong arm. 'Shadowdrinker!'.");
+
+                        System.out.println ("\nYou are stunned by the beauty of the sword. It's as if it's practically singing of joy as it"
+                                        + " can finally bathe in the sunlight for the first time in thousands of years. It is truly a magnificent piece of work.");
+
+                        player.getItem(7).addPlayerHas(1);
+
+                        System.out.println ("\nYou received the Shadowdrinker.");
+                    }
+
+                    break;
+                case 9: // a town guard
+                    int randomConv9 = rand.nextInt(3) +1; // Randomizes the conversation
+
+                    switch (randomConv9) {
+                        case 1:
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Keep out of trouble!'");
+                            break;
+                        case 2:
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Have you seen that weird magician in town? I bet he's up to something fishy..'");
+                            break;
+                        case 3:
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I once used the fortune machine. It tells the truth I tell you!'");
+                            break;
+                        default:
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Keep out of trouble!'");
+                            break;
+                    }
+                    break;
+                case 10: // a philosopher
+                    //System.out.println (npcs[player.getCurrentNPC()] + " says: 'Not all those who wander are lost.'"); // Quote from JRR Tolkien
+
+                    String answerTen = "";
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Would you like to play a game?' (yes/no)");
+                    answerTen = C.io.nextLine();
+
+                    switch (answerTen) {
+                        case ("yes"):
+                            mathQuiz();
+                            break;
+                        case ("no"):
+                            System.out.println (NPCS[player.getCurrentNPC()] + " frowns and returns to what he was doing.");
+                            break;
+                        default:
+                            System.out.println ("Invalid input.");
+                            break;
+                    }
+                    break;
+                case 11: // an elderly villager
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I wish myself back to brighter days..'");
+                    break;
+                case 12: // a frightened town guard
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I saw.. things..'");
+                    break;
+                case 13: // Glenn the bard
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Play a tune you say? Such rudeness! I'm in the process of creating a masterpiece for my beloved Asta.'");
+                    break;
+                case 14: // Lianne
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Oh how will I ever get that handsome Glenn to look my way.."
+                                    + "\nI wish my father wouldn't watch my every move.'");
+                    break;
+                case 15: // Thorulf
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'There is only one thing on my mind right now, and that's keeping that"
+                                    + "\nslimy bard away from my daughter!'");
+                    break;
+                case 16: // Asta
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Did you meet the bard yet? Isn't he amazing? Much more of a man than my good for nothing husband.'");
+                    break;
+                case 17: // a hermit
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Welcome " + player.getName() + ". How do I know your name you ask? There are many things"
+                                    + " you do not know about this world.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I know why you have come here, even if you might not know it yourself yet.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'A terrible shadow has befallen our lands, and you are the one who will find the light"
+                                    + " and cast the shadow to the abyss where it belongs. You are the one the prophecies have been telling me about.'\n");
+
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The person who brought the war to our lands is a powerful warlock who goes by the"
+                                    + " name of Zeramus.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You must destroy this man to bring peace to the world once again. Needless to say,"
+                                    + " it will not be an easy task and you will need help.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Other than the brave souls I have foreseen giving you assistance on your quest, there is one"
+                                    + " thing that stands above them all. None other than the legendary sword 'Shadowdrinker'.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'However. One thousand years ago to the day, the Shadowdrinker was destroyed and the pieces"
+                                    + " shattered to different parts of our land. You must gather these pieces and assemble the sword to be able to put and end to"
+                                    + " Zeramus' terror.'\n");
+
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The first piece, the hilt, is held by the ruler of the goblins to the northwest of Halin"
+                                    + " village.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The second piece, the blade, was last known to be held by a long dead lord named Otri,"
+                                    + " whose domains used to be where the marsh is today.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The last piece, the radiant gemstone of Ashaar, has unfortunately been completely"
+                                    + " lost in the passing of time. I am afraid you are on your own with this one.'\n");
+
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: '" + player.getName() +  "! Seek out the pieces of the legendary sword, find a blacksmith"
+                                    + " worthy of recreating it, and destroy Zeramus once and for all!'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Now go, you must make haste!'");
+                    break;
+                case 18: // a member of the Zulah tribe
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't enter the marsh! There are.. things.. out there.'");
+                    break;
+                case 19: // the shaman of the Zulah tribe (Heals the player to maximum health)
+                    if (player.getHealth() == player.getMaxHealth())
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Visit me if you are in need of healing.'");
+                    else if (player.getHealth() < player.getMaxHealth()) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " starts to mumble some words...'");
+
+                        heal ( (player.getMaxHealth()) - (player.getHealth()) );
+                        System.out.println ("\nYou have been healed.");
+                    }
+                    break;
+                case 20: // a hunter of the Zulah tribe (Will always give out a health potion if the player doesn't have one)
+                    if (player.getItem(1).getPlayerHas() < 1) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Here, take this. You will need it.'");
+                        player.getItem(1).addPlayerHas(1); // Adds a health potion
+                        System.out.println ("\nYou received a health potion.");
+                    }
+                    else
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Be careful out there. You can never be sure about what is lurking in the mists.'");
+                    break;
+                case 21: // a cackling mad man
+                    System.out.println (NPCS[player.getCurrentNPC()] + " seems to be completely out of his mind. He keeps babbling about some treasure in the graveyard.");
+                    break;
+                case 22: // the guardian of the tomb (Used to open the door into the tomb)
+                    if (ROOMS[player.getCurrentRoom()].getWest() == 0) {
+                        String answerTwentyOne = "";
+
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Those who wish to enter the tomb must speak out the password.'");
+                        System.out.println ("\nWhat do you wish to say? (Type now)");
+                        answerTwentyOne = C.io.nextLine();
+
+                        switch (answerTwentyOne) {
+                            case ("mother"):
+                            case ("Mother"):
+                                System.out.println (NPCS[player.getCurrentNPC()] + " says: 'That is correct. You may now enter the tomb.'");
+                                System.out.println ("\nYou can hear a loud noise as the door starts moving aside, allowing you to go inside the tomb.");
+                                ROOMS[player.getCurrentRoom()].setWest(298);
+                                break;
+                            default:
+                                System.out.println (NPCS[player.getCurrentNPC()] + " says: 'That is the wrong password. Begone!'");
+                                break;
+                        }
+                    }
+                    else if (ROOMS[player.getCurrentRoom()].getWest() == 298)
+                        System.out.println (NPCS[player.getCurrentNPC()] + " is silent.");
+                    break;
+                case 23: // Ezme the carpet trader
+                    String answerTwentyThree = "";
+
+                    // If the player doesn't have the carpet or the camel
+                    if (player.getItem(12).getPlayerHas() == 0 && player.getItem(13).getPlayerHas() == 0) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You are looking to cross the desert you say? There is no way you will make the trip without one of my very special flying carpets!'\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I will also make a very special price only for you my friend! Only 5000 gold pieces! How about it?' (yes/no)");
+                        answerTwentyThree = C.io.nextLine();
+
+                        switch (answerTwentyThree) {
+                            case ("yes"):
+                                    if (player.getGold() >= 5000) {
+                                        System.out.println (NPCS[player.getCurrentNPC()] + "'s eyes widen as you show him the gold pieces.");
+                                        System.out.println ("You close the sack of gold after giving him a glimpse. Like you'd ever pay that ridiculous price for an old rug!");
+                                        System.out.println (NPCS[player.getCurrentNPC()] + " starts crying.");
+                                    }
+                                    else if (player.getGold() <= 5000) {
+                                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't try to fool me!'");
+                                    }
                                     break;
                             case ("no"):
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Hmph.. You lazy cityfolk.'");
-                                    break;
-                            default:
-                                    System.out.println ("Invalid input.");
-                                    break;
-                        }
+                                System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Well it was worth a try.. I suppose if you really want the carpet you could just bring me the "
+                                                + "final piece for my outstanding limited edition camel figurine collection. Find number 26 and I will give you the carpet.'");
+                        }	
+                    }
+
+                    // if the player doesn't have the carpet but does have the camel
+                    if (player.getItem(12).getPlayerHas() == 0 && player.getItem(13).getPlayerHas() == 1) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you want to cross the desert you will need one of my flying carpets. It's 5000 go.. Wait! "
+                                        + "What's THAT sticking out of your backpack?!'\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " looks almost obsessed as his hand stretches out for the silly camel figurine in your backpack.\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Give it to me!'\n");
+                        System.out.println ("You look at him with a puzzled expression and hand the camel over.\n");
+
+                        player.getItem(13).removePlayerHas(1);
+
+                        System.out.println (NPCS[player.getCurrentNPC()] + "'s eyes fill up with tears of joy as he starts dancing around the room with the camel held high in his hands.\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says excitedly: 'The carpets are over there! Grab any one of them! Here, have some gold too!'\n");
+
+                        player.addGold(50);
+                        System.out.println ("You received 50 gold.");
+
+                        player.getItem(12).addPlayerHas(1);
+                        System.out.println ("You take a flying carpet.\n");
+
+                        System.out.println ("Ezme is still dancing around. You'd better leave him to it before he changes his mind.");	
+                    }
+                    else if (player.getItem(12).getPlayerHas() == 1)
+                        System.out.println ("Ezme is still dancing around. You'd better leave him to it before he changes his mind.");
+                    break;
+                case 24: // Josephine
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I'm so tired of being holed up in this place. I wish the war would end soon. Why are they fighting anyway?'");
+                    break;
+                case 25: // Rupert
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I don't believe in all the nonsense people speak about. A black magician in the desert? "
+                                    + "Monsters? Hah! Those are all bedtime stories for children.'");
+                    break;
+                case 26: // an old man smoking his pipe
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I am afraid by the time the young ones realize what is about to happen it will be too late."
+                                    + " There are dark clouds coming from the desert.'");
+                    break;
+                case 27: // a wounded soldier tending to his comrade
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'All I've got left in life is this young boy, and we just met yesterday. A few hours later our group were ambushed by raiders."
+                                    + " Yes. We are the only two survivors. I don't know what to do but keep trying to heal his wounds.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Everything feels hopeless.'");
+                    break;
+                case 28: // Lieutenant Harken
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You there soldier! Why aren't you on the front line with the others?'");
+                    System.out.println("\nYou explain your situation to him.\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Well if it's of any help, my scouts found out that there is some lunatic man "
+                                    + "claiming to be a wizard holed up in the castle to the south. Wouldn't want to go there myself though.'\n");
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you follow the road south here you will get to the castle's hedge maze, it should be your "
+                                    + "best shot at getting there undetected. Stay alert though. I heard.. Stories.. About that place.'");
+                    break;
+                case 29: // a desert trader
+                    String answerTwentyNine = "";
+
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Please have a look at my wares.'");
+
+                    System.out.println ("\n\tItems for sale:\n");
+                    System.out.println ("\t1: a health potion\t\t 15 (You have: " + player.getItem(1).getPlayerHas() + ")");
+                    System.out.println ("\t2: a greather health potion\t 30 (You have: " + player.getItem(21).getPlayerHas() + ")");
+
+                    System.out.println ("\nGold: " + player.getGold());
+
+                    System.out.println ("\nWhat would you like to buy?\n");
+                                    System.out.print("Choose: (0 for nothing) ");
+                    answerTwentyNine = C.io.nextLine();
+
+                    switch (answerTwentyNine) {
+                        case ("0"):
+                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Come again.'");
                             break;
-                    case 6: // a villager
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'These days nobody dares to leave the village.'");
-                            break;
-                    case 7: // Grunbald the magician
-                            if (player.getMushroomQuest() < 8 && player.getItem(20).getPlayerHas() == 0)
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you were to find any violet mushrooms, please take them to me.'");
-                            else
-                                    if (player.getMushroomQuest() < 8 && player.getItem(20).getPlayerHas() >= 1)
-                                    {
-                                            System.out.println ("You give a violet mushroom to Grunbald.\n");
-
-                                            player.getItem(20).removePlayerHas(1);
-                                            player.addMushroomQuest(1);
-
-                                            player.addExperience(25);
-                                            player.addGold(40);
-                                            System.out.println ("You received 25 experience.");
-                                            System.out.println ("You received 40 gold.\n");
-
-                                            player.levelUp();
-
-                                            if (player.getMushroomQuest() <= 7)
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Thank you! Now I only need " + (8 - player.getMushroomQuest()) + " more mushrooms!'");
-                                            else
-                                                    if (player.getMushroomQuest() == 8)
-                                                    {
-                                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Fantastic work! That's the last one! Now I can finally finish my project.'");
-
-                                                            player.addExperience(200);
-                                                            System.out.println ("\nYou received 200 experience.\n");
-
-                                                            player.levelUp();
-                                                    }
-                                    }
-                                    else
-                                            if (player.getMushroomQuest() == 8)
-                                            {
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I don't need any more mushrooms.'");
-                                            }
-                            break;
-                    case 8: // Skeld the blacksmith
-                            if (player.getItem(8).getPlayerHas() <= 0 || player.getItem(9).getPlayerHas() <= 0 || player.getItem(10).getPlayerHas() <= 0)
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I'm so tired of repairing armor and making "
-                                                    + "cheap swords for this stupid war. I wish I could go back to the time when I was the King's royal blacksmith.'");
-                            if (player.getItem(8).getPlayerHas() >= 1 && player.getItem(9).getPlayerHas() >= 1 && player.getItem(10).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("You show the blade, hilt, and gemstone to Skeld.");
-                                    System.out.println ("\nSkeld turns silent as he runs his fingers along the cold blade.\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " whispers: 'I have never seen the like of this blade before. It's stunningly beautiful and although"
-                                                    + " I can tell it's an ancient relic, it's still sharp. These items hold terrific power. Where did you get your hands on them?'");
-                                    System.out.println ("\nYou explain your situation to Skeld and you can see a small spark light up in his icy blue eyes.\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says with resolve in his voice: 'It would be an honor to complete this weapon for you."
-                                                    + " Come back tomorrow when dawn breaks.'");
-
-                                    player.getItem(8).removePlayerHas(1);
-                                    player.getItem(9).removePlayerHas(1);
-                                    player.getItem(10).removePlayerHas(1);
-
-                                    System.out.println ("\nYou head over to the local inn and get a good night's sleep. (Press any key to continue)\n");
-                                    C.io.nextLine();
-
-                                    System.out.println ("You return to the blacksmith at dawn just to find him sitting on a chair next to the forge, snoring loudly."
-                                                    + " 'He must have worked hard all night' you think for yourself.");
-                                    System.out.println ("\nYou poke him lightly in the rib and he wakes up in a flash.");
-                                    System.out.println ("\nHe smiles at you and stands up. He heads over to the anvil and brings an item wrapped in cloth.");
-                                    System.out.println ("\nHe removes the cloth, revealing a sword in its sheath. The sheath looks like it's made in the finest leather"
-                                                    + " and it has beautiful etchings on it, no doubt the signature of the blacksmith himself.");
-
-                                    System.out.println ("\n'I present to you..' he says as he moves his hand to the hilt of the sword and pulls it out with a swift"
-                                                    + " move, stretching it straight towards the sky with his strong arm. 'Shadowdrinker!'.");
-
-                                    System.out.println ("\nYou are stunned by the beauty of the sword. It's as if it's practically singing of joy as it"
-                                                    + " can finally bathe in the sunlight for the first time in thousands of years. It is truly a magnificent piece of work.");
-
-                                    player.getItem(7).addPlayerHas(1);
-
-                                    System.out.println ("\nYou received the Shadowdrinker.");
+                        case ("1"): // a health potion
+                            if (player.getGold() >= 15) {
+                                player.removeGold(15);
+                                player.getItem(1).addPlayerHas(1);
+                                System.out.println("You pay 15 gold and get a health potion in return.");
+                                conversation();
                             }
-
+                            else if (player.getGold() < 15)
+                                System.out.println ("You don't have enough gold.");
                             break;
-                    case 9: // a town guard
-                            int randomConv9 = rand.nextInt(3) +1; // Randomizes the conversation
-
-                            switch (randomConv9)
-                            {
-                                    case 1:
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Keep out of trouble!'");
-                                            break;
-                                    case 2:
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Have you seen that weird magician in town? I bet he's up to something fishy..'");
-                                            break;
-                                    case 3:
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I once used the fortune machine. It tells the truth I tell you!'");
-                                            break;
-                                    default:
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Keep out of trouble!'");
-                                            break;
+                        case ("2"): // a greater health potion
+                            if (player.getGold() >= 30) {
+                                player.removeGold(30);
+                                player.getItem(21).addPlayerHas(1);
+                                System.out.println("You pay 30 gold and get a greater health potion in return.");
+                                conversation();
                             }
+                            else if (player.getGold() < 30)
+                                System.out.println ("You don't have enough gold.");
                             break;
-                    case 10: // a philosopher
-                            //System.out.println (npcs[player.getCurrentNPC()] + " says: 'Not all those who wander are lost.'"); // Quote from JRR Tolkien
+                        default:
+                            System.out.println ("Invalid input.");
+                            break;
+                    }
+                    break;
+                case 30: // Harald the innkeeper			
+                    if (player.getRespawnLocation() == 1) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Welcome to my humble inn! Please have a rest.'");
+                        player.setHealth(player.getMaxHealth());
+                        player.setRespawnLocation(166);
+                        System.out.println ("\nYou rest at the inn.\n");
+                        System.out.println ("You will now respawn at the inn if you die.");
+                    }
+                    else {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Did you meet the strange salesman up the north road yet? I wonder what he's up to..'\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Please have a rest.'");
+                        player.setHealth(player.getMaxHealth());
+                        System.out.println ("\nYou rest at the inn.");
+                    }
+                    break;
 
-                            String answerTen = "";
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Would you like to play a game?' (yes/no)");
-                            answerTen = C.io.nextLine();
+                //******************************
+                // Test NPCs
+                //******************************
+                case 100: // test npc
+                    System.out.println ("case 100 -If you see this, it's a bug. Please send an e-mail to robin.neko@gmail.com and report it-");
+                    break;
 
-                            switch (answerTen)
-                            {
-                                    case ("yes"):
-                                            mathQuiz();
-                                            break;
-                                    case ("no"):
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " frowns and returns to what he was doing.");
-                                            break;
-                                    default:
-                                            System.out.println ("Invalid input.");
-                                            break;
-                            }
-                            break;
-                    case 11: // an elderly villager
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I wish myself back to brighter days..'");
-                            break;
-                    case 12: // a frightened town guard
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I saw.. things..'");
-                            break;
-                    case 13: // Glenn the bard
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Play a tune you say? Such rudeness! I'm in the process of creating a masterpiece for my beloved Asta.'");
-                            break;
-                    case 14: // Lianne
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Oh how will I ever get that handsome Glenn to look my way.."
-                                            + "\nI wish my father wouldn't watch my every move.'");
-                            break;
-                    case 15: // Thorulf
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'There is only one thing on my mind right now, and that's keeping that"
-                                            + "\nslimy bard away from my daughter!'");
-                            break;
-                    case 16: // Asta
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Did you meet the bard yet? Isn't he amazing? Much more of a man than my good for nothing husband.'");
-                            break;
-                    case 17: // a hermit
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Welcome " + player.getName() + ". How do I know your name you ask? There are many things"
-                                                    + " you do not know about this world.'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I know why you have come here, even if you might not know it yourself yet.'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'A terrible shadow has befallen our lands, and you are the one who will find the light"
-                                                    + " and cast the shadow to the abyss where it belongs. You are the one the prophecies have been telling me about.'\n");
+                //******************************
+                // Killable NPCs
+                //******************************
+                case 101: // a black cat
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Meoooooow!'");
+                    break;
+                case 102: // a red fox
+                    System.out.println (NPCS[player.getCurrentNPC()] + " growls at you");
+                    break;
+                case 103: // a donkey
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Eeeeee Awwww...!'");
+                    break;
+                case 104: // a tiny bird
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 105: // a cockroach
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 106: // an owl
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 107: // a sleeping bear
+                    System.out.println (NPCS[player.getCurrentNPC()] + " grunts and falls back to sleep.");
+                    break;
+                case 108: // a dirty vagrant
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'What are you doing here? This is my place! Get out!'");
+                    break;
+                case 109: // a happy cow
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Mooooooooo!'");
+                    break;
+                case 110: // a sick-looking wolf
+                    System.out.println (NPCS[player.getCurrentNPC()] + " stares hungrily at you.");
+                    break;
+                case 111: // a sobbing little girl ghost
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Stop looking at me! I just want to be left alone..'" + NPCS[player.getCurrentNPC()] + " turns around and starts sobbing again.");
+                    break;
+                case 112: // a small goblin
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You shouldn't be here! Guards!!!'");
+                    break;
+                case 113: // a goblin warrior
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I hope you enjoy the feeling of a rusty blade piercing your body!'");
+                    break;
+                case 114: // a lazy goblin guard
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'They told me there wouldn't be intruders when I got this job!'");
+                    break;
+                case 115: // a goblin cook
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Oh, the main dish has arrived! Prepare the big pot!'");
+                    break;
+                case 116: // The Goblin King
+                    System.out.println (NPCS[player.getCurrentNPC()] + " grins at you, baring his gruesome teeth. 'You are DEAD!'");
+                    break;
+                case 117: // an almost lifeless prisoner
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Please.. End me..'");
+                    break;
+                case 118: // a street thug
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Empty your pockets!'");
+                    break;
+                case 119: // a big rat
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 120: // a road bandit
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Hand it all over before I slit your throat!'");
+                    break;
+                case 121: // a mountain lion
+                    System.out.println (NPCS[player.getCurrentNPC()] + " growls at you.");
+                    break;
+                case 122: // a mountain goat
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 123: // a marsh horror
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 124: // a poisonous green frog
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 125: // a grave robber
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I found this place first! You'd better leave, or an \"accident\" might just happen.'");
+                    break;
+                case 126: // Otri the Undying
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You are a brave one. Now, join me in the afterlife!'");
+                    break;
+                case 127: // a chainmail armored skeleton
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 128: // a soulless corpse
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 129: // a marsh serpent
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 130: // a terrified grave robber
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Get me out of here! This isn't how it was supposed to be..'");
+                    break;
+                case 131: // a rattlesnake
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 132: // a scorption
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 133: // the minotaur of the maze
+                    System.out.println (NPCS[player.getCurrentNPC()] + " stares hatefully at you with his red eyes. There is smoke coming out of his nostrils. He lifts his huge axe..");
+                    break;
+                case 134: // an elite guard trapped in the maze
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you don't show me the way out I will kill you right now!'");
+                    break;
+                case 135: // a horned satyr
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+                case 136: // a huge vampire bat
+                    System.out.println (NPCS[player.getCurrentNPC()] + " swoops down and aims for your neck with its fangs.");
+                    break;
+                case 137: // an elite guard wearing a black mask
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You little worm! A lifetime of pain awaits you in our torture chambers!'");
+                    break;
+                case 138: // Zeramus
+                    if (player.getItem(7).getPlayerHas() == 0) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You little ant! I will crush you beneath my foot!'\n");
 
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The person who brought the war to our lands is a powerful warlock who goes by the"
-                                                    + " name of Zeramus.'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You must destroy this man to bring peace to the world once again. Needless to say,"
-                                                    + " it will not be an easy task and you will need help.'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Other than the brave souls I have foreseen giving you assistance on your quest, there is one"
-                                                    + " thing that stands above them all. None other than the legendary sword 'Shadowdrinker'.'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'However. One thousand years ago to the day, the Shadowdrinker was destroyed and the pieces"
-                                                    + " shattered to different parts of our land. You must gather these pieces and assemble the sword to be able to put and end to"
-                                                    + " Zeramus' terror.'\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " starts doing elaborate movements with his arms and hands as he speaks the words of an ancient toungue.\n");
 
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The first piece, the hilt, is held by the ruler of the goblins to the northwest of Halin"
-                                                    + " village.'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The second piece, the blade, was last known to be held by a long dead lord named Otri,"
-                                                    + " whose domains used to be where the marsh is today.'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'The last piece, the radiant gemstone of Ashaar, has unfortunately been completely"
-                                                    + " lost in the passing of time. I am afraid you are on your own with this one.'\n");
+                        System.out.println ("White hot fire starts to erupt from his fingers, and he binds it into a large ball of energy before he casts it towards you.\n");
 
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: '" + player.getName() +  "! Seek out the pieces of the legendary sword, find a blacksmith"
-                                                    + " worthy of recreating it, and destroy Zeramus once and for all!'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Now go, you must make haste!'");
-                            break;
-                    case 18: // a member of the Zulah tribe
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't enter the marsh! There are.. things.. out there.'");
-                            break;
-                    case 19: // the shaman of the Zulah tribe (Heals the player to maximum health)
-                            if (player.getHealth() == player.getMaxHealth())
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Visit me if you are in need of healing.'");
-                            else
-                                    if (player.getHealth() < player.getMaxHealth())
-                                    {
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " starts to mumble some words...'");
+                        System.out.println ("You are completely engulfed in the fire, and die slowly as you roll around the floor, trying to make the fire go out.\n");
 
-                                            heal ( (player.getMaxHealth()) - (player.getHealth()) );
-                                            System.out.println ("\nYou have been healed.");
-                                    }
-                            break;
-                    case 20: // a hunter of the Zulah tribe (Will always give out a health potion if the player doesn't have one)
-                            if (player.getItem(1).getPlayerHas() < 1) 
-                            {
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Here, take this. You will need it.'");
-                                    player.getItem(1).addPlayerHas(1); // Adds a health potion
-                                    System.out.println ("\nYou received a health potion.");
-                            }
-                            else
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Be careful out there. You can never be sure about what is lurking in the mists.'");
-                            break;
-                    case 21: // a cackling mad man
-                            System.out.println (NPCS[player.getCurrentNPC()] + " seems to be completely out of his mind. He keeps babbling about some treasure in the graveyard.");
-                            break;
-                    case 22: // the guardian of the tomb (Used to open the door into the tomb)
-                            if (ROOMS[player.getCurrentRoom()].getWest() == 0)
-                            {
-                                    String answerTwentyOne = "";
+                        gameOver();
+                    }
+                    else if (player.getItem(7).getPlayerHas() == 1) {
+                        System.out.println (NPCS[player.getCurrentNPC()] + " turns around slowly, facing you. His face is a pale white with deep wrinkles. If it wasn't for his eyes, one would "
+                                        + "take him for just about any old man. Where a normal person would have white in their eyes, his is a pure black, not much different than the "
+                                        + "black polished floor. As you feel his gaze upon you, you feel like you are drowning in a bottomless pool of pure hatred.\n");
 
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Those who wish to enter the tomb must speak out the password.'");
-                                    System.out.println ("\nWhat do you wish to say? (Type now)");
-                                    answerTwentyOne = C.io.nextLine();
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You have a lot of nerve coming here. Though, I was alerted by your presence hours ago, I decided "
+                                        + "to let you pass. You see, I'm a very curious man.'\n");
 
-                                    switch (answerTwentyOne)
-                                    {
-                                            case ("mother"):
-                                            case ("Mother"):
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'That is correct. You may now enter the tomb.'");
-                                                    System.out.println ("\nYou can hear a loud noise as the door starts moving aside, allowing you to go inside the tomb.");
-                                                    ROOMS[player.getCurrentRoom()].setWest(298);
-                                                    break;
-                                            default:
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'That is the wrong password. Begone!'");
-                                                    break;
-                                    }
-                            }
-                            else
-                                    if (ROOMS[player.getCurrentRoom()].getWest() == 298)
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " is silent.");
-                            break;
-                    case 23: // Ezme the carpet trader
-                            String answerTwentyThree = "";
+                        System.out.println (NPCS[player.getCurrentNPC()] + " throws back his head with a powerful laughter, seemingly making the room shake.\n");
 
-                            // If the player doesn't have the carpet or the camel
-                            if (player.getItem(12).getPlayerHas() == 0 && player.getItem(13).getPlayerHas() == 0)
-                            {
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You are looking to cross the desert you say? There is no way you will make the trip without one of my very special flying carpets!'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I will also make a very special price only for you my friend! Only 5000 gold pieces! How about it?' (yes/no)");
-                                    answerTwentyThree = C.io.nextLine();
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You see this thing here? It's called the Pyrestone. And once I learn how it works I will not need "
+                                        + "my army anymore. It will allow me to shape the lands by my own will, to awaken the underground volcanos, and to unleash true "
+                                        + "hell on earth!'\n");
 
-                                    switch (answerTwentyThree)
-                                    {
-                                            case ("yes"):
-                                                    if (player.getGold() >= 5000)
-                                                    {
-                                                            System.out.println (NPCS[player.getCurrentNPC()] + "'s eyes widen as you show him the gold pieces.");
-                                                            System.out.println ("You close the sack of gold after giving him a glimpse. Like you'd ever pay that ridiculous price for an old rug!");
-                                                            System.out.println (NPCS[player.getCurrentNPC()] + " starts crying.");
-                                                    }
-                                                    else
-                                                            if (player.getGold() <= 5000)
-                                                            {
-                                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Don't try to fool me!'");
-                                                            }
-                                                    break;
-                                            case ("no"):
-                                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Well it was worth a try.. I suppose if you really want the carpet you could just bring me the "
-                                                                    + "final piece for my outstanding limited edition camel figurine collection. Find number 26 and I will give you the carpet.'");
-                                    }	
-                            }
+                        System.out.println (NPCS[player.getCurrentNPC()] + " once again focus his eyes of bottomless darkness upon you.\n");
 
-                            // if the player doesn't have the carpet but does have the camel
-                            if (player.getItem(12).getPlayerHas() == 0 && player.getItem(13).getPlayerHas() == 1)
-                            {
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you want to cross the desert you will need one of my flying carpets. It's 5000 go.. Wait! "
-                                                    + "What's THAT sticking out of your backpack?!'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " looks almost obsessed as his hand stretches out for the silly camel figurine in your backpack.\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Give it to me!'\n");
-                                    System.out.println ("You look at him with a puzzled expression and hand the camel over.\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Now, it is time for you to leave this world.'\n");
 
-                                    player.getItem(13).removePlayerHas(1);
+                        System.out.println ("You draw the Shadowdrinker, readying yourself for battle.\n");
 
-                                    System.out.println (NPCS[player.getCurrentNPC()] + "'s eyes fill up with tears of joy as he starts dancing around the room with the camel held high in his hands.\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says excitedly: 'The carpets are over there! Grab any one of them! Here, have some gold too!'\n");
+                        System.out.println ("Press enter to continue..");
+                        C.io.nextLine();
 
-                                    player.addGold(50);
-                                    System.out.println ("You received 50 gold.");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " starts doing elaborate movements with his arms and hands as he speaks the words of an ancient toungue.\n");
 
-                                    player.getItem(12).addPlayerHas(1);
-                                    System.out.println ("You take a flying carpet.\n");
+                        System.out.println ("White hot fire starts to erupt from his fingers, and he binds it into a large ball of energy before he casts it towards you.\n");
 
-                                    System.out.println ("Ezme is still dancing around. You'd better leave him to it before he changes his mind.");	
-                            }
-                            else
-                                    if (player.getItem(12).getPlayerHas() == 1)
-                                            System.out.println ("Ezme is still dancing around. You'd better leave him to it before he changes his mind.");
-                            break;
-                    case 24: // Josephine
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I'm so tired of being holed up in this place. I wish the war would end soon. Why are they fighting anyway?'");
-                            break;
-                    case 25: // Rupert
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I don't believe in all the nonsense people speak about. A black magician in the desert? "
-                                            + "Monsters? Hah! Those are all bedtime stories for children.'");
-                            break;
-                    case 26: // an old man smoking his pipe
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I am afraid by the time the young ones realize what is about to happen it will be too late."
-                                            + " There are dark clouds coming from the desert.'");
-                            break;
-                    case 27: // a wounded soldier tending to his comrade
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'All I've got left in life is this young boy, and we just met yesterday. A few hours later our group were ambushed by raiders."
-                                            + " Yes. We are the only two survivors. I don't know what to do but keep trying to heal his wounds.'\n");
+                        System.out.println ("You suddenly feel the Shadowdrinker turning icy cold in your hands as you brace yourself for the impact.\n");
 
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Everything feels hopeless.'");
-                            break;
-                    case 28: // Lieutenant Harken
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You there soldier! Why aren't you on the front line with the others?'");
+                        System.out.println ("The white ball of energy suddenly bounces away, as if it hit an invisible wall. It explodes with a roar a few metres away.\n");
 
-                            System.out.println("\nYou explain your situation to him.\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " says: 'What is this?! No, no..! It was supposed to be destroyed!'\n");
 
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Well if it's of any help, my scouts found out that there is some lunatic man "
-                                            + "claiming to be a wizard holed up in the castle to the south. Wouldn't want to go there myself though.'\n");
+                        System.out.println (NPCS[player.getCurrentNPC()] + " starts to cower as you charge towards him, decapitating his head with one swift move.\n");
 
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you follow the road south here you will get to the castle's hedge maze, it should be your "
-                                            + "best shot at getting there undetected. Stay alert though. I heard.. Stories.. About that place.'");
-                            break;
-                    case 29: // a desert trader
-                            String answerTwentyNine = "";
+                        System.out.println ("Press enter to continue..");
+                        C.io.nextLine();
 
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Please have a look at my wares.'");
+                        System.out.println ("As you see his head roll down the pitch black floor, you also notice that the darkness in his eyes has disappeared. They look completely normal now.\n");
 
-                            System.out.println ("\n\tItems for sale:\n");
-                            System.out.println ("\t1: a health potion\t\t 15 (You have: " + player.getItem(1).getPlayerHas() + ")");
-                            System.out.println ("\t2: a greather health potion\t 30 (You have: " + player.getItem(21).getPlayerHas() + ")");
+                        System.out.println ("You lean down over his body and pick up a pendant that had been hanging around his neck. It consists of a thick silver chain "
+                                        + "and one of the red crystals. You can feel a sensation running through your body as you touch it.\n");
 
-                            System.out.println ("\nGold: " + player.getGold());
+                        System.out.println ("After removing the pendant from its owner, you start hearing the voices of thousands of people outside the castle.\n");
 
-                            System.out.println ("\nWhat would you like to buy?\n");
-                                            System.out.print("Choose: (0 for nothing) ");
-                            answerTwentyNine = C.io.nextLine();
+                        System.out.println ("You head over to the west window and look outside. Everyone are fleeing towards the castle! The enemy is giving up! Truly, "
+                                        + "it would seem like Zeramus' power is what made them obey.\n");
 
-                            switch (answerTwentyNine)
-                            {
-                                    case ("0"):
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Come again.'");
-                                            break;
-                                    case ("1"): // a health potion
-                                            if (player.getGold() >= 15)
-                                            {
-                                                    player.removeGold(15);
-                                                    player.getItem(1).addPlayerHas(1);
-                                                    System.out.println("You pay 15 gold and get a health potion in return.");
-                                                    conversation();
-                                            }
-                                            else if (player.getGold() < 15)
-                                                    System.out.println ("You don't have enough gold.");
-                                            break;
-                                    case ("2"): // a greater health potion
-                                            if (player.getGold() >= 30)
-                                            {
-                                                    player.removeGold(30);
-                                                    player.getItem(21).addPlayerHas(1);
-                                                    System.out.println("You pay 30 gold and get a greater health potion in return.");
-                                                    conversation();
-                                            }
-                                            else if (player.getGold() < 30)
-                                                    System.out.println ("You don't have enough gold.");
-                                            break;
-                                    default:
-                                            System.out.println ("Invalid input.");
-                                            break;
-                            }
-                            break;
-                    case 30: // Harald the innkeeper			
-                            if (player.getRespawnLocation() == 1)
-                            {
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Welcome to my humble inn! Please have a rest.'");
-                                    player.setHealth(player.getMaxHealth());
-                                    player.setRespawnLocation(166);
-                                    System.out.println ("\nYou rest at the inn.\n");
-                                    System.out.println ("You will now respawn at the inn if you die.");
-                            }
-                            else
-                            {
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Did you meet the strange salesman up the north road yet? I wonder what he's up to..'\n");
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Please have a rest.'");
-                                    player.setHealth(player.getMaxHealth());
-                                    System.out.println ("\nYou rest at the inn.");
-                            }
-                            break;
+                        System.out.println ("Press enter to continue..");
+                        C.io.nextLine();
 
-                    //******************************
-                    // Test NPCs
-                    //******************************
-                    case 100: // test npc
-                            System.out.println ("case 100 -If you see this, it's a bug. Please send an e-mail to robin.neko@gmail.com and report it-");
-                            break;
+                        player.getItem(18).addPlayerHas(1);
+                        player.addGold(500);
+                        player.addExperience(300);
+                        System.out.println ("You received a red crystal pendant.");
+                        System.out.println ("You received 300 experience points.");
+                        System.out.println ("You received 500 gold.\n");
+                        player.addMaxHealth(10); // Bonus for wearing a red crystal pendant
+                        player.addStrength(1); // Bonus for wearing a red crystal pendant
 
-                    //******************************
-                    // Killable NPCs
-                    //******************************
-                    case 101: // a black cat
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Meoooooow!'");
-                            break;
-                    case 102: // a red fox
-                            System.out.println (NPCS[player.getCurrentNPC()] + " growls at you");
-                            break;
-                    case 103: // a donkey
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Eeeeee Awwww...!'");
-                            break;
-                    case 104: // a tiny bird
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 105: // a cockroach
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 106: // an owl
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 107: // a sleeping bear
-                            System.out.println (NPCS[player.getCurrentNPC()] + " grunts and falls back to sleep.");
-                            break;
-                    case 108: // a dirty vagrant
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'What are you doing here? This is my place! Get out!'");
-                            break;
-                    case 109: // a happy cow
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Mooooooooo!'");
-                            break;
-                    case 110: // a sick-looking wolf
-                            System.out.println (NPCS[player.getCurrentNPC()] + " stares hungrily at you.");
-                            break;
-                    case 111: // a sobbing little girl ghost
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Stop looking at me! I just want to be left alone..'" + NPCS[player.getCurrentNPC()] + " turns around and starts sobbing again.");
-                            break;
-                    case 112: // a small goblin
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You shouldn't be here! Guards!!!'");
-                            break;
-                    case 113: // a goblin warrior
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I hope you enjoy the feeling of a rusty blade piercing your body!'");
-                            break;
-                    case 114: // a lazy goblin guard
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'They told me there wouldn't be intruders when I got this job!'");
-                            break;
-                    case 115: // a goblin cook
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Oh, the main dish has arrived! Prepare the big pot!'");
-                            break;
-                    case 116: // The Goblin King
-                            System.out.println (NPCS[player.getCurrentNPC()] + " grins at you, baring his gruesome teeth. 'You are DEAD!'");
-                            break;
-                    case 117: // an almost lifeless prisoner
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Please.. End me..'");
-                            break;
-                    case 118: // a street thug
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Empty your pockets!'");
-                            break;
-                    case 119: // a big rat
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 120: // a road bandit
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Hand it all over before I slit your throat!'");
-                            break;
-                    case 121: // a mountain lion
-                            System.out.println (NPCS[player.getCurrentNPC()] + " growls at you.");
-                            break;
-                    case 122: // a mountain goat
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 123: // a marsh horror
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 124: // a poisonous green frog
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 125: // a grave robber
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'I found this place first! You'd better leave, or an \"accident\" might just happen.'");
-                            break;
-                    case 126: // Otri the Undying
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You are a brave one. Now, join me in the afterlife!'");
-                            break;
-                    case 127: // a chainmail armored skeleton
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 128: // a soulless corpse
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 129: // a marsh serpent
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 130: // a terrified grave robber
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Get me out of here! This isn't how it was supposed to be..'");
-                            break;
-                    case 131: // a rattlesnake
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 132: // a scorption
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 133: // the minotaur of the maze
-                            System.out.println (NPCS[player.getCurrentNPC()] + " stares hatefully at you with his red eyes. There is smoke coming out of his nostrils. He lifts his huge axe..");
-                            break;
-                    case 134: // an elite guard trapped in the maze
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'If you don't show me the way out I will kill you right now!'");
-                            break;
-                    case 135: // a horned satyr
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-                    case 136: // a huge vampire bat
-                            System.out.println (NPCS[player.getCurrentNPC()] + " swoops down and aims for your neck with its fangs.");
-                            break;
-                    case 137: // an elite guard wearing a black mask
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You little worm! A lifetime of pain awaits you in our torture chambers!'");
-                            break;
-                    case 138: // Zeramus
-                            if (player.getItem(7).getPlayerHas() == 0)
-                            {
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You little ant! I will crush you beneath my foot!'\n");
+                        player.levelUp();
 
-                                    System.out.println (NPCS[player.getCurrentNPC()] + " starts doing elaborate movements with his arms and hands as he speaks the words of an ancient toungue.\n");
+                        System.out.println ("Congratulations! You have saved the world and finished the game!\n");
 
-                                    System.out.println ("White hot fire starts to erupt from his fingers, and he binds it into a large ball of energy before he casts it towards you.\n");
+                        System.out.println ("Thank you for playing, and if you liked it please fill out the review form included with the game and e-mail me at "
+                                        + "robin.neko@gmail.com.\n");
 
-                                    System.out.println ("You are completely engulfed in the fire, and die slowly as you roll around the floor, trying to make the fire go out.\n");
+                        System.out.println ("You may now continue exploring the game world if you wish.");
 
-                                    gameOver();
-                            }
-                            else
-                                    if (player.getItem(7).getPlayerHas() == 1)
-                                    {
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " turns around slowly, facing you. His face is a pale white with deep wrinkles. If it wasn't for his eyes, one would "
-                                                            + "take him for just about any old man. Where a normal person would have white in their eyes, his is a pure black, not much different than the "
-                                                            + "black polished floor. As you feel his gaze upon you, you feel like you are drowning in a bottomless pool of pure hatred.\n");
+                        ROOMS[player.getCurrentRoom()].removeNPC();
+                        ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
+                    }
+                    break;
+                case 142: // a crazy mountaineer
+                    System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Watch for icy spots!'");
+                    break;
 
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You have a lot of nerve coming here. Though, I was alerted by your presence hours ago, I decided "
-                                                            + "to let you pass. You see, I'm a very curious man.'\n");
-
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " throws back his head with a powerful laughter, seemingly making the room shake.\n");
-
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'You see this thing here? It's called the Pyrestone. And once I learn how it works I will not need "
-                                                            + "my army anymore. It will allow me to shape the lands by my own will, to awaken the underground volcanos, and to unleash true "
-                                                            + "hell on earth!'\n");
-
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " once again focus his eyes of bottomless darkness upon you.\n");
-
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Now, it is time for you to leave this world.'\n");
-
-                                            System.out.println ("You draw the Shadowdrinker, readying yourself for battle.\n");
-
-                                            System.out.println ("Press enter to continue..");
-                                            C.io.nextLine();
-
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " starts doing elaborate movements with his arms and hands as he speaks the words of an ancient toungue.\n");
-
-                                            System.out.println ("White hot fire starts to erupt from his fingers, and he binds it into a large ball of energy before he casts it towards you.\n");
-
-                                            System.out.println ("You suddenly feel the Shadowdrinker turning icy cold in your hands as you brace yourself for the impact.\n");
-
-                                            System.out.println ("The white ball of energy suddenly bounces away, as if it hit an invisible wall. It explodes with a roar a few metres away.\n");
-
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'What is this?! No, no..! It was supposed to be destroyed!'\n");
-
-                                            System.out.println (NPCS[player.getCurrentNPC()] + " starts to cower as you charge towards him, decapitating his head with one swift move.\n");
-
-                                            System.out.println ("Press enter to continue..");
-                                            C.io.nextLine();
-
-                                            System.out.println ("As you see his head roll down the pitch black floor, you also notice that the darkness in his eyes has disappeared. They look completely normal now.\n");
-
-                                            System.out.println ("You lean down over his body and pick up a pendant that had been hanging around his neck. It consists of a thick silver chain "
-                                                            + "and one of the red crystals. You can feel a sensation running through your body as you touch it.\n");
-
-                                            System.out.println ("After removing the pendant from its owner, you start hearing the voices of thousands of people outside the castle.\n");
-
-                                            System.out.println ("You head over to the west window and look outside. Everyone are fleeing towards the castle! The enemy is giving up! Truly, "
-                                                            + "it would seem like Zeramus' power is what made them obey.\n");
-
-                                            System.out.println ("Press enter to continue..");
-                                            C.io.nextLine();
-
-                                            player.getItem(18).addPlayerHas(1);
-                                            player.addGold(500);
-                                            player.addExperience(300);
-                                            System.out.println ("You received a red crystal pendant.");
-                                            System.out.println ("You received 300 experience points.");
-                                            System.out.println ("You received 500 gold.\n");
-                                            player.addMaxHealth(10); // Bonus for wearing a red crystal pendant
-                                            player.addStrength(1); // Bonus for wearing a red crystal pendant
-
-                                            player.levelUp();
-
-                                            System.out.println ("Congratulations! You have saved the world and finished the game!\n");
-
-                                            System.out.println ("Thank you for playing, and if you liked it please fill out the review form included with the game and e-mail me at "
-                                                            + "robin.neko@gmail.com.\n");
-
-                                            System.out.println ("You may now continue exploring the game world if you wish.");
-
-                                            ROOMS[player.getCurrentRoom()].removeNPC();
-                                            ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
-
-                                            // Plays the ending music
-                                            //startPlayer(ending); // Disabled until I figured out a way to hide the output from BasicPlayer
-                                    }
-                            break;
-                    case 142: // a crazy mountaineer
-                            System.out.println (NPCS[player.getCurrentNPC()] + " says: 'Watch for icy spots!'");
-                            break;
-
-                    //******************************
-                    // Default
-                    //******************************
-                    default:
-                            System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
-                            break;
-            }
+                //******************************
+                // Default
+                //******************************
+                default:
+                    System.out.println ("You can't talk to " + NPCS[player.getCurrentNPC()]);
+                    break;
+        }
     }
 
     //--------------------------------------------------------------------------
