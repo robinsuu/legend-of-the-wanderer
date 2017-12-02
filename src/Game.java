@@ -1000,206 +1000,178 @@ public class Game implements java.io.Serializable {
     // Sets the NPC of the current room as well as displaying
     // the room and the NPCs it contain
     //--------------------------------------------------------------------------
-    private void displayRoom()
-    {
-            displayCompass();
+    private void displayRoom() {
+        displayCompass();
 
-            System.out.println (ROOMS[player.getCurrentRoom()]);
+        System.out.println (ROOMS[player.getCurrentRoom()]);
 
-            player.setCurrentNPC(ROOMS[player.getCurrentRoom()].getNPC()); // Sets the current NPC to the NPC specified in the current Room
+        player.setCurrentNPC(ROOMS[player.getCurrentRoom()].getNPC()); // Sets the current NPC to the NPC specified in the current Room
 
-            if (player.getCurrentNPC() >= 1)
-                    System.out.println ("\t" + NPCS[player.getCurrentNPC()]);	
+        if (player.getCurrentNPC() >= 1)
+                System.out.println ("\t" + NPCS[player.getCurrentNPC()]);	
     }
 
     //--------------------------------------------------------------------------
     // Displays the compass with the possible exits
     //--------------------------------------------------------------------------
-    private void displayCompass()
-    {
-            String north = "-";
-            String south = "-";
-            String west = "-";
-            String east = "-";
-            String up = "-";
-            String down = "-";
+    private void displayCompass() {
+        String north = "-";
+        String south = "-";
+        String west = "-";
+        String east = "-";
+        String up = "-";
+        String down = "-";
 
-            if (ROOMS[player.getCurrentRoom()].getNorth() >= 1)
-                    north = "N";
+        if (ROOMS[player.getCurrentRoom()].getNorth() >= 1)
+                north = "N";
+        if (ROOMS[player.getCurrentRoom()].getSouth() >= 1)
+                south = "S";
+        if (ROOMS[player.getCurrentRoom()].getWest() >= 1)
+                west = "W";
+        if (ROOMS[player.getCurrentRoom()].getEast() >= 1)
+                east= "E";
+        if (ROOMS[player.getCurrentRoom()].getUp() >= 1)
+                up = "U";
+        if (ROOMS[player.getCurrentRoom()].getDown() >= 1)
+                down= "D";
 
-            if (ROOMS[player.getCurrentRoom()].getSouth() >= 1)
-                    south = "S";
+        // Top row
+        System.out.print ("\n---");
+        if (north.equals("N"))
+            C.io.print(north, Color.orange);
+        else
+            System.out.print (north);
+        System.out.print("---\n");
 
-            if (ROOMS[player.getCurrentRoom()].getWest() >= 1)
-                    west = "W";
+        // Middle row
+        if (west.equals("W"))
+            C.io.print(west, Color.orange);
+        else
+            System.out.print (west);
+        System.out.print ("-");
+        if (up.equals("U"))
+            C.io.print(up, Color.orange);
+        else
+            System.out.print (up);
+        System.out.print ("-");
+        if (down.equals("D"))
+            C.io.print(down, Color.orange);
+        else
+            System.out.print (down);
+        System.out.print ("-");
+        if (east.equals("E"))
+            C.io.print(east, Color.orange);
+        else
+            System.out.print (east);
 
-            if (ROOMS[player.getCurrentRoom()].getEast() >= 1)
-                    east= "E";
-
-            if (ROOMS[player.getCurrentRoom()].getUp() >= 1)
-                    up = "U";
-
-            if (ROOMS[player.getCurrentRoom()].getDown() >= 1)
-                    down= "D";
-
-            // Top row
-            System.out.print ("\n---");
-            if (north.equals("N"))
-                    C.io.print(north, Color.orange);
-            else
-                    System.out.print (north);
-            System.out.print("---\n");
-
-            // Middle row
-            if (west.equals("W"))
-                    C.io.print(west, Color.orange);
-            else
-                    System.out.print (west);
-            System.out.print ("-");
-            if (up.equals("U"))
-                    C.io.print(up, Color.orange);
-            else
-                    System.out.print (up);
-            System.out.print ("-");
-            if (down.equals("D"))
-                    C.io.print(down, Color.orange);
-            else
-                    System.out.print (down);
-            System.out.print ("-");
-            if (east.equals("E"))
-                    C.io.print(east, Color.orange);
-            else
-                    System.out.print (east);
-
-            // Bottom row
-            System.out.print ("\n---");
-            if (south.equals("S"))
-                    C.io.print(south, Color.orange);
-            else
-                    System.out.print (south);
-            System.out.print ("---\n");
+        // Bottom row
+        System.out.print ("\n---");
+        if (south.equals("S"))
+            C.io.print(south, Color.orange);
+        else
+            System.out.print (south);
+        System.out.print ("---\n");
     }
 
     //--------------------------------------------------------------------------
     // For walking north and displaying the current room
     // Also sets the current room
     //--------------------------------------------------------------------------
-    private void goNorth()
-    {
-            if (ROOMS[player.getCurrentRoom()].getNorth() >= 1)
-            {
-                    player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getNorth());
-                    displayRoom();
-            }
-            else
-            {
-                    System.out.println ("You can't go north.");
-                    navigate();
-            }
+    private void goNorth() {
+        if (ROOMS[player.getCurrentRoom()].getNorth() >= 1) {
+            player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getNorth());
+            displayRoom();
+        }
+        else {
+            System.out.println ("You can't go north.");
+            navigate();
+        }
     }
 
     //--------------------------------------------------------------------------
     // For walking south and displaying the current room
     // Also sets the current room
     //--------------------------------------------------------------------------
-    private void goSouth()
-    {
-            if (ROOMS[player.getCurrentRoom()].getSouth() >= 1)
-            {
-                    player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getSouth());
-                    displayRoom();
-            }
-            else
-            {
-                    System.out.println ("You can't go south.");
-                    navigate();
-            }
+    private void goSouth() {
+        if (ROOMS[player.getCurrentRoom()].getSouth() >= 1) {
+            player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getSouth());
+            displayRoom();
+        }
+        else {
+            System.out.println ("You can't go south.");
+            navigate();
+        }
     }
 
     //--------------------------------------------------------------------------
     // For walking west and displaying the current room
     // Also sets the current room
     //--------------------------------------------------------------------------
-    private void goWest()
-    {
-            if (ROOMS[player.getCurrentRoom()].getWest() >= 1)
-            {
-                    player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getWest());
-                    displayRoom();
-            }
-            else
-            {
-                    System.out.println ("You can't go west.");
-                    navigate();
-            }
+    private void goWest() {
+        if (ROOMS[player.getCurrentRoom()].getWest() >= 1) {
+            player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getWest());
+            displayRoom();
+        }
+        else {
+            System.out.println ("You can't go west.");
+            navigate();
+        }
     }
 
     //--------------------------------------------------------------------------
     // For walking east and displaying the current room
     // Also sets the current room
     //--------------------------------------------------------------------------
-    private void goEast()
-    {
-            if (ROOMS[player.getCurrentRoom()].getEast() >= 1)
-            {
-                    player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getEast());
-                    displayRoom();
-            }
-            else
-            {
-                    System.out.println ("You can't go east.");
-                    navigate();
-            }
+    private void goEast() {
+        if (ROOMS[player.getCurrentRoom()].getEast() >= 1) {
+            player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getEast());
+            displayRoom();
+        }
+        else {
+            System.out.println ("You can't go east.");
+            navigate();
+        }
     }
 
     //--------------------------------------------------------------------------
     // For walking up and displaying the current room
     // Also sets the current room
     //--------------------------------------------------------------------------
-    private void goUp()
-    {
-            if (ROOMS[player.getCurrentRoom()].getUp() >= 1)
-            {
-                    player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getUp());
-                    displayRoom();
-            }
-            else
-            {
-                    System.out.println ("You can't go up.");
-                    navigate();
-            }
+    private void goUp() {
+        if (ROOMS[player.getCurrentRoom()].getUp() >= 1) {
+            player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getUp());
+            displayRoom();
+        }
+        else {
+            System.out.println ("You can't go up.");
+            navigate();
+        }
     }
 
     //--------------------------------------------------------------------------
     // For walking down and displaying the current room
     // Also sets the current room
     //--------------------------------------------------------------------------
-    private void goDown()
-    {
-            if (ROOMS[player.getCurrentRoom()].getDown() >= 1)
-            {
-                    player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getDown());
-                    displayRoom();
-            }
-            else
-            {
-                    System.out.println ("You can't go down.");
-                    navigate();
-            }
+    private void goDown() {
+        if (ROOMS[player.getCurrentRoom()].getDown() >= 1) {
+            player.setCurrentRoom(ROOMS[player.getCurrentRoom()].getDown());
+            displayRoom();
+        }
+        else {
+            System.out.println ("You can't go down.");
+            navigate();
+        }
     }
 
     //--------------------------------------------------------------------------
     // For talking to an NPC
     //--------------------------------------------------------------------------
-    private void talkTo()
-    {
-                    if (ROOMS[player.getCurrentRoom()].getNPC() >= 1)
-                    {
-                            conversation();
-                    }
-
-                    else
-                            System.out.println ("There's nobody to talk to.");
+    private void talkTo() {
+        if (ROOMS[player.getCurrentRoom()].getNPC() >= 1) {
+            conversation();
+        }
+        else
+            System.out.println ("There's nobody to talk to.");
     }
 
     //--------------------------------------------------------------------------
