@@ -11,7 +11,7 @@ You need at least Java version 7 installed.
 
 > Play the game
 
-You can download the game here: https://github.com/robinsuu/legend-of-the-wanderer/blob/master/dist/Legend2_1.jar
+You can download the game here: https://github.com/robinsuu/legend-of-the-wanderer/blob/master/dist/Legend2.1.zip
 
 Please refer to the documentation provided or type "help" once inside the game for instructions on how to play it. The controls are a bit funky, but I hope you will enjoy it anyway!
 
