@@ -701,9 +701,8 @@ public class Game implements java.io.Serializable {
         // Displays welcome message (Add credit for the C class as well)
         System.out.println("\nWelcome to Legend of the Wanderer"
                         + "\n\nCode by: \tRobin Fjärem"
-                        + "\nE-mail: \trobin.neko@gmail.com"
-                        + "\nWebsite: \thttp://www.robinsuu.com/"
-                        + "\n\nMusic by: http://rolemusic.sawsquarenoise.com/"
+                        + "\nE-mail: \trobin.fjarem@gmail.com"
+                        + "\nWebsite: \thttp://lazycapybara.com/"
                         + "\nLicensed under http://creativecommons.org/licenses/by/4.0/\n");
 
         startPrompt();
