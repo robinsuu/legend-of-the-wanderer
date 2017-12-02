@@ -2519,26 +2519,22 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     // Starts (And eventually ends) a combat with an NPC
     //--------------------------------------------------------------------------
-    private void startCombat()
-    {	
-                    if (player.getHealth() > 0 && NPCS[player.getCurrentNPC()].getHealth() > 0)
-                    {
-                            combatSequence();
-                    }
-                            if (NPCS[player.getCurrentNPC()].getHealth() <= 0)
-                            {
-                                    System.out.println ("You killed " + NPCS[player.getCurrentNPC()].getName());
-                                    rewards(); // Rewards for killing the monster
-                                    ROOMS[player.getCurrentRoom()].removeNPC(); // Removes the NPC when killed
-                                    NPCS[player.getCurrentNPC()].setHealth(NPCS[player.getCurrentNPC()].getMaxHealth()); // Resets the NPC to max health after it being killed
-                            }
-                                    else
-                                            if (player.getHealth() <= 0)
-                                            {
-                                                    System.out.println ("You were killed by " + NPCS[player.getCurrentNPC()].getName());
-                                                    NPCS[player.getCurrentNPC()].setHealth(NPCS[player.getCurrentNPC()].getMaxHealth()); // Resets the NPC health if you die
-                                                    gameOver();
-                                            }
+    private void startCombat() {	
+        if (player.getHealth() > 0 && NPCS[player.getCurrentNPC()].getHealth() > 0) {
+            combatSequence();
+        }
+        
+        if (NPCS[player.getCurrentNPC()].getHealth() <= 0) {
+            System.out.println ("You killed " + NPCS[player.getCurrentNPC()].getName());
+            rewards(); // Rewards for killing the monster
+            ROOMS[player.getCurrentRoom()].removeNPC(); // Removes the NPC when killed
+            NPCS[player.getCurrentNPC()].setHealth(NPCS[player.getCurrentNPC()].getMaxHealth()); // Resets the NPC to max health after it being killed
+        }
+        else if (player.getHealth() <= 0) {
+            System.out.println ("You were killed by " + NPCS[player.getCurrentNPC()].getName());
+            NPCS[player.getCurrentNPC()].setHealth(NPCS[player.getCurrentNPC()].getMaxHealth()); // Resets the NPC health if you die
+            gameOver();
+        }
     }	
 
     //--------------------------------------------------------------------------
@@ -2546,90 +2542,78 @@ public class Game implements java.io.Serializable {
     // saving memory). Note that this timer is currently global, running
     // continuously, and never canceled
     //--------------------------------------------------------------------------
-    private void respawnTimer()
-    {
-            int seconds = 300; // The rate at which monsters respawn (in seconds)
+    private void respawnTimer() {
+        int seconds = 300; // The rate at which monsters respawn (in seconds)
 
-            Timer timer = new Timer();
+        Timer timer = new Timer();
 
-            TimerTask task = new java.util.TimerTask() 
-            {
-                       public void run() 
-                       {
-                                    int index = 1;
-                                    while (index < ROOMS.length)
-                                    {
-                                            ROOMS[index].respawnNPC();
-                                            index++;
-                                    }
-                       }
-             };
-             timer.scheduleAtFixedRate(task, 0, seconds*1000);
+        TimerTask task = new java.util.TimerTask()  {
+            public void run() {
+                int index = 1;
+                while (index < ROOMS.length) {
+                    ROOMS[index].respawnNPC();
+                    index++;
+                }
+            }
+         };
+         timer.scheduleAtFixedRate(task, 0, seconds*1000);
     }
 
     //--------------------------------------------------------------------------
     // Method for the actual combat sequence
     //--------------------------------------------------------------------------
-    private void combatSequence()
-    {
-            int playerHP = player.getHealth();
-            int enemyHP = NPCS[player.getCurrentNPC()].getHealth();
-            int playerHit = 0;
-            int enemyHit = 0;
+    private void combatSequence() {
+        int playerHP = player.getHealth();
+        int enemyHP = NPCS[player.getCurrentNPC()].getHealth();
+        int playerHit = 0;
+        int enemyHit = 0;
 
-            System.out.println ("You attacked " + NPCS[player.getCurrentNPC()]);
+        System.out.println ("You attacked " + NPCS[player.getCurrentNPC()]);
 
-            while (playerHP > 0 && enemyHP > 0)
-            {
-                    // Player round
-                    playerHit = rand.nextInt(player.getStrength() +1); // Calculates the player damage made
-                    enemyHP -= playerHit;
-                    NPCS[player.getCurrentNPC()].setHealth(enemyHP); // Sets the enemy HP after the hit
-                    if (playerHit == 0)
-                            System.out.println ("You missed " + NPCS[player.getCurrentNPC()].getName());
-                    else
-                            System.out.println ("You hit " + NPCS[player.getCurrentNPC()].getName() + " for " + playerHit + " damage" + displayEnemyHealth());
+        while (playerHP > 0 && enemyHP > 0) {
+            // Player round
+            playerHit = rand.nextInt(player.getStrength() +1); // Calculates the player damage made
+            enemyHP -= playerHit;
+            NPCS[player.getCurrentNPC()].setHealth(enemyHP); // Sets the enemy HP after the hit
+            if (playerHit == 0)
+                System.out.println ("You missed " + NPCS[player.getCurrentNPC()].getName());
+            else
+                System.out.println ("You hit " + NPCS[player.getCurrentNPC()].getName() + " for " + playerHit + " damage" + displayEnemyHealth());
 
-                    // Enemy round
-                    if (enemyHP > 0)
-                    {
-                            enemyHit = rand.nextInt(NPCS[player.getCurrentNPC()].getStrength() +1); // Calculates the enemy damage made
-                            if (enemyHit == 0)
-                                    System.out.println (NPCS[player.getCurrentNPC()].getName() + " missed you");
-                            else
-                                    System.out.println (NPCS[player.getCurrentNPC()].getName() + " hit you for " + enemyHit + " damage");
-                            playerHP -= enemyHit;
-                            player.setHealth(playerHP); // Sets the player HP after the hit	
-                    }
+            // Enemy round
+            if (enemyHP > 0) {
+                enemyHit = rand.nextInt(NPCS[player.getCurrentNPC()].getStrength() +1); // Calculates the enemy damage made
+                if (enemyHit == 0)
+                        System.out.println (NPCS[player.getCurrentNPC()].getName() + " missed you");
+                else
+                        System.out.println (NPCS[player.getCurrentNPC()].getName() + " hit you for " + enemyHit + " damage");
+                playerHP -= enemyHit;
+                player.setHealth(playerHP); // Sets the player HP after the hit	
             }
+        }
     }
 
-    //--------------------------------------------------------------------------
-    // Displays monster health
-    //--------------------------------------------------------------------------
-    private String displayEnemyHealth()
-    {
-            int enemyHP = NPCS[player.getCurrentNPC()].getHealth();
-            String display = "";
+    private String displayEnemyHealth() {
+        int enemyHP = NPCS[player.getCurrentNPC()].getHealth();
+        String display = "";
 
-            if (enemyHP > 0)
-                    display = (" (" + NPCS[player.getCurrentNPC()] + " has " + enemyHP + " hp left)");
+        if (enemyHP > 0)
+            display = (" (" + NPCS[player.getCurrentNPC()] + " has " + enemyHP + " hp left)");
 
-            return display;
+        return display;
     }
 
     //--------------------------------------------------------------------------
     // Adds experience and gold to the character when a monster is killed
     // Also runs the methods for item drops and level up
     //--------------------------------------------------------------------------
-    private void rewards()
-    {
-            player.addExperience(NPCS[player.getCurrentNPC()].getExperience());
-            player.addGold(NPCS[player.getCurrentNPC()].getGold());
-            System.out.println ("You received " + NPCS[player.getCurrentNPC()].getExperience() + " experience points and " + NPCS[player.getCurrentNPC()].getGold() + " gold");
+    private void rewards() {
+        player.addExperience(NPCS[player.getCurrentNPC()].getExperience());
+        player.addGold(NPCS[player.getCurrentNPC()].getGold());
+        System.out.println ("You received " + NPCS[player.getCurrentNPC()].getExperience() + " experience points and " + NPCS[player.getCurrentNPC()].getGold() + " gold");
 
-            dropItem();
-            player.levelUp();
+        dropItem();
+        player.levelUp();
     }
 
     //--------------------------------------------------------------------------
@@ -2637,136 +2621,122 @@ public class Game implements java.io.Serializable {
     // For now the NPCs can only drop an item once, since this feature is only
     // used for quest items
     //--------------------------------------------------------------------------
-    private void dropItem()
-    {
-            if (NPCS[player.getCurrentNPC()].getDroppedItem() >= 1)
-            {
+    private void dropItem() {
+        if (NPCS[player.getCurrentNPC()].getDroppedItem() >= 1) {
             player.getItem(NPCS[player.getCurrentNPC()].getDroppedItem()).addPlayerHas(1);
             System.out.println ("You received " + player.getItem(NPCS[player.getCurrentNPC()].getDroppedItem()));
             NPCS[player.getCurrentNPC()].setDroppedItem(0); // Makes sure the NPC can only drop an item ONCE
-            }
+        }
     }
 
     //--------------------------------------------------------------------------
     // The method for getting lost in the marsh
     // Needs to be better optimized in the future. Right now it's run every time
-    // the player moves
+    // the player moves Note 171202: Wow... Haha
     //--------------------------------------------------------------------------
-    private void theMarsh()
-    {
-            int randomRoom = 0; // Used for the marsh 
+    private void theMarsh() {
+        int randomRoom = 0; // Used for the marsh 
 
-            for (int i=258; i<271; i++)
-            {
-                    randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
-                    ROOMS[i].setNorth(randomRoom);
-            }
+        for (int i=258; i<271; i++) {
+            randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
+            ROOMS[i].setNorth(randomRoom);
+        }
 
-            for (int i=258; i<271; i++)
-            {
-                    randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
-                    ROOMS[i].setSouth(randomRoom);
-            }
+        for (int i=258; i<271; i++) {
+            randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
+            ROOMS[i].setSouth(randomRoom);
+        }
 
-            for (int i=258; i<271; i++)
-            {
-                    randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
-                    ROOMS[i].setWest(randomRoom);
-            }
+        for (int i=258; i<271; i++) {
+            randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
+            ROOMS[i].setWest(randomRoom);
+        }
 
-            for (int i=258; i<271; i++)
-            {
-                    randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
-                    ROOMS[i].setEast(randomRoom);
-            }
+        for (int i=258; i<271; i++) {
+            randomRoom = rand.nextInt((271 - 257) + 1) + 257; // Randomizes a number from 257 to 271
+            ROOMS[i].setEast(randomRoom);
+        }
     }
 
     //--------------------------------------------------------------------------
     // Heals the player for the value specified
     //--------------------------------------------------------------------------
-    private void heal (int healAmount)
-    {
-            int healing = 0; 
-            int counter = 0;
+    private void heal (int healAmount) {
+        int healing = 0; 
+        int counter = 0;
 
-            healing = healAmount;
+        healing = healAmount;
 
-            while (counter < healing)
-            {
-                    if (player.getHealth() < player.getMaxHealth())
-                            player.addHealth(1);
-                    counter++;
-            }	
+        while (counter < healing) {
+            if (player.getHealth() < player.getMaxHealth())
+                player.addHealth(1);
+            counter++;
+        }	
     }
 
     //--------------------------------------------------------------------------
     // Display the game credits
     //--------------------------------------------------------------------------
-    private void credit()
-    {
-            System.out.println ("*************");
-            System.out.println ("Game credit");
-            System.out.println ("*************");
-            System.out.println ("\nCode: Robin Fjärem");
-            System.out.println ("Story and maps: Robin Fjärem");
-            System.out.println ("http://robinsuu.com");
-            System.out.println("Music by: http://rolemusic.sawsquarenoise.com/"
-                            + "\n(Licensed under http://creativecommons.org/licenses/by/4.0/)");
+    private void credit() {
+        System.out.println ("*************");
+        System.out.println ("Game credit");
+        System.out.println ("*************");
+        System.out.println ("\nCode: Robin Fjärem");
+        System.out.println ("Story and maps: Robin Fjärem");
+        System.out.println ("http://robinsuu.com");
+        System.out.println("Music by: http://rolemusic.sawsquarenoise.com/"
+                        + "\n(Licensed under http://creativecommons.org/licenses/by/4.0/)");
 
-            System.out.println ("\nTesters:");
-            System.out.println ("Marcus Folgert");
-            System.out.println ("Emil Ehrs");
-            System.out.println ("Francois Larouche (Special thanks for your coding advice!)");
-            System.out.println ("Emanuel Högild");
+        System.out.println ("\nTesters:");
+        System.out.println ("Marcus Folgert");
+        System.out.println ("Emil Ehrs");
+        System.out.println ("Francois Larouche (Special thanks for your coding advice!)");
+        System.out.println ("Emanuel Högild");
 
-            System.out.println("\nOther:");
-            System.out.println ("http://crownlessking.com (GUI io console console class and GUI coding advice)");
-            System.out.println ("Saad Benbouzid @ stackoverflow (Line-break code snippet)");
-            System.out.println ("http://lauzet.com/argon/ (Online mapping tool");
+        System.out.println("\nOther:");
+        System.out.println ("http://crownlessking.com (GUI io console console class and GUI coding advice)");
+        System.out.println ("Saad Benbouzid @ stackoverflow (Line-break code snippet)");
+        System.out.println ("http://lauzet.com/argon/ (Online mapping tool");
     }
 
     //--------------------------------------------------------------------------
     // Saves the character data in a file
     //--------------------------------------------------------------------------
-    private void saveGame()
-    {
-            System.out.println ("Saved the game.");
-            saveNPC(); // Workaround
-            saveItem();
-            player.saveInventorySize(Character.getInventorySize()); // Workaround, see Character.java
+    private void saveGame() {
+        System.out.println ("Saved the game.");
+        saveNPC(); // Workaround
+        saveItem();
+        player.saveInventorySize(Character.getInventorySize()); // Workaround, see Character.java
 
-            try
-            {
-                //Serialize data object to a file
-                ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream("Character.sav"));
-                out.writeObject(player);
-                out.close();
-            }
-            catch (IOException e)
-            {
-                System.out.println("Failed to read save file");
-                e.printStackTrace();
-            }
+        try {
+            //Serialize data object to a file
+            ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream("Character.sav"));
+            out.writeObject(player);
+            out.close();
+        }
+        catch (IOException e) {
+            System.out.println("Failed to read save file");
+            e.printStackTrace();
+        }
     }
 
     //--------------------------------------------------------------------------
     // Background saving for the GUI
     //--------------------------------------------------------------------------
-    private void backgroundSave()
-    {
-            saveNPC(); // Workaround
-            saveItem();
-            player.saveInventorySize(Character.getInventorySize()); // Workaround, see Character.java
-            try
-            {
-                    //Serialize data object to a file
-                    ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream("Character.sav"));
-                    out.writeObject(player);
-                    out.close();
-            }
-            catch (IOException e)
-            {
-            }
+    private void backgroundSave() {
+        saveNPC(); // Workaround
+        saveItem();
+        player.saveInventorySize(Character.getInventorySize()); // Workaround, see Character.java
+        try {
+            //Serialize data object to a file
+            ObjectOutputStream out = new ObjectOutputStream (new FileOutputStream("Character.sav"));
+            out.writeObject(player);
+            out.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     //--------------------------------------------------------------------------
