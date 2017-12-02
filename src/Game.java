@@ -838,166 +838,162 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     private void commandLine()
     { 
-            //System.out.print ("#" + player.getCurrentRoom() + "<" + player.getHealth() + "/" + player.getMaxHealth() + ">"); <--- ADMIN TRACKING
-            System.out.print ("<" + player.getHealth() + "/" + player.getMaxHealth() + ">");
-            userInput = C.io.nextLine(); // MUST BE C.io.nextLine(); to work in the GUI. Original is scan.nextLine();
-            userInput = userInput.toLowerCase(); // User input is not case-sensitive as all commands are converted to lower case
+        //System.out.print ("#" + player.getCurrentRoom() + "<" + player.getHealth() + "/" + player.getMaxHealth() + ">"); <--- ADMIN TRACKING
+        System.out.print ("<" + player.getHealth() + "/" + player.getMaxHealth() + ">");
+        userInput = C.io.nextLine(); // MUST BE C.io.nextLine(); to work in the GUI. Original is scan.nextLine();
+        userInput = userInput.toLowerCase(); // User input is not case-sensitive as all commands are converted to lower case
     }
 
     //--------------------------------------------------------------------------
     // Calls the relevant methods based on what was input at commandLine()
     //--------------------------------------------------------------------------
-    private void navigate ()
-    {
-                    backgroundSave(); // THIS IS NEEDED TO UPDATE THE GUI IN InfoPanel.java. It is the same as saveGame() except it doesn't display a message
-                    commandLine();
+    private void navigate () {
+        backgroundSave(); // THIS IS NEEDED TO UPDATE THE GUI IN InfoPanel.java. It is the same as saveGame() except it doesn't display a message
+        commandLine();
 
-                    // The marsh randomizer
-                    // Far from optimal location, but will remain here until I found a better way to make it
-                    theMarsh();
+        // Far from optimal location, but will remain here until I find a better way to make it
+        theMarsh(); // The marsh randomizer
 
-                    switch (userInput)
-                    {
-                    // Navigation commands
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("n"):
-                            case ("north"):
-                                    goNorth();
-                                    break;
-                            case ("s"):
-                            case ("south"):
-                                    goSouth();
-                                    break;
-                            case ("w"):
-                            case ("west"):
-                                    goWest();
-                                    break;
-                            case ("e"):
-                            case ("east"):
-                                    goEast();
-                                    break;
-                            case ("u"):
-                            case ("up"):
-                                    goUp();
-                                    break;
-                            case ("d"):
-                            case ("down"):
-                                    goDown();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("look"):
-                            case ("l"):
-                                    displayRoom(); // Displays the current room
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("experience"):
-                            case ("exp"):
-                                    player.displayExpRequired();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("inventory"):
-                            case ("inv"):
-                            case ("i"):
-                                    player.displayInventory();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("invs"):
-                                    player.displayInventoryShort();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("exits"):
-                                    System.out.println (ROOMS[player.getCurrentRoom()].showExits()); // Displays the current room exits
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("score"):
-                            case ("sc"):
-                                    System.out.println (player); // Displays the character sheet
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("gold"):
-                                    System.out.println ("Gold: " + player.getGold());
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("clear"):
-                                    C.io.clear();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("consider"):
-                            case ("cons"):
-                                    consider();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("talk"):
-                                    talkTo();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("interact"):
-                            case ("in"):
-                                    useObject();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("kill"):
-                            case ("k"):
-                                    attack();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("commands"):
-                            case ("help"):
-                                    System.out.println ("\n\t__________________________________"
-                                                    + "\n\tNavigation commands"
-                                                    + "\n\t__________________________________"
-                                                    + "\n\tnorth, south, west, east, up, down"
-                                                    + "\n\tn, s, w, e, u, d"
-                                                    + "\n\tlook, l"
-                                                    + "\n\texits"
+        switch (userInput) {
+            // Navigation commands
+            case ("n"):
+            case ("north"):
+                goNorth();
+                break;
+            case ("s"):
+            case ("south"):
+                goSouth();
+                break;
+            case ("w"):
+            case ("west"):
+                goWest();
+                break;
+            case ("e"):
+            case ("east"):
+                goEast();
+                break;
+            case ("u"):
+            case ("up"):
+                goUp();
+                break;
+            case ("d"):
+            case ("down"):
+                goDown();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("look"):
+            case ("l"):
+                displayRoom(); // Displays the current room
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("experience"):
+            case ("exp"):
+                player.displayExpRequired();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("inventory"):
+            case ("inv"):
+            case ("i"):
+                player.displayInventory();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("invs"):
+                player.displayInventoryShort();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("exits"):
+                System.out.println (ROOMS[player.getCurrentRoom()].showExits()); // Displays the current room exits
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("score"):
+            case ("sc"):
+                System.out.println (player); // Displays the character sheet
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("gold"):
+                System.out.println ("Gold: " + player.getGold());
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("clear"):
+                C.io.clear();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("consider"):
+            case ("cons"):
+                consider();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("talk"):
+                talkTo();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("interact"):
+            case ("in"):
+                useObject();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("kill"):
+            case ("k"):
+                attack();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("commands"):
+            case ("help"):
+                System.out.println ("\n\t__________________________________"
+                                + "\n\tNavigation commands"
+                                + "\n\t__________________________________"
+                                + "\n\tnorth, south, west, east, up, down"
+                                + "\n\tn, s, w, e, u, d"
+                                + "\n\tlook, l"
+                                + "\n\texits"
 
-                                                    + "\n\n\t__________________________________"
-                                                    + "\n\tInformation commands"
-                                                    + "\n\t__________________________________"
-                                                    + "\n\tscore, sc"
-                                                    + "\n\tgold"
-                                                    + "\n\tconsider, cons"
-                                                    + "\n\tinventory, inv, i"
-                                                    + "\n\tinvs (Displays the short description of the items for the \"use\" command)"
-                                                    + "\n\texperience, exp"
+                                + "\n\n\t__________________________________"
+                                + "\n\tInformation commands"
+                                + "\n\t__________________________________"
+                                + "\n\tscore, sc"
+                                + "\n\tgold"
+                                + "\n\tconsider, cons"
+                                + "\n\tinventory, inv, i"
+                                + "\n\tinvs (Displays the short description of the items for the \"use\" command)"
+                                + "\n\texperience, exp"
 
-                                                    + "\n\n\t__________________________________"
-                                                    + "\n\tAction commands"
-                                                    + "\n\t__________________________________"
-                                                    + "\n\tuse <item from inventory>"
-                                                    + "\n\tin, interact (To interact with an object in the room)"
-                                                    + "\n\ttalk"
-                                                    + "\n\tkill, k"
+                                + "\n\n\t__________________________________"
+                                + "\n\tAction commands"
+                                + "\n\t__________________________________"
+                                + "\n\tuse <item from inventory>"
+                                + "\n\tin, interact (To interact with an object in the room)"
+                                + "\n\ttalk"
+                                + "\n\tkill, k"
 
-                                                    + "\n\n\t__________________________________"
-                                                    + "\n\tOther commands"
-                                                    + "\n\t__________________________________"
-                                                    + "\n\tcredit"
-                                                    + "\n\tclear"
-                                                    + "\n\tsave"
-                                                    + "\n\tquit");
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("save"):
-                                    saveGame();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("credit"):
-                                    credit();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            case ("quit"):
-                                    quitGame();
-                                    break;
-                    //-----------------------------------------------------------------------------------------------------------
-                            default:
-                                    if (userInput.contains("use"))
-                                                    useItem();
-                                    else
-                                            System.out.println ("Invalid input. Try again.");
-                                    break;
-                    }
-            navigate();
+                                + "\n\n\t__________________________________"
+                                + "\n\tOther commands"
+                                + "\n\t__________________________________"
+                                + "\n\tcredit"
+                                + "\n\tclear"
+                                + "\n\tsave"
+                                + "\n\tquit");
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("save"):
+                saveGame();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("credit"):
+                credit();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            case ("quit"):
+                quitGame();
+                break;
+    //-----------------------------------------------------------------------------------------------------------
+            default:
+                if (userInput.contains("use"))
+                    useItem();
+                else
+                    System.out.println ("Invalid input. Try again.");
+                break;
+        }
+        navigate();
     }
 
     //--------------------------------------------------------------------------
