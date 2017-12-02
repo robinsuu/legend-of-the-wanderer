@@ -689,8 +689,8 @@ public class Game implements java.io.Serializable {
         + "\n \\___/|_|    \\__|_| |_|\\___|       "             
         + "\n                                   "             
         + "\n                                   "             
-        + "\n__          __             _       "             
-        + "\n\\ \\        / /            | |      "             
+        + "\n__             __              _       "             
+        + "\n\\ \\         / /             | |      "             
         + "\n \\ \\  /\\  / /_ _ _ __   __| | ___ _ __ ___ _ __ "
         + "\n  \\ \\/  \\/ / _` | '_ \\ / _` |/ _ \\ '__/ _ \\ '__|"
         + "\n   \\  /\\  / (_| | | | | (_| |  __/ | |  __/ |   "
@@ -773,33 +773,24 @@ public class Game implements java.io.Serializable {
     // Sets up the Array List of Room descriptions and adds all the room
     // descriptions from rooms.txt
     //--------------------------------------------------------------------------
-    private void generateRooms() throws IOException
-    {
-            try
-            { // Start of try
-
-    //-----------------------------------------------------------------------------------------------------------	
+    private void generateRooms() throws IOException {
+        try {	
             Scanner scanFile = new Scanner (new File ("rooms.db")); // Contains the room descriptions, in the root folder of this project
 
             description.add("Room #0 -If you see this, it's a bug. Please send an e-mail to robin.neko@gmail.com  and report it-"); // Adds the room #0 to the ArrayList. This room is not used in the game. Do not remove this line.
 
             // Adds the room descriptions in order from room.txt to the ArrayList description
-            while (scanFile.hasNextLine())
-            {
-                    description.add(scanFile.nextLine());
+            while (scanFile.hasNextLine()) {
+                description.add(scanFile.nextLine());
             }
 
-            scanFile.close();
-    //-----------------------------------------------------------------------------------------------------------		
-
-            } // End of try
-
-            // Catches exception. (If the rooms.txt does not exist)
-            catch (FileNotFoundException exception)
-            {
-                    System.out.println ("rooms.txt file not found! \n\nProgram terminated...");
-                    System.exit(1);
-            }
+            scanFile.close();		
+        }
+        catch (FileNotFoundException e) { // (If the rooms.db does not exist)
+            System.out.println ("rooms.db file not found! Please e-mail robin.fjarem@gmail.com if you need help resolving this. \n\n");
+            System.err.println(e.getMessage());
+            //System.exit(1);
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -807,38 +798,36 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     private void createCharacter()
     {
-            System.out.print ("Please enter your name: ");
-            userInput = C.io.nextLine(); // MUST BE C.io.nextLine(); to work in the GUI
-            if (userInput.length() > 30)
-            {
-                    System.out.println ("The name is too long, please try again.");
-                    createCharacter();
-            }
-            player.setName (userInput);
+        System.out.print ("Please enter your name: ");
+        userInput = C.io.nextLine(); // MUST BE C.io.nextLine(); to work in the GUI
+        if (userInput.length() > 30) {
+            System.out.println ("The name is too long, please try again.");
+            createCharacter();
+        }
+        player.setName (userInput);
 
-            player.setStrength (10);
-            player.setmaxHealth (30);
-            player.setHealth(player.getMaxHealth());
-            player.setLevel(player.getCurrentLevel());
-            player.setExpDisplay();
-            player.setGold(0);
+        player.setStrength (10);
+        player.setmaxHealth (30);
+        player.setHealth(player.getMaxHealth());
+        player.setLevel(player.getCurrentLevel());
+        player.setExpDisplay();
+        player.setGold(0);
 
-            // Sets starting items
-            player.getItem(1).addPlayerHas(3); // #1 a health potion
-            player.getItem(2).addPlayerHas(1); // #2 a newbie guide book
-            player.getItem(15).addPlayerHas(1); // #15 a shortsword
-            player.getItem(17).addPlayerHas(1); // #17 a leather armor
+        // Sets starting items
+        player.getItem(1).addPlayerHas(3); // #1 a health potion
+        player.getItem(2).addPlayerHas(1); // #2 a newbie guide book
+        player.getItem(15).addPlayerHas(1); // #15 a shortsword
+        player.getItem(17).addPlayerHas(1); // #17 a leather armor
 
-            // ADMIN ITEMS. REMOVE AT RELEASE
-            //player.getItem(5).addPlayerHas(1); // #5 a teleporter
-            //player.addGold(1000);
-            //player.getItem(20).addPlayerHas(1);
-            //player.getItem(6).addPlayerHas(1);
-            //player.getItem(7).addPlayerHas(1);
-            //player.getItem(8).addPlayerHas(2);
-            //player.getItem(9).addPlayerHas(1);
-            //player.getItem(10).addPlayerHas(4);
-
+        // ADMIN ITEMS
+        //player.getItem(5).addPlayerHas(1); // #5 a teleporter
+        //player.addGold(1000);
+        //player.getItem(20).addPlayerHas(1);
+        //player.getItem(6).addPlayerHas(1);
+        //player.getItem(7).addPlayerHas(1);
+        //player.getItem(8).addPlayerHas(2);
+        //player.getItem(9).addPlayerHas(1);
+        //player.getItem(10).addPlayerHas(4);
     }
 
     //--------------------------------------------------------------------------
