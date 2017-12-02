@@ -1910,204 +1910,197 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     // Method for using an object (NPC)
     //--------------------------------------------------------------------------
-    private void useObject()
-    {	
-            switch (player.getCurrentNPC())
-            {
-                    //--------------------------------------------------------------------------
-                    // #201 a marble fountain
-                    //--------------------------------------------------------------------------
-                    case (201):
-                            System.out.println ("You drink from " + NPCS[player.getCurrentNPC()]);
-                            heal(5);
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #202 a fortune telling machine
-                    //--------------------------------------------------------------------------
-                    case (202):
-                            String answer = "no";
+    private void useObject() {	
+        switch (player.getCurrentNPC())
+        {
+            //--------------------------------------------------------------------------
+            // #201 a marble fountain
+            //--------------------------------------------------------------------------
+            case (201):
+                System.out.println ("You drink from " + NPCS[player.getCurrentNPC()]);
+                heal(5);
+                break;
+            //--------------------------------------------------------------------------
+            // #202 a fortune telling machine
+            //--------------------------------------------------------------------------
+            case (202):
+                String answer = "no";
 
-                            System.out.println ("Do you wish to use the machine for 10 gold? (yes/no)");
-                            answer = C.io.nextLine();
+                System.out.println ("Do you wish to use the machine for 10 gold? (yes/no)");
+                answer = C.io.nextLine();
 
-                            switch (answer)
-                            {
-                                    case ("yes"):
-                                            if (player.getGold() >= 10)
-                                            {
-                                                    System.out.println ("You pay 10 gold.");
-                                                    player.removeGold(10);
+                switch (answer) {
+                    case ("yes"):
+                        if (player.getGold() >= 10) {
+                            System.out.println ("You pay 10 gold.");
+                            player.removeGold(10);
 
-                                                    int chance = 0;
+                            int chance = 0;
 
-                                                    chance = rand.nextInt(8) +1;
+                            chance = rand.nextInt(8) +1;
 
-                                                    switch (chance)
-                                                    {
-                                                            case 1:
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'A great misfortune will fall upon you. Watch your step in the marsh.'");
-                                                                    break;
-                                                            case 2:
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'Don't let your eyes fool you. You might have met someone with more power than you think.'");
-                                                                    break;
-                                                            case 3:
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'There is someone in this village who will help you in the very last part of your quest.'");
-                                                                    break;
-                                                            case 4: 
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'Even the most unthinkable person can hold what you seek.'");
-                                                                    break;
-                                                            case 5: 
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'You will need about 500 gold pieces to make your dreams come true.'");
-                                                                    break;
-                                                            case 6: 
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'The only source of knowledge is experience.'");
-                                                                    player.addExperience(30);
-                                                                    System.out.println ("\nYou received 30 experience points.\n");
-                                                                    break;
-                                                            case 7: 
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'You should seek out someone living in the mountain.'");
-                                                                    break;
-                                                            case 8: 
-                                                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
-                                                                                    + "\n'Your future holds a visit in a very dark place, where the dead are still walking.'");
-                                                                    break;
-                                                    }
-                                            }
-                                            else
-                                                    if (player.getGold() < 10)
-                                                    System.out.println ("You don't have enough gold.");
-                                            break;
-                                    case ("no"):
-                                            System.out.println ("Maybe next time.");
-                                            break;
-                                    default:
-                                            System.out.println ("Invalid input.");
-                                            break;
+                            switch (chance) {
+                                case 1:
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'A great misfortune will fall upon you. Watch your step in the marsh.'");
+                                    break;
+                                case 2:
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'Don't let your eyes fool you. You might have met someone with more power than you think.'");
+                                    break;
+                                case 3:
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'There is someone in this village who will help you in the very last part of your quest.'");
+                                    break;
+                                case 4: 
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'Even the most unthinkable person can hold what you seek.'");
+                                    break;
+                                case 5: 
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'You will need about 500 gold pieces to make your dreams come true.'");
+                                    break;
+                                case 6: 
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'The only source of knowledge is experience.'");
+                                    player.addExperience(30);
+                                    System.out.println ("\nYou received 30 experience points.\n");
+                                    break;
+                                case 7: 
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'You should seek out someone living in the mountain.'");
+                                    break;
+                                case 8: 
+                                    System.out.println ("The machine makes some strange sounds and prints out a small piece of parchment:"
+                                                    + "\n'Your future holds a visit in a very dark place, where the dead are still walking.'");
+                                    break;
                             }
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #203 a chair
-                    //--------------------------------------------------------------------------
-                    case (203):
-                            System.out.println ("You sit on the chair. How relaxing.");
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #205 a rotting corpse
-                    //--------------------------------------------------------------------------
-                    case (205):
-                            System.out.println ("You check if there's anything of value on the rotting corpse. That's really disgusting...");
-                            System.out.println ("You find a health potion!");
-                            player.getItem(1).addPlayerHas(1); // add a health potion (#1)
-                            ROOMS[player.getCurrentRoom()].removeNPC();
-                            ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #206 a wooden elevator (Down)
-                    //--------------------------------------------------------------------------
-                    case (206):
-                            System.out.println ("You use the elevator. \"Whirr whirr whirr!\" It starts go down.\n.\n.\n.\n."
-                                            + "\nThe elevator is shaking violently.\n.\n.\n.\n."
-                                            + "\nThe elevator is swinging from left to right.\n.\n.\n.\n."
-                                            + "\nIt sounds like the ropes to the elevator could snap any moment\n.\n.\n.\n.");
-                            System.out.println ("You practically crash land and feel a bit shaky after the bumpy ride.\n");
-                            player.setCurrentRoom(232); // Moves the player to room #232
-                            displayRoom();
-                            break;
-                    //--------------------------------------------------------------------------
-                    //  #207 a wooden elevator (Up)
-                    //--------------------------------------------------------------------------
-                    case(207):
-                            System.out.println ("You use the elevator. \"Whirr whirr whirr!\" It starts go up.\n.\n.\n.\n."
-                                            + "\nThe elevator is shaking violently.\n.\n.\n.\n."
-                                            + "\nThe elevator is swinging from left to right.\n.\n.\n.\n."
-                                            + "\nIt sounds like the ropes to the elevator could snap any moment.\n.\n.\n.\n.");
-                            System.out.println ("You finally get to the summit, not a second too late. You feel like throwing up.\n");
-                            player.setCurrentRoom(231); // Moves the player to room #231
-                            displayRoom();
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #208 the frozen corpse of an adventurer
-                    //--------------------------------------------------------------------------
-                    case (208):
-                            System.out.println ("You check the pockets of the frozen corpse. Don't you have any shame?");
-                            System.out.println ("\nYou find a small note\n");
-                            System.out.println ("As you grab the note, you can hear the wind howling and your bones suddenly start to ache"
-                                            + " from a sudden decrease in temperature. The strong wind blows the corpse to dust.");
-                            player.getItem(6).addPlayerHas(1); // adds a small note (#6)
-                            ROOMS[player.getCurrentRoom()].removeNPC();
-                            ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #209 a bonfire
-                    //--------------------------------------------------------------------------
-                    case (209):
-                            System.out.println ("You are mezmerised as you stare deep into the bonfire.");
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #210 a wooden chest covered with grime
-                    //--------------------------------------------------------------------------
-                    case (210):
-                            System.out.println ("You pry open the lid of the chest and discover a big pile of gold!");
-                            System.out.println ("\nYou received 100 gold.\n");
-                            player.addGold(100);
-                            ROOMS[player.getCurrentRoom()].removeNPC();
-                            ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #211 an ancient chest
-                    //--------------------------------------------------------------------------
-                    case (211):
-                            if (player.getItem(9).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("As you open the lid, you see a small camel figurine carved in obsidian. You can see the numbers"
-                                                    + " 26/30 etched under its right foot.");
-                                    System.out.println ("\nYou received an obsidian camel.\n");
-                                    player.getItem(13).addPlayerHas(1);
-                                    ROOMS[player.getCurrentRoom()].removeNPC();
-                                    ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
-                            }
-                            else
-                                    if (player.getItem(9).getPlayerHas() == 0)
-                                    System.out.println ("There seems to be some strange energy keeping this chest sealed.");
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #212 a wooden sign
-                    //--------------------------------------------------------------------------
-                    case (212):
-                            System.out.println ("You look upon the sign and see the text 'Turn back!' together with a skull painted in black.");
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #213 a black cat
-                    //--------------------------------------------------------------------------
-                    case (213):
-                            System.out.println ("\nThe cat meows at you softly. It freely jumps right into your bag. What a strange cat.\n");
-                            ROOMS[player.getCurrentRoom()].removeNPC();
-                            ROOMS[player.getCurrentRoom()].permanentRemoveNPC();
-                            player.getItem(19).addPlayerHas(1);
-                            break;
-                    //--------------------------------------------------------------------------
-                    // #214 a violet mushroom
-                    //--------------------------------------------------------------------------
-                    case (214):
-                            System.out.println ("\nYou pick a violet mushroom.\n");
-                            ROOMS[player.getCurrentRoom()].removeNPC();
-                            ROOMS[player.getCurrentRoom()].permanentRemoveNPC();
-                            player.getItem(20).addPlayerHas(1);
-                            break;	
-                    //--------------------------------------------------------------------------
-                    // Default action
-                    //--------------------------------------------------------------------------
+                        }
+                        else if (player.getGold() < 10)
+                            System.out.println ("You don't have enough gold.");
+                        break;
+                    case ("no"):
+                        System.out.println ("Maybe next time.");
+                        break;
                     default:
-                            System.out.println ("You can't do that.");
-                            break;
-            }
+                        System.out.println ("Invalid input.");
+                        break;
+                }
+                break;
+            //--------------------------------------------------------------------------
+            // #203 a chair
+            //--------------------------------------------------------------------------
+            case (203):
+                System.out.println ("You sit on the chair. How relaxing.");
+                break;
+            //--------------------------------------------------------------------------
+            // #205 a rotting corpse
+            //--------------------------------------------------------------------------
+            case (205):
+                System.out.println ("You check if there's anything of value on the rotting corpse. That's really disgusting...");
+                System.out.println ("You find a health potion!");
+                player.getItem(1).addPlayerHas(1); // add a health potion (#1)
+                ROOMS[player.getCurrentRoom()].removeNPC();
+                ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
+                break;
+            //--------------------------------------------------------------------------
+            // #206 a wooden elevator (Down)
+            //--------------------------------------------------------------------------
+            case (206):
+                System.out.println ("You use the elevator. \"Whirr whirr whirr!\" It starts go down.\n.\n.\n.\n."
+                                + "\nThe elevator is shaking violently.\n.\n.\n.\n."
+                                + "\nThe elevator is swinging from left to right.\n.\n.\n.\n."
+                                + "\nIt sounds like the ropes to the elevator could snap any moment\n.\n.\n.\n.");
+                System.out.println ("You practically crash land and feel a bit shaky after the bumpy ride.\n");
+                player.setCurrentRoom(232); // Moves the player to room #232
+                displayRoom();
+                break;
+            //--------------------------------------------------------------------------
+            //  #207 a wooden elevator (Up)
+            //--------------------------------------------------------------------------
+            case(207):
+                System.out.println ("You use the elevator. \"Whirr whirr whirr!\" It starts go up.\n.\n.\n.\n."
+                                + "\nThe elevator is shaking violently.\n.\n.\n.\n."
+                                + "\nThe elevator is swinging from left to right.\n.\n.\n.\n."
+                                + "\nIt sounds like the ropes to the elevator could snap any moment.\n.\n.\n.\n.");
+                System.out.println ("You finally get to the summit, not a second too late. You feel like throwing up.\n");
+                player.setCurrentRoom(231); // Moves the player to room #231
+                displayRoom();
+                break;
+            //--------------------------------------------------------------------------
+            // #208 the frozen corpse of an adventurer
+            //--------------------------------------------------------------------------
+            case (208):
+                System.out.println ("You check the pockets of the frozen corpse. Don't you have any shame?");
+                System.out.println ("\nYou find a small note\n");
+                System.out.println ("As you grab the note, you can hear the wind howling and your bones suddenly start to ache"
+                                + " from a sudden decrease in temperature. The strong wind blows the corpse to dust.");
+                player.getItem(6).addPlayerHas(1); // adds a small note (#6)
+                ROOMS[player.getCurrentRoom()].removeNPC();
+                ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
+                break;
+            //--------------------------------------------------------------------------
+            // #209 a bonfire
+            //--------------------------------------------------------------------------
+            case (209):
+                System.out.println ("You are mezmerised as you stare deep into the bonfire.");
+                break;
+            //--------------------------------------------------------------------------
+            // #210 a wooden chest covered with grime
+            //--------------------------------------------------------------------------
+            case (210):
+                System.out.println ("You pry open the lid of the chest and discover a big pile of gold!");
+                System.out.println ("\nYou received 100 gold.\n");
+                player.addGold(100);
+                ROOMS[player.getCurrentRoom()].removeNPC();
+                ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
+                break;
+            //--------------------------------------------------------------------------
+            // #211 an ancient chest
+            //--------------------------------------------------------------------------
+            case (211):
+                if (player.getItem(9).getPlayerHas() >= 1) {
+                    System.out.println ("As you open the lid, you see a small camel figurine carved in obsidian. You can see the numbers"
+                                    + " 26/30 etched under its right foot.");
+                    System.out.println ("\nYou received an obsidian camel.\n");
+                    player.getItem(13).addPlayerHas(1);
+                    ROOMS[player.getCurrentRoom()].removeNPC();
+                    ROOMS[player.getCurrentRoom()].permanentRemoveNPC(); // Removes this NPC permanently
+                }
+                else if (player.getItem(9).getPlayerHas() == 0)
+                    System.out.println ("There seems to be some strange energy keeping this chest sealed.");
+                break;
+            //--------------------------------------------------------------------------
+            // #212 a wooden sign
+            //--------------------------------------------------------------------------
+            case (212):
+                System.out.println ("You look upon the sign and see the text 'Turn back!' together with a skull painted in black.");
+                break;
+            //--------------------------------------------------------------------------
+            // #213 a black cat
+            //--------------------------------------------------------------------------
+            case (213):
+                System.out.println ("\nThe cat meows at you softly. It freely jumps right into your bag. What a strange cat.\n");
+                ROOMS[player.getCurrentRoom()].removeNPC();
+                ROOMS[player.getCurrentRoom()].permanentRemoveNPC();
+                player.getItem(19).addPlayerHas(1);
+                break;
+            //--------------------------------------------------------------------------
+            // #214 a violet mushroom
+            //--------------------------------------------------------------------------
+            case (214):
+                System.out.println ("\nYou pick a violet mushroom.\n");
+                ROOMS[player.getCurrentRoom()].removeNPC();
+                ROOMS[player.getCurrentRoom()].permanentRemoveNPC();
+                player.getItem(20).addPlayerHas(1);
+                break;	
+            //--------------------------------------------------------------------------
+            // Default action
+            //--------------------------------------------------------------------------
+            default:
+                System.out.println ("You can't do that.");
+                break;
+        }
     }
 
     //--------------------------------------------------------------------------
