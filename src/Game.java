@@ -2108,368 +2108,318 @@ public class Game implements java.io.Serializable {
     //--------------------------------------------------------------------------
     private void useItem()
     {
-            String usedItem = "";
+        String usedItem = "";
 
-            usedItem = userInput.substring(3); // Removes the "use " part of the input and turns it into the usedItem String variable
+        usedItem = userInput.substring(3); // Removes the "use " part of the input and turns it into the usedItem String variable
 
-            switch (usedItem)
-            {
-                    //******************************
-                    // #1 a health potion (Heals 20 points)
-                    //******************************
-                    case (" potion"):
-                            if (player.getItem(1).getPlayerHas() >= 1)
-                            {
-                                    if (player.getHealth() >= player.getMaxHealth())
-                                            System.out.println ("You are already at max health!");
-                                    else
-                                    {
-                                            System.out.println ("You used " + player.getItem(1));
-                                            player.getItem(1).removePlayerHas(1); // Removes the item from the inventory
-                                            heal(20);
-                                    }
-                            }
-                            else
-                                    if (player.getItem(1).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #2 a newbie guide book
-                    //******************************
-                    case (" guide"):
-                            if (player.getItem(2).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("You start reading " + player.getItem(2));
-                                    System.out.println ("\nSurviving your first adventure\n");
-                                    System.out.println ("#1: Always use 'cons' or 'consider' before starting a fight to assess the ability of your opponent.");
-                                    System.out.println ("#2: Always heal up before a fight. Fountains are one way to heal yourself.");
-                                    System.out.println ("#3: Talk to everyone you meet. You never know what kind of useful information they might give you.");
-                                    System.out.println ("#4: If you get stuck, try checking your previously explored areas for clues.");
-                                    System.out.println ("#5: It is possible to 'interact' with or 'in' objects inside a room. Simply type it as it is.");
-                                    System.out.println ("#6: If you die you will lose some experience and gold.");
-                                    System.out.println ("#7: Remember to 'save' often. Always use 'quit' when you are finished playing or your progress will not be saved.");
-                            }
-                            else
-                                    if (player.getItem(2).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #3 a map of the forest
-                    //******************************
-                    case (" forest map"):
-                            if (player.getItem(3).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("You look at " + player.getItem(3));
-                            }
-                            else
-                                    if (player.getItem(3).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;	
-                    //******************************
-                    // #4 a strength potion
-                    //******************************
-                    case (" strength potion"):
-                            if (player.getItem(4).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("You used " + player.getItem(4));
-                                    player.getItem(4).removePlayerHas(1); // Removes the item from the inventory
-                            }
-                            else
-                                    if (player.getItem(4).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #5 a teleporter
-                    // Note: This is an admin item
-                    //******************************
-                    case (" teleporter"):
-                            if (player.getItem(5).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("Please enter the room you wish to teleport to: "); // Only use an integer value or the game will crash
-                                    player.setCurrentRoom(C.io.nextInt());
-                                    System.out.println ("Whish whosh! The teleporter does its magic and you appear in a different place!\n");
-                                    displayRoom();
-                            }
-                            else
-                                    if (player.getItem(5).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #6 a small note
-                    //******************************
-                    case (" note"):
-                            if (player.getItem(6).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("You can just make out one word on the note:\n\n'Mother'\n");
-                            }
-                            else
-                                    if (player.getItem(6).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #7 the Shadowdrinker
-                    //******************************
-                    case (" shadowdrinker"):
-                            if (player.getItem(7).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("You are already wielding it.");
-                            }
-                            else
-                                    if (player.getItem(7).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #8 a golden hilt
-                    //******************************
-                    case (" hilt"):
-                            if (player.getItem(8).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("It's useless in its current state.");
-                            }
-                            else
-                                    if (player.getItem(8).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #9 a rune-etched blade
-                    //******************************
-                    case (" blade"):
-                            if (player.getItem(9).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("It's useless in its current state.");
-                            }
-                            else
-                                    if (player.getItem(9).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #10 a beautifully cut red gemstone
-                    //******************************
-                    case (" gemstone"):
-                            if (player.getItem(10).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("It's useless in its current state.");
-                            }
-                            else
-                                    if (player.getItem(10).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #11 a longsword
-                    //******************************
-                    case (" longsword"):
-                            if (player.getItem(11).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() <= 0)
-                            {
-                                    System.out.println ("You are already wielding it.");
-                            }
-                            else
-                                    if (player.getItem(11).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() == 1)
-                                            System.out.println ("Why don't you use the Shadowdrinker instead?");
-                                    else
-                                            if (player.getItem(11).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");	
+        switch (usedItem) {
+            //******************************
+            // #1 a health potion (Heals 20 points)
+            //******************************
+            case (" potion"):
+                if (player.getItem(1).getPlayerHas() >= 1) {
+                    if (player.getHealth() >= player.getMaxHealth())
+                        System.out.println ("You are already at max health!");
+                    else {
+                        System.out.println ("You used " + player.getItem(1));
+                        player.getItem(1).removePlayerHas(1); // Removes the item from the inventory
+                        heal(20);
+                    }
+                }
+                else if (player.getItem(1).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #2 a newbie guide book
+            //******************************
+            case (" guide"):
+                if (player.getItem(2).getPlayerHas() >= 1) {
+                    System.out.println ("You start reading " + player.getItem(2));
+                    System.out.println ("\nSurviving your first adventure\n");
+                    System.out.println ("#1: Always use 'cons' or 'consider' before starting a fight to assess the ability of your opponent.");
+                    System.out.println ("#2: Always heal up before a fight. Fountains are one way to heal yourself.");
+                    System.out.println ("#3: Talk to everyone you meet. You never know what kind of useful information they might give you.");
+                    System.out.println ("#4: If you get stuck, try checking your previously explored areas for clues.");
+                    System.out.println ("#5: It is possible to 'interact' with or 'in' objects inside a room. Simply type it as it is.");
+                    System.out.println ("#6: If you die you will lose some experience and gold.");
+                    System.out.println ("#7: Remember to 'save' often. Always use 'quit' when you are finished playing or your progress will not be saved.");
+                }
+                else if (player.getItem(2).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #3 a map of the forest
+            //******************************
+            case (" forest map"):
+                if (player.getItem(3).getPlayerHas() >= 1) {
+                    System.out.println ("You look at " + player.getItem(3));
+                }
+                else if (player.getItem(3).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;	
+            //******************************
+            // #4 a strength potion
+            //******************************
+            case (" strength potion"):
+                if (player.getItem(4).getPlayerHas() >= 1) {
+                    System.out.println ("You used " + player.getItem(4));
+                    player.getItem(4).removePlayerHas(1); // Removes the item from the inventory
+                }
+                else if (player.getItem(4).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #5 a teleporter
+            // Note: This is an admin item
+            //******************************
+            case (" teleporter"):
+                if (player.getItem(5).getPlayerHas() >= 1) {
+                    System.out.println ("Please enter the room you wish to teleport to: "); // Only use an integer value or the game will crash
+                    player.setCurrentRoom(C.io.nextInt());
+                    System.out.println ("Whish whosh! The teleporter does its magic and you appear in a different place!\n");
+                    displayRoom();
+                }
+                else if (player.getItem(5).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #6 a small note
+            //******************************
+            case (" note"):
+                if (player.getItem(6).getPlayerHas() >= 1) {
+                    System.out.println ("You can just make out one word on the note:\n\n'Mother'\n");
+                }
+                else if (player.getItem(6).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #7 the Shadowdrinker
+            //******************************
+            case (" shadowdrinker"):
+                if (player.getItem(7).getPlayerHas() == 1) {
+                    System.out.println ("You are already wielding it.");
+                }
+                else if (player.getItem(7).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #8 a golden hilt
+            //******************************
+            case (" hilt"):
+                if (player.getItem(8).getPlayerHas() == 1) {
+                    System.out.println ("It's useless in its current state.");
+                }
+                else if (player.getItem(8).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #9 a rune-etched blade
+            //******************************
+            case (" blade"):
+                if (player.getItem(9).getPlayerHas() == 1) {
+                    System.out.println ("It's useless in its current state.");
+                }
+                else if (player.getItem(9).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #10 a beautifully cut red gemstone
+            //******************************
+            case (" gemstone"):
+                if (player.getItem(10).getPlayerHas() == 1) {
+                    System.out.println ("It's useless in its current state.");
+                }
+                else if (player.getItem(10).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #11 a longsword
+            //******************************
+            case (" longsword"):
+                if (player.getItem(11).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() <= 0) {
+                    System.out.println ("You are already wielding it.");
+                }
+                else if (player.getItem(11).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() == 1)
+                    System.out.println ("Why don't you use the Shadowdrinker instead?");
+                else if (player.getItem(11).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");	
+                break;
+            //******************************
+            // #12 a flying carpet
+            //******************************
+            case (" carpet"):
+                if (player.getItem(12).getPlayerHas() == 1) {
+                    String answerCarpet = "";
 
-                            break;
-                    //******************************
-                    // #12 a flying carpet
-                    //******************************
-                    case (" carpet"):
-                            if (player.getItem(12).getPlayerHas() == 1)
-                            {
-                                    String answerCarpet = "";
+                    System.out.println ("You roll out the flying carpet and step on it. It starts to hover a bit up in the air.\n");
+                    System.out.println ("Where do you want to go?\n");
 
-                                    System.out.println ("You roll out the flying carpet and step on it. It starts to hover a bit up in the air.\n");
-                                    System.out.println ("Where do you want to go?\n");
+                    System.out.println ("1: The forest");
+                    System.out.println ("2: Halin village");
+                    System.out.println ("3: The Zulah tribe");
+                    System.out.println ("4: The carpet trader's tent");
+                    System.out.println ("5: Across the desert");
 
-                                    System.out.println ("1: The forest");
-                                    System.out.println ("2: Halin village");
-                                    System.out.println ("3: The Zulah tribe");
-                                    System.out.println ("4: The carpet trader's tent");
-                                    System.out.println ("5: Across the desert");
+                    answerCarpet = C.io.nextLine();
 
-                                    answerCarpet = C.io.nextLine();
+                    switch (answerCarpet) {
+                        case ("1"):
+                            System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
+                            System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
+                            player.setCurrentRoom(44);
+                            System.out.println ("\nYou arrive at your destination.\n");
+                            displayRoom();
+                            break;
+                        case ("2"):
+                            System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
+                            System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
+                            player.setCurrentRoom(151);
+                            System.out.println ("\nYou arrive at your destination.\n");
+                            displayRoom();
+                            break;
+                        case ("3"):
+                            System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
+                            System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
+                            player.setCurrentRoom(237);
+                            System.out.println ("\nYou arrive at your destination.\n");
+                            displayRoom();
+                            break;
+                        case ("4"):
+                            System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
+                            System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
+                            player.setCurrentRoom(316);
+                            System.out.println ("\nYou arrive at your destination.\n");
+                            displayRoom();
+                            break;
+                        case ("5"):
+                            System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
+                            System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
+                            player.setCurrentRoom(321);
+                            System.out.println ("\nYou arrive at your destination.\n");
+                            displayRoom();
+                            break;
+                        default:
+                            System.out.println ("Invalid input.");
+                            break;
+                    }
 
-                                    switch (answerCarpet)
-                                    {
-                                            case ("1"):
-                                                    System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
-                                                    System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
-                                                    player.setCurrentRoom(44);
-                                                    System.out.println ("\nYou arrive at your destination.\n");
-                                                    displayRoom();
-                                                    break;
-                                            case ("2"):
-                                                    System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
-                                                    System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
-                                                    player.setCurrentRoom(151);
-                                                    System.out.println ("\nYou arrive at your destination.\n");
-                                                    displayRoom();
-                                                    break;
-                                            case ("3"):
-                                                    System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
-                                                    System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
-                                                    player.setCurrentRoom(237);
-                                                    System.out.println ("\nYou arrive at your destination.\n");
-                                                    displayRoom();
-                                                    break;
-                                            case ("4"):
-                                                    System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
-                                                    System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
-                                                    player.setCurrentRoom(316);
-                                                    System.out.println ("\nYou arrive at your destination.\n");
-                                                    displayRoom();
-                                                    break;
-                                            case ("5"):
-                                                    System.out.println ("The carpet starts to rise higher up in the air and suddenly takes off at high speed.");
-                                                    System.out.println ("\nYou travel swiftly across the land, traveling faster than any horse would be able to.");
-                                                    player.setCurrentRoom(321);
-                                                    System.out.println ("\nYou arrive at your destination.\n");
-                                                    displayRoom();
-                                                    break;
-                                            default:
-                                                    System.out.println ("Invalid input.");
-                                                    break;
-                                    }
+                }
+                else if (player.getItem(12).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #13 an obsidian camel
+            //******************************
+            case (" camel"):
+                if (player.getItem(13).getPlayerHas() == 1) {
+                    System.out.println ("It's useless.");
+                }
+                else if (player.getItem(13).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #14 a training manual
+            //******************************
+            case (" manual"):
+                if (player.getItem(14).getPlayerHas() >= 1) {
+                    int expIncrease = 0;
 
-                            }
-                            else
-                                    if (player.getItem(12).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #13 an obsidian camel
-                    //******************************
-                    case (" camel"):
-                            if (player.getItem(13).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("It's useless.");
-                            }
-                            else
-                                    if (player.getItem(13).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #14 a training manual
-                    //******************************
-                    case (" manual"):
-                            if (player.getItem(14).getPlayerHas() >= 1)
-                            {
-                                    int expIncrease = 0;
+                    expIncrease = rand.nextInt((200 - 50) + 1) + 50; // Randomizes a number from 257 to 271
 
-                                    expIncrease = rand.nextInt((200 - 50) + 1) + 50; // Randomizes a number from 257 to 271
-
-                                    System.out.println ("\nYou study a training manual intensely for a while.\n");
-                                    System.out.println ("Your experience increased by " + expIncrease + ".\n");
-                                    player.getItem(14).removePlayerHas(1);
-                                    player.addExperience(expIncrease);
-                                    player.levelUp();
-                            }
-                            else
-                                    if (player.getItem(14).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #15 a shortsword
-                    //******************************
-                    case (" shortsword"):
-                            if (player.getItem(15).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() <= 0)
-                            {
-                                    System.out.println ("You are already wielding it.");
-                            }
-                            else
-                                    if (player.getItem(15).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() == 1)
-                                            System.out.println ("Why don't you use the Shadowdrinker instead?");
-                                    else
-                                            if (player.getItem(15).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");	
-
-                            break;
-                    //******************************
-                    // #16 a chainmail armor
-                    //******************************
-                    case (" chainmail"):
-                            if (player.getItem(16).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("You are already wearing it.");
-                            }
-                            else
-                                    if (player.getItem(16).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #17 a leather armor
-                    //******************************
-                    case (" leather"):
-                            if (player.getItem(17).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("You are already wearing it.");
-                            }
-                            else
-                                    if (player.getItem(17).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #18 a red crystal pendant
-                    //******************************
-                    case (" pendant"):
-                            if (player.getItem(18).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("You are already wearing it. You feel more powerful than before.");
-                            }
-                            else
-                                    if (player.getItem(18).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #19 a black cat
-                    //******************************
-                    case (" cat"):
-                            if (player.getItem(19).getPlayerHas() == 1)
-                            {
-                                    System.out.println ("The cat meows at you. It looks oddly comfortable in your bag.");
-                            }
-                            else
-                                    if (player.getItem(19).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // #20 a violet mushroom
-                    //******************************
-                    case (" mushroom"):
-                            if (player.getItem(20).getPlayerHas() >= 1)
-                            {
-                                    System.out.println ("Why would you want to use that?");
-                            }
-                            else
-                                    if (player.getItem(20).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;	
-                    //******************************
-                    // #21 a greater health potion (Heals 45 points)
-                    //******************************
-                    case (" greater"):
-                            if (player.getItem(21).getPlayerHas() >= 1)
-                            {
-                                    if (player.getHealth() >= player.getMaxHealth())
-                                            System.out.println ("You are already at max health!");
-                                    else
-                                    {
-                                            System.out.println ("You used " + player.getItem(21));
-                                            player.getItem(21).removePlayerHas(1); // Removes the item from the inventory
-                                            heal(45);
-                                    }
-                            }
-                            else
-                                    if (player.getItem(21).getPlayerHas() == 0)
-                                            System.out.println ("You don't have that item.");		
-                            break;
-                    //******************************
-                    // Default case
-                    //******************************
-                    default:
-                            System.out.println ("You don't have that item.");
-                            break;
-            }
+                    System.out.println ("\nYou study a training manual intensely for a while.\n");
+                    System.out.println ("Your experience increased by " + expIncrease + ".\n");
+                    player.getItem(14).removePlayerHas(1);
+                    player.addExperience(expIncrease);
+                    player.levelUp();
+                }
+                else if (player.getItem(14).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #15 a shortsword
+            //******************************
+            case (" shortsword"):
+                if (player.getItem(15).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() <= 0) {
+                    System.out.println ("You are already wielding it.");
+                }
+                else if (player.getItem(15).getPlayerHas() == 1 && player.getItem(7).getPlayerHas() == 1)
+                    System.out.println ("Why don't you use the Shadowdrinker instead?");
+                else if (player.getItem(15).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");	
+                break;
+            //******************************
+            // #16 a chainmail armor
+            //******************************
+            case (" chainmail"):
+                if (player.getItem(16).getPlayerHas() == 1) {
+                    System.out.println ("You are already wearing it.");
+                }
+                else if (player.getItem(16).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #17 a leather armor
+            //******************************
+            case (" leather"):
+                if (player.getItem(17).getPlayerHas() == 1) {
+                    System.out.println ("You are already wearing it.");
+                }
+                else if (player.getItem(17).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #18 a red crystal pendant
+            //******************************
+            case (" pendant"):
+                if (player.getItem(18).getPlayerHas() == 1) {
+                    System.out.println ("You are already wearing it. You feel more powerful than before.");
+                }
+                else if (player.getItem(18).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #19 a black cat
+            //******************************
+            case (" cat"):
+                if (player.getItem(19).getPlayerHas() == 1) {
+                    System.out.println ("The cat meows at you. It looks oddly comfortable in your bag.");
+                }
+                else if (player.getItem(19).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // #20 a violet mushroom
+            //******************************
+            case (" mushroom"):
+                if (player.getItem(20).getPlayerHas() >= 1) {
+                    System.out.println ("Why would you want to use that?");
+                }
+                else if (player.getItem(20).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;	
+            //******************************
+            // #21 a greater health potion (Heals 45 points)
+            //******************************
+            case (" greater"):
+                if (player.getItem(21).getPlayerHas() >= 1) {
+                    if (player.getHealth() >= player.getMaxHealth())
+                        System.out.println ("You are already at max health!");
+                    else {
+                        System.out.println ("You used " + player.getItem(21));
+                        player.getItem(21).removePlayerHas(1); // Removes the item from the inventory
+                        heal(45);
+                    }
+                }
+                else if (player.getItem(21).getPlayerHas() == 0)
+                    System.out.println ("You don't have that item.");		
+                break;
+            //******************************
+            // Default case
+            //******************************
+            default:
+                System.out.println ("You don't have that item.");
+                break;
+        }
     }
 
     //--------------------------------------------------------------------------
