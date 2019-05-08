@@ -1,7 +1,7 @@
 # Legend of the Wanderer
 > Text based single player adventure
 
-This is one of my earliest Java projects.
+This is one of my earliest Java projects. It was built before I had any formal training in programming. I like to look back on it to see how long I have come since this time, but also to see how much is possible with nothing but imagination and determination. Even though the code looks like it does, I'm still surprised it was possible to hack something together with this little knowledge.
 
 > System requirements
 
